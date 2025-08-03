@@ -1,7 +1,7 @@
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { HiOutlineArrowUp } from 'react-icons/hi';
 import { MdOutlineSend } from 'react-icons/md';
-import logo from '../assets/logo.jpg';
+import logo from '../assets/logo.png';
 import { useTheme } from '../context/ThemeContext';
 
 const Footer = () => {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/logo.png";
+import { useTheme } from '../../context/ThemeContext';
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('');
@@ -9,6 +10,7 @@ export default function AdminLogin() {
   const [errors, setErrors] = useState({});
   const { login, isLoggedIn } = useAuth();
   const navigate = useNavigate();
+  const { colors } = useTheme();
 
   // Redirect if already logged in
   useEffect(() => {
@@ -76,7 +78,7 @@ export default function AdminLogin() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onBlur={() => setErrors(validate())}
-                className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400
+                className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 ${colors.bgSecondary}
                   ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
                 placeholder="you@example.com"
               />
@@ -102,7 +104,7 @@ export default function AdminLogin() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 onBlur={() => setErrors(validate())}
-                className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400
+                className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 ${colors.bgSecondary}
                   ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
                 placeholder="********"
               />

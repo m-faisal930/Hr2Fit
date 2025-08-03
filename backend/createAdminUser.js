@@ -17,15 +17,12 @@ async function createAdminUser() {
 
     // Create admin user
     const adminUser = new User({
-      email: 'faisal@gmail.com',
-      password: 'faisal123',
+      email: 'admin@gmail.com',
+      password: 'admin123',
       role: 'admin'
     });
 
     await adminUser.save();
-    console.log('Admin user created successfully');
-    console.log('Email: faisal@gmail.com');
-    console.log('Password: faisal123');
 
   } catch (error) {
     console.error('Error creating admin user:', error);
