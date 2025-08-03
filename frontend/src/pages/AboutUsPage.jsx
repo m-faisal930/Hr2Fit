@@ -1,6 +1,7 @@
 // src/pages/AboutUsPage.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTheme } from '../context/ThemeContext';
 import {
   FaUsers,
   FaLightbulb,
@@ -25,6 +26,7 @@ import Footer from '../components/Footer';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
+
   visible: (custom) => ({
     opacity: 1,
     y: 0,
@@ -43,8 +45,9 @@ const staggerContainer = {
 };
 
 export default function AboutUsPage() {
+  const { colors } = useTheme();
   return (
-    <>
+    < >
       <Navbar />
 
       {/* Hero */}
@@ -60,7 +63,7 @@ export default function AboutUsPage() {
 
       {/* Our Outsourced HR Service Approach */}
       <motion.section
-        className="py-20 bg-hr-primary relative overflow-hidden"
+        className={`py-20 ${colors.bgSecondary} relative overflow-hidden`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -93,7 +96,7 @@ export default function AboutUsPage() {
           />
         </div>
 
-        <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className={`mx-auto px-4 sm:px-6 lg:px-8 relative z-10 ${colors.bgSecondary}`}>
           <motion.div
             className="text-center mb-16"
             variants={fadeInUp}
@@ -219,7 +222,7 @@ export default function AboutUsPage() {
 
       {/* Why Choose HR2Fit */}
       <motion.section
-        className="py-20 bg-hr-dark relative overflow-hidden"
+        className={`py-20 ${colors.bgSecondary} relative overflow-hidden`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -327,7 +330,7 @@ export default function AboutUsPage() {
 
       {/* Call to Action */}
       <motion.section
-        className="py-20 bg-gradient-to-br from-hr-primary via-hr-mid to-hr-primary relative overflow-hidden"
+        className={`py-20 ${colors.bgSecondary} relative overflow-hidden`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}

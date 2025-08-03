@@ -67,7 +67,7 @@ const {colors} = useTheme();
   return (
     <>
       <Navbar />
-      <div className="bg-hr-primary">
+      <div className=''>
         <PageHero
           breadcrumbs={[
             { label: 'Home', href: '/' },
@@ -84,7 +84,7 @@ const {colors} = useTheme();
           className="py-20 relative overflow-hidden"
         >
           {/* Decorative background elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className={`absolute inset-0 overflow-hidden pointer-events-none ${colors.bgPrimary}`}>
             <motion.div
               className="absolute top-20 left-10 w-40 h-40 bg-hr-gradient-to rounded-full filter blur-3xl opacity-10"
               animate={{
@@ -111,7 +111,7 @@ const {colors} = useTheme();
             />
           </div>
 
-          <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10 ">
             <motion.div
               className="text-center mb-16"
               variants={item}
@@ -216,7 +216,7 @@ const {colors} = useTheme();
 
         {/* Contact Form Section */}
         <motion.section
-          className="py-20 bg-hr-dark relative overflow-hidden"
+          className={`py-20 ${colors.bgSecondary} relative overflow-hidden`}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -422,7 +422,7 @@ const {colors} = useTheme();
 
         {/* Call to Action */}
         <motion.section
-          className="py-20 bg-gradient-to-br from-hr-primary via-hr-mid to-hr-primary relative overflow-hidden"
+          className={`py-20 ${colors.bgSecondary} relative overflow-hidden`}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
