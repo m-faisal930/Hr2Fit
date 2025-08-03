@@ -111,7 +111,7 @@ const {colors} = useTheme();
             />
           </div>
 
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div
               className="text-center mb-16"
               variants={item}
@@ -237,7 +237,7 @@ const {colors} = useTheme();
             />
           </div>
 
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div
               className="text-center mb-16"
               variants={fadeInUp}

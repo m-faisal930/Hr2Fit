@@ -19,7 +19,7 @@ export default function StatsSection() {
 
   return (
     <section id="stats" ref={ref} className={`${colors.bgSecondary} py-12`}>
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className={`font-work text-3xl sm:text-4xl font-bold ${colors.textPrimary} text-center mb-8`}>
           From startups to large enterprises, our team has successfully hired
           500+ professionals worldwide for top global brands

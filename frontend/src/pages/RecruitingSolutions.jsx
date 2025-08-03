@@ -198,7 +198,7 @@ const RecruitingSolutions = () => {
           />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className=" mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             className="text-center mb-16"
             variants={fadeInUp}
@@ -254,7 +254,7 @@ const RecruitingSolutions = () => {
           />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             className="text-center mb-16"
             variants={fadeInUp}
@@ -325,8 +325,8 @@ const RecruitingSolutions = () => {
                       <div className={`w-16 h-16 ${colors.iconBg} ${colors.iconColor} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md`}>
                         <benefit.icon className="text-2xl" />
                       </div>
-                      <h3 className={`text-xl font-bold ${colors.textColor} mb-4`}>{benefit.title}</h3>
-                      <p className={`${colors.descColor} leading-relaxed`}>{benefit.description}</p>
+                      <h3 className={`text-xl font-bold ${colors.textPrimary} mb-4`}>{benefit.title}</h3>
+                      <p className={`${colors.textSecondary} leading-relaxed`}>{benefit.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -359,7 +359,7 @@ const RecruitingSolutions = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             className="text-center mb-16"
             variants={fadeInUp}
@@ -418,7 +418,7 @@ const RecruitingSolutions = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             className="text-center mb-16"
             variants={fadeInUp}

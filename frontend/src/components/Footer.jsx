@@ -12,7 +12,7 @@ const Footer = () => {
 
   return (
     <footer className={`${colors.bgPrimary} ${colors.footerText} pt-12 pb-6 sm:pt-16 sm:pb-8`}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto  px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
           {/* Logo and description */}
           <div className="sm:col-span-2 lg:col-span-1">
@@ -27,25 +27,25 @@ const Footer = () => {
             <div className="mt-4 flex gap-3 sm:mt-6 sm:gap-4">
               <a
                 href="#"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400  transition-colors"
               >
                 <FaFacebook className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400  transition-colors"
               >
                 <FaTwitter className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 transition-colors"
               >
                 <FaLinkedin className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400  transition-colors"
               >
                 <FaInstagram className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
@@ -67,7 +67,7 @@ const Footer = () => {
                 <li key={link}>
                   <a
                     href="#"
-                    className="text-sm text-gray-400 hover:text-white transition-colors sm:text-base"
+                    className="text-sm text-gray-400 transition-colors sm:text-base"
                   >
                     {link}
                   </a>
@@ -88,7 +88,7 @@ const Footer = () => {
                 <li key={idx}>
                   <a
                     href="#"
-                    className="text-sm text-gray-400 hover:text-white transition-colors sm:text-base"
+                    className="text-sm text-gray-400  transition-colors sm:text-base"
                   >
                     {post}
                   </a>
@@ -112,7 +112,7 @@ const Footer = () => {
                 <li key={idx}>
                   <a
                     href="#"
-                    className="text-sm text-gray-400 hover:text-white transition-colors sm:text-base"
+                    className="text-sm text-gray-400  transition-colors sm:text-base"
                   >
                     {service}
                   </a>

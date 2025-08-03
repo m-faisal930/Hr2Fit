@@ -255,7 +255,7 @@ export default function ServicesSection() {
         <div className="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-purple-500 filter blur-3xl"></div>
       </div>
 
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.h2
           className={`font-work text-3xl sm:text-4xl font-bold ${colors.textPrimary} text-center mb-12`}
           initial={{ opacity: 0, y: 20 }}

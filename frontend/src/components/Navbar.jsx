@@ -93,7 +93,9 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className={`sm:hidden fixed inset-0 z-40 ${colors.navBg} bg-opacity-95 pt-20 px-4`}>
+           
           <nav className="flex flex-col items-center">
+          <ThemeToggle />
             <ul className="flex flex-col gap-8 text-center">
               {navItems.map((item) => (
                 <li key={item.name}>
@@ -123,7 +125,7 @@ const Navbar = () => {
               >
                 GET STARTED
               </a>
-              <ThemeToggle />
+             
             </div>
           </nav>
           

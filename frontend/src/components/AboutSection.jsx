@@ -61,7 +61,7 @@ export default function AboutSection() {
         />
       </div>
 
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center gap-12 relative z-10">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center gap-12 relative z-10">
         {/* Text Content */}
         <motion.div className="md:w-1/2" variants={container}> {/* Adjusted width to match hero section ratio */}
           <motion.span

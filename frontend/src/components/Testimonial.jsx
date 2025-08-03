@@ -133,7 +133,7 @@ const Testimonial = () => {
       variants={container}
       className={`${colors.bgSecondary} py-12 px-5 xl:px-10`}
     >
-      <div className="max-w-screen-xl mx-auto relative text-center">
+      <div className=" mx-auto relative text-center">
         <div className="flex items-center justify-between mb-8 md:mb-16">
           <motion.h2
             className={`text-3xl font-bold ${colors.textPrimary}`}
