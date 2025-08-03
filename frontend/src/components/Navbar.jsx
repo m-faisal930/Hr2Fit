@@ -123,6 +123,7 @@ const Navbar = () => {
               >
                 GET STARTED
               </a>
+              <ThemeToggle />
             </div>
           </nav>
           
