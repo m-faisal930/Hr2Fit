@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaComments, FaChevronDown, FaChevronUp, FaHeart, FaReply } from 'react-icons/fa';
 import api from '../services/api';
+import { useTheme } from '../context/ThemeContext';
 
 const CommentSection = ({ postId, comments: initialComments = [], onCommentAdded }) => {
   const [comments, setComments] = useState(initialComments);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { colors } = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     content: ''
@@ -98,7 +100,7 @@ const CommentSection = ({ postId, comments: initialComments = [], onCommentAdded
         className="flex items-center justify-between p-4 bg-gray-50 rounded-lg cursor-pointer"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 ${colors.textPrimary} ${colors.bgPrimary}">
           <FaComments className="text-blue-500" />
           <span className="font-semibold text-gray-800">
             Comments ({comments.length})
@@ -136,7 +138,7 @@ const CommentSection = ({ postId, comments: initialComments = [], onCommentAdded
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${ colors.bgSecondary}
                       errors.name ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="Your name"
@@ -154,7 +156,7 @@ const CommentSection = ({ postId, comments: initialComments = [], onCommentAdded
                     value={formData.content}
                     onChange={(e) => setFormData(prev => ({ ...prev, content: e.target.value }))}
                     rows={4}
-                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none ${
+                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none ${ colors.bgSecondary}
                       errors.content ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="Share your insights..."
