@@ -24,11 +24,11 @@ const jobs = require('./routes/jobRoutes');
 
 const app = express();
 
+// Enable CORS
+app.use(cors());
 // Body parser
 app.use(express.json());
 
-// Enable CORS
-app.use(cors());
 
 
 
