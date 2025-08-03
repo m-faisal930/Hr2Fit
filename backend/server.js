@@ -18,9 +18,6 @@ dotenv.config();
 // Connect to database
 connectDB();
 
-// Route files
-const applicants = require('./routes/applicantRoutes');
-const jobs = require('./routes/jobRoutes');
 
 const app = express();
 

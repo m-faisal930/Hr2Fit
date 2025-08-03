@@ -78,35 +78,6 @@ const BlogManagement = () => {
     }
   };
 
-  const testUpload = async () => {
-    if (!selectedFile) return null;
-
-    try {
-      const formData = new FormData();
-      formData.append('featuredImage', selectedFile);
-
-      console.log('Testing upload with file:', {
-        name: selectedFile.name,
-        type: selectedFile.type,
-        size: selectedFile.size
-      });
-
-      const response = await api.post('/blog/test-upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      console.log('Test upload response:', response.data);
-      alert('Test upload successful!');
-      return response.data;
-    } catch (error) {
-      console.error('Test upload error:', error);
-      alert('Test upload failed: ' + (error.response?.data?.message || error.message));
-      return null;
-    }
-  };
-
   const uploadImage = async () => {
     if (!selectedFile) return null;
 
@@ -587,16 +558,6 @@ const BlogManagement = () => {
                           disabled={uploadingImage}
                         />
                       </label>
-                      {selectedFile && (
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          onClick={testUpload}
-                          className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
-                        >
-                          Test Upload
-                        </motion.button>
-                      )}
                       {uploadingImage && (
                         <div className="flex items-center text-blue-600">
                           <FaSpinner className="w-4 h-4 mr-2 animate-spin" />

@@ -4,7 +4,6 @@ const commentController = require('../controllers/commentController');
 const categoryController = require('../controllers/categoryController');
 const { requireAdmin  } = require('../middlewares/auth');
 const { uploadImage } = require('../middlewares/imageUploadMiddleware');
-const multer = require('multer');
 
 const router = express.Router();
 
@@ -24,34 +23,6 @@ router.patch('/posts/:id/unlike', blogPostController.unlikePost);
 
 // Protected routes (admin only)
 router.use(requireAdmin);
-
-// Simple test upload endpoint
-const testUpload = multer({ dest: 'uploads/' }).single('featuredImage');
-router.post('/test-upload', testUpload, (req, res) => {
-  console.log('Test upload received:', {
-    hasFile: !!req.file,
-    fileInfo: req.file ? {
-      originalname: req.file.originalname,
-      mimetype: req.file.mimetype,
-      size: req.file.size
-    } : null
-  });
-  
-  if (!req.file) {
-    return res.status(400).json({
-      status: 'error',
-      message: 'No file uploaded'
-    });
-  }
-  
-  res.status(200).json({
-    status: 'success',
-    data: {
-      filename: req.file.originalname,
-      size: req.file.size
-    }
-  });
-});
 
 // Image upload route
 router.post('/upload-image', uploadImage, blogPostController.uploadImage);
