@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaEye, FaEyeSlash, FaTrash, FaCheck, FaTimes, FaExclamationTriangle , FaCalendar, FaUser } from 'react-icons/fa';
 import api from '../../services/api';
+import { useTheme } from '../../context/ThemeContext';
 
 
 const CommentsManagement = () => {
@@ -9,6 +10,7 @@ const CommentsManagement = () => {
   const [error, setError] = useState(null);
   const [selectedComments, setSelectedComments] = useState([]);
   const [filter, setFilter] = useState('all');
+  const { colors } = useTheme();
 
   useEffect(() => {
     fetchComments();
@@ -126,7 +128,7 @@ const CommentsManagement = () => {
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className={`px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${colors.bgSecondary} ${colors.textPrimary}`}
           >
             <option value="all">All Comments</option>
             <option value="visible">Visible</option>
