@@ -1,12 +1,21 @@
 
 import { useState, useEffect } from 'react';
+import { motion, useAnimation, AnimatePresence } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { ArrowRight, Play, Star, Users, TrendingUp, Shield, Zap, Sparkles, Target, Award, Globe, Rocket, Brain, Cpu, Database, Network, ChevronRight, CheckCircle, ArrowUpRight } from 'lucide-react';
 import Navbar from './Navbar';
 import { useTheme } from '../context/ThemeContext';
 
 const HeroSection = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { colors } = useTheme();
+  const [activeFeature, setActiveFeature] = useState(0);
+  const { colors, isDarkMode } = useTheme();
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,104 +30,557 @@ const HeroSection = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
+  // Auto-rotate features
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveFeature((prev) => (prev + 1) % 3);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const features = [
+    {
+      icon: Users,
+      title: "Talent Acquisition",
+      description: "Comprehensive recruitment and hiring solutions",
+      color: "from-blue-500 to-cyan-500"
+    },
+    {
+      icon: Shield,
+      title: "Compliance Management",
+      description: "HR compliance and regulatory adherence services",
+      color: "from-purple-500 to-pink-500"
+    },
+    {
+      icon: TrendingUp,
+      title: "Performance Management",
+      description: "Employee development and performance optimization",
+      color: "from-green-500 to-emerald-500"
+    }
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.05,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: 'easeOut',
+      },
+    },
+  };
+
+  const floatingVariants = {
+    animate: {
+      y: [0, -10, 0],
+      transition: {
+        duration: 3,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      },
+    },
+  };
+
+  const pulseVariants = {
+    animate: {
+      scale: [1, 1.05, 1],
+      opacity: [0.5, 1, 0.5],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      },
+    },
   };
 
   return (
-    <section className={`${colors.bgPrimary} overflow-hidden pb-9 px-4 md:px-8`}>
+    <section className={`${colors.bgPrimary} overflow-hidden relative h-screen flex flex-col`}>
+      {/* Enhanced Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Dynamic Gradient Orbs with Enhanced Effects */}
+        <motion.div
+          className={`absolute top-20 left-10 w-[500px] h-[500px] rounded-full blur-3xl ${
+            isDarkMode ? 'bg-blue-500/30' : 'bg-blue-500/20'
+          }`}
+          animate={{
+            scale: [1, 1.4, 1],
+            opacity: [0.3, 0.7, 0.3],
+            x: [0, 80, 0],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+        <motion.div
+          className={`absolute top-40 right-20 w-[600px] h-[600px] rounded-full blur-3xl ${
+            isDarkMode ? 'bg-purple-500/25' : 'bg-purple-500/15'
+          }`}
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.4, 0.8, 0.4],
+            y: [0, -50, 0],
+            rotate: [0, -180, -360],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+        <motion.div
+          className={`absolute bottom-20 left-1/4 w-[400px] h-[400px] rounded-full blur-3xl ${
+            isDarkMode ? 'bg-cyan-500/20' : 'bg-cyan-500/10'
+          }`}
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.6, 0.2],
+            x: [0, -60, 0],
+            y: [0, 40, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+        
+        {/* Enhanced Animated Grid Pattern */}
+        <div className={`absolute inset-0 opacity-15 ${isDarkMode ? 'opacity-8' : 'opacity-5'}`}>
+          <motion.div 
+            className="absolute inset-0" 
+            style={{
+              backgroundImage: `radial-gradient(circle at 1px 1px, ${isDarkMode ? '#3B82F6' : '#1E40AF'} 1px, transparent 0)`,
+              backgroundSize: '60px 60px'
+            }}
+            animate={{
+              backgroundPosition: ['0px 0px', '30px 30px', '0px 0px'],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: 'linear',
+            }}
+          />
+        </div>
 
+        {/* Enhanced Floating Particles */}
+        {[...Array(30)].map((_, i) => (
+          <motion.div
+            key={i}
+            className={`absolute w-2 h-2 rounded-full ${
+              isDarkMode ? 'bg-blue-400' : 'bg-blue-600'
+            }`}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -150, 0],
+              opacity: [0, 1, 0],
+              scale: [0, 1.5, 0],
+              rotate: [0, 360, 0],
+            }}
+            transition={{
+              duration: Math.random() * 4 + 3,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+              ease: 'linear',
+            }}
+          />
+        ))}
+
+        {/* Enhanced Futuristic Energy Lines */}
+        <div className="absolute inset-0">
+          {[...Array(5)].map((_, i) => (
+            <motion.div
+              key={`line-${i}`}
+              className="absolute h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"
+              style={{
+                top: `${15 + i * 20}%`,
+                left: '0%',
+                right: '0%',
+              }}
+              animate={{
+                opacity: [0, 1, 0],
+                scaleX: [0, 1, 0],
+              }}
+              transition={{
+                duration: 6,
+                delay: i * 1.2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+          ))}
+        </div>
+
+        {/* New: Floating Geometric Shapes */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={`shape-${i}`}
+            className={`absolute w-8 h-8 border-2 border-blue-500/30 rounded-lg ${
+              isDarkMode ? 'bg-blue-500/10' : 'bg-blue-500/5'
+            }`}
+            style={{
+              left: `${10 + i * 12}%`,
+              top: `${20 + i * 8}%`,
+            }}
+            animate={{
+              rotate: [0, 360],
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.8, 0.3],
+            }}
+            transition={{
+              duration: 8 + i * 2,
+              repeat: Infinity,
+              ease: 'linear',
+            }}
+          />
+        ))}
+      </div>
 
       <Navbar />
 
-{/* Hero Section - Updated with better image integration */}
-<section className="relative flex flex-col-reverse md:flex-row mx-auto justify-between items-center gap-9 md:gap-4 py-4 my-12">
-  {/* Decorative curve - unchanged */}
-  <svg width="736" height="423" className="absolute top-[50px] sm:top-[200px] sm:right-[-150px]" viewBox="0 0 736 423" fill="none">
-    <path d="M738.5 4.5C491.667 -7.66666 -0.900015 58.9 3.49999 422.5" stroke="url(#paint0_linear_16_172)" strokeWidth="6"></path>
-    <defs>
-      <linearGradient id="paint0_linear_16_172" x1="700.5" y1="-3.99998" x2="14.5" y2="361" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#343045"></stop>
-        <stop offset="0.213542" stopColor="#C0B7E8"></stop>
-        <stop offset="0.71875" stopColor="#8176AF"></stop>
-        <stop offset="1" stopColor="#343045"></stop>
-      </linearGradient>
-    </defs>
-  </svg>
-  
-  {/* Text content - unchanged */}
-  <div className="md:w-[520px] z-20">
-    <h1 className={`text-3xl md:text-[36px] lg:text-[46px] leading-[56px] ${colors.textPrimary} font-bold`}>
-      <span className="text-[#C0B7E8]">Human Resource Services</span> for Small to Medium Sized Businesses
-    </h1>
-    <p className={`text-base ${colors.textPrimary} mt-4 md:mt-9 mb-10 md:mb-16`}>
-      HR2fit provides a cohesive approach to Human Resources services, designed for small to mid-size businesses with Fortune 500 quality. Our unique service model delivers complete HR solutions directly to your business with an emphasis on affordability.
-    </p>
-    <div className="flex gap-6 sm:gap-10">
-      <button className="uppercase font-bold text-xs rounded-[40px] py-2 lg:py-4 px-4 lg:px-9 text-[#302c42] bg-gradient-to-r from-[#8176AF] to-[#C0B7E8] hover:from-[#C0B7E8] hover:to-[#8176AF] transition-all duration-300 cursor-pointer shadow-lg hover:shadow-[#8176AF]/50">
-        REQUEST ASSESSMENT
-      </button>
-      <svg className="w-8 h-6 sm:w-12 sm:h-9 hover:scale-110 transition-transform duration-300 cursor-pointer" viewBox="0 0 46 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M43.8334 19L2.16669 19M43.8334 19L27.1667 35.6667M43.8334 19L27.1667 2.33333" stroke="#C0B7E8" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"></path>
-      </svg>
-    </div>
-  </div>
-  
-  {/* Enhanced Image Container */}
-  <div className="relative z-20 w-full max-w-[430px]">
-    {/* Gradient border container */}
-    <div className="p-[3px] rounded-[100px] md:rounded-bl-[200px] lg:rounded-bl-[250px] bg-gradient-to-r from-[#8176AF] to-[#C0B7E8] hover:from-[#C0B7E8] hover:to-[#8176AF] transition-all duration-500">
-      {/* Image with better framing */}
-      <div className="relative overflow-hidden rounded-[97px] md:rounded-bl-[197px] lg:rounded-bl-[247px] h-full w-full aspect-square md:aspect-[1/1.1]">
-        {/* Professional HR image with overlay */}
-        <img 
-          className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
-          src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-          alt="Professional HR team discussing business strategies" 
-        />
-        {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#302c42]/70 to-[#302c42]/20"></div>
-      </div>
-    </div>
-    
-    {/* Decorative elements */}
-    {/* <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-[#C0B7E8] rounded-full opacity-30"></div>
-    <div className="absolute -top-4 -left-4 w-16 h-16 border-2 border-[#8176AF] rounded-full opacity-30"></div> */}
-  </div>
-</section>
+      {/* Main Hero Content */}
+      <motion.div
+        ref={ref}
+        className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex items-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate={controls}
+      >
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 xl:gap-12 items-center w-full">
+          
+          {/* Left Content */}
+          <motion.div className="space-y-4 sm:space-y-6 md:space-y-8" variants={itemVariants}>
+            {/* Enhanced Animated Badge */}
+            <motion.div
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border-2 border-blue-500/30 rounded-full px-4 py-2 sm:px-6 sm:py-3 text-blue-600 dark:text-blue-400 font-bold text-xs backdrop-blur-xl shadow-2xl"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -2 }}
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse" />
+              <span className="font-palo">Trusted by 500+ Companies</span>
+              <motion.div
+                className="w-2 h-2 bg-green-400 rounded-full"
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{ duration: 1, repeat: Infinity }}
+              />
+            </motion.div>
 
-      {/* Contact Info Bar */}
-      <div className={`flex relative z-30 justify-center sm:justify-between gap-5 items-center mt-6 mx-auto rounded-[90px] py-3 px-3 sm:p-8 lg:p-14 ${colors.bgSecondary}`}>
-        <div className="flex sm:flex-1 gap-4 lg:gap-6">
-          <svg width="42" height="63" viewBox="0 0 42 63" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-none">
-            <path fillRule="evenodd" clipRule="evenodd" d="M21 0.833344C32.2758 0.833344 41.4166 9.9742 41.4166 21.25C41.4166 24.6593 40.5834 27.8717 39.1039 30.6983L21 62.0833L3.31538 31.4595C1.57498 28.4542 0.583313 24.9693 0.583313 21.25C0.583313 9.9742 9.72416 0.833344 21 0.833344ZM21 6.66668C12.9458 6.66668 6.41665 13.1959 6.41665 21.25C6.41665 23.566 6.95093 25.7882 7.96198 27.7943L8.45197 28.6893L21 50.4167L33.6366 28.5362C34.9071 26.3423 35.5833 23.8555 35.5833 21.25C35.5833 13.1959 29.0541 6.66668 21 6.66668ZM21 12.5C25.8325 12.5 29.75 16.4175 29.75 21.25C29.75 26.0825 25.8325 30 21 30C16.1675 30 12.25 26.0825 12.25 21.25C12.25 16.4175 16.1675 12.5 21 12.5ZM21 18.3333C19.3891 18.3333 18.0833 19.6392 18.0833 21.25C18.0833 22.8608 19.3891 24.1667 21 24.1667C22.6108 24.1667 23.9166 22.8608 23.9166 21.25C23.9166 19.6392 22.6108 18.3333 21 18.3333Z" fill="#C0B7E8"></path>
-          </svg>
-          <div className={colors.textPrimary}>
-            <h2 className={`hidden sm:inline-block text-2xl font-bold ${colors.textPrimary}`}>Visit Our Office</h2>
-            <p className={`text-sm mt-3 ${colors.textSecondary}`}>896 Main Street, Walpole MA 02081</p>
+            {/* Enhanced Main Heading with Typewriter Effect */}
+            <motion.h1
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight font-palo"
+              variants={itemVariants}
+            >
+              <span className={`${colors.textPrimary}`}>Human Resource</span>
+              <br />
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">
+                Outsourcing
+              </span>
+              <br />
+              <span className={`${colors.textPrimary}`}>for small to</span>
+              <br />
+              <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 bg-clip-text text-transparent animate-gradient">
+                medium size businesses
+              </span>
+            </motion.h1>
+
+            {/* Enhanced Description */}
+            <motion.p
+              className={`text-base sm:text-lg md:text-xl ${colors.textSecondary} leading-relaxed max-w-xl font-vastago`}
+              variants={itemVariants}
+            >
+              Streamline your HR operations with our comprehensive outsourcing solutions. 
+              From recruitment to compliance, we provide tailored HR services that scale 
+              with your business growth and needs.
+            </motion.p>
+
+            {/* Enhanced Interactive CTA Buttons */}
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 sm:gap-6"
+              variants={itemVariants}
+            >
+              <motion.button 
+                className="group relative inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 text-white font-bold text-sm sm:text-base md:text-lg rounded-3xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 font-palo"
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span>Get Started</span>
+                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform" />
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity" />
+              </motion.button>
+              
+              <motion.button 
+                className="group inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 border-3 border-blue-500/40 hover:border-blue-400 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold text-sm sm:text-base md:text-lg rounded-3xl transition-all duration-300 backdrop-blur-xl font-palo"
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Play className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2" />
+                <span>Learn More</span>
+              </motion.button>
+            </motion.div>
+
+            {/* Enhanced Interactive Stats */}
+            <motion.div
+              className="flex flex-wrap gap-6 pt-6"
+              variants={itemVariants}
+            >
+              {[
+                { number: "500+", label: "Happy Clients", icon: Users },
+                { number: "98%", label: "Success Rate", icon: Award },
+                { number: "24/7", label: "Support", icon: Globe }
+              ].map((stat, index) => (
+                <motion.div 
+                  key={index}
+                  className="text-center group cursor-pointer"
+                  whileHover={{ scale: 1.1, y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="flex items-center justify-center mb-1">
+                    <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-blue-500 mr-2" />
+                    <div className={`text-xl sm:text-2xl md:text-3xl font-bold ${colors.textPrimary} font-palo`}>{stat.number}</div>
+                  </div>
+                  <div className={`text-xs sm:text-sm ${colors.textSecondary} font-vastago`}>{stat.label}</div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Right Content - Enhanced Interactive 3D Dashboard */}
+          <motion.div
+            className="relative"
+            variants={itemVariants}
+          >
+            <motion.div
+              className="relative"
+              animate="animate"
+              variants={floatingVariants}
+            >
+              {/* Enhanced Main Interactive Card */}
+              <div className={`relative bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl border-2 border-blue-500/30 rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl ${
+                isDarkMode ? 'bg-opacity-30' : 'bg-opacity-15'
+              }`}>
+                
+                {/* Enhanced Card Header with Live Status */}
+                <div className="flex items-center justify-between mb-6 sm:mb-8 md:mb-10">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <motion.div 
+                      className="w-4 h-4 sm:w-5 sm:h-5 bg-green-400 rounded-full"
+                      animate={{ scale: [1, 1.3, 1] }}
+                      transition={{ duration: 1, repeat: Infinity }}
+                    />
+                    <span className={`font-bold text-lg sm:text-xl ${colors.textPrimary} font-palo`}>HR Services Dashboard</span>
+                  </div>
+                  <div className="flex gap-2 sm:gap-3">
+                    {['bg-blue-400', 'bg-purple-400', 'bg-cyan-400'].map((color, i) => (
+                      <motion.div
+                        key={i}
+                        className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full ${color}`}
+                        animate={{ opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 1, delay: i * 0.2, repeat: Infinity }}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Enhanced Interactive Feature Showcase */}
+                <div className="space-y-4 sm:space-y-6">
+                  {/* Enhanced Feature Cards */}
+                  <div className="grid grid-cols-1 gap-3 sm:gap-4">
+                    {features.map((feature, index) => (
+                      <motion.div
+                        key={index}
+                        className={`relative p-3 sm:p-4 md:p-6 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
+                          activeFeature === index 
+                            ? 'border-blue-500 bg-blue-500/30 shadow-xl' 
+                            : 'border-blue-500/30 bg-blue-500/10'
+                        }`}
+                        onClick={() => setActiveFeature(index)}
+                        whileHover={{ scale: 1.03, y: -2 }}
+                        animate={{
+                          scale: activeFeature === index ? 1.03 : 1,
+                        }}
+                      >
+                        <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
+                          <div className={`p-2 sm:p-3 md:p-4 rounded-2xl bg-gradient-to-r ${feature.color} shadow-lg`}>
+                            <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white" />
+                          </div>
+                          <div>
+                            <h3 className={`font-bold text-sm sm:text-base md:text-lg ${colors.textPrimary} font-palo`}>{feature.title}</h3>
+                            <p className={`text-xs sm:text-sm md:text-base ${colors.textSecondary} font-vastago`}>{feature.description}</p>
+                          </div>
+                        </div>
+                        
+                        {/* Enhanced Animated Progress Bar */}
+                        <motion.div
+                          className="absolute bottom-0 left-0 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-b-2xl"
+                          initial={{ width: 0 }}
+                          animate={{ width: activeFeature === index ? '100%' : '0%' }}
+                          transition={{ duration: 0.5 }}
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Enhanced Real-time Analytics */}
+                  <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl p-4 sm:p-6 md:p-8 border-2 border-blue-500/30">
+                    <div className="flex items-center justify-between mb-3 sm:mb-4 md:mb-6">
+                      <span className={`text-xs sm:text-sm md:text-base font-medium ${colors.textSecondary} font-vastago`}>Service Performance</span>
+                      <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-blue-500" />
+                    </div>
+                    
+                    {/* Enhanced Animated Chart */}
+                    <div className="flex items-end gap-1 sm:gap-2 md:gap-3 h-12 sm:h-16 md:h-20">
+                      {[60, 80, 45, 90, 75, 85, 95].map((height, index) => (
+                        <motion.div
+                          key={index}
+                          className="flex-1 bg-gradient-to-t from-blue-500 to-purple-500 rounded-t"
+                          initial={{ height: 0 }}
+                          animate={{ height: `${height}%` }}
+                          transition={{ duration: 0.4, delay: index * 0.05 }}
+                        />
+                      ))}
+                    </div>
+                    
+                    <div className="flex justify-between items-center mt-3 sm:mt-4 md:mt-6">
+                      <span className={`text-xs sm:text-sm ${colors.textSecondary} font-vastago`}>Response Time</span>
+                      <span className="text-xs sm:text-sm md:text-base font-bold text-green-400 font-palo">24hrs</span>
+                    </div>
+                  </div>
+
+                  {/* Enhanced Live Activity Feed */}
+                  <div className="space-y-2 sm:space-y-3 md:space-y-4">
+                    {[
+                      { text: "New candidate profile reviewed", color: "bg-green-400", delay: 0 },
+                      { text: "Compliance audit completed", color: "bg-blue-400", delay: 0.1 },
+                                              { text: "Performance review scheduled", color: "bg-purple-400", delay: 0.2 }
+                    ].map((activity, index) => (
+                      <motion.div
+                        key={index}
+                        className="flex items-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm md:text-base"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: activity.delay }}
+                      >
+                        <motion.div 
+                          className={`w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-3 md:h-3 rounded-full ${activity.color}`}
+                          animate={{ scale: [1, 1.3, 1] }}
+                          transition={{ duration: 1, repeat: Infinity, delay: index * 0.3 }}
+                        />
+                        <span className={`${colors.textSecondary} font-vastago`}>{activity.text}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Enhanced Floating 3D Elements */}
+              <motion.div
+                className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-3xl shadow-2xl"
+                animate={{
+                  rotate: [0, 8, -8, 0],
+                  y: [0, -15, 0],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              />
+              <motion.div
+                className="absolute -bottom-8 -left-8 w-28 h-28 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-2xl shadow-2xl"
+                animate={{
+                  rotate: [0, -8, 8, 0],
+                  y: [0, 15, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              />
+              
+              {/* Enhanced Pulse Rings */}
+              <motion.div
+                className="absolute inset-0 rounded-3xl border-2 border-blue-500/30"
+                variants={pulseVariants}
+                animate="animate"
+              />
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Enhanced Contact Info Bar - Outside Viewport */}
+      <motion.div
+        className="relative z-20 mx-4 sm:mx-8 lg:mx-auto max-w-7xl mb-8"
+        variants={itemVariants}
+        initial="hidden"
+        animate={controls}
+      >
+        <div className={`bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-2xl border-2 border-blue-500/30 rounded-3xl p-10 ${colors.bgSecondary} shadow-2xl`}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {[
+              {
+                icon: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z",
+                title: "Visit Our Office",
+                subtitle: "896 Main Street, Walpole MA 02081"
+              },
+              {
+                icon: "M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z",
+                title: "Call Us Today",
+                subtitle: "(781) 436-5399"
+              },
+              {
+                icon: "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z",
+                title: "Email Us",
+                subtitle: "info@hr2fit.com"
+              }
+            ].map((contact, index) => (
+              <motion.div 
+                key={index}
+                className="flex items-center gap-6 group cursor-pointer"
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-2xl flex items-center justify-center group-hover:from-blue-500/50 group-hover:to-purple-500/50 transition-all duration-300 shadow-lg">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="text-blue-500">
+                    <path d={contact.icon} fill="currentColor"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 className={`font-bold text-xl ${colors.textPrimary} font-palo`}>{contact.title}</h3>
+                  <p className={`text-base ${colors.textSecondary} font-vastago`}>{contact.subtitle}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
-        
-        <div className="hidden sm:flex flex-1 gap-4 lg:gap-6 ${colors.textPrimary}">
-          <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M31.6458 11.9792C33.458 12.3327 35.2569 13.1319 36.5625 14.4375C37.8681 15.7431 38.6673 17.542 39.0208 19.3542M32.875 3.375C36.64 3.79326 40.028 5.61471 42.7083 8.29167C45.3887 10.9686 47.202 14.3605 47.625 18.125M47.6237 36.5051V43.1666C47.634 45.7131 45.3443 47.8395 42.7734 47.6077C20.5835 47.625 3.37515 30.2568 3.39252 8.21591C3.16097 5.65866 5.27686 3.37761 7.82008 3.37522H14.4948C15.5746 3.36461 16.6214 3.74621 17.4401 4.4489C19.7676 6.44667 21.2648 13.2274 20.6887 15.923C20.239 18.0276 18.1175 19.4999 16.6752 20.9394C19.8425 26.4985 24.4545 31.1014 30.0247 34.2624C31.467 32.823 32.9423 30.7057 35.051 30.2568C37.7561 29.6811 44.5805 31.1803 46.5702 33.5241C47.2758 34.3552 47.6507 35.4161 47.6237 36.5051Z" stroke="#C0B7E8" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"></path>
-          </svg>
-          <div className={colors.textPrimary}>
-            <h2 className="text-2xl font-bold">Call Us Today</h2>
-            <p className="text-sm mt-3">(781) 436-5399</p>
-          </div>
-        </div>
-        
-        <div className="hidden lg:flex flex-1 gap-4 lg:gap-6 ${colors.textPrimary}">
-          <svg width="55" height="45" viewBox="0 0 55 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3.91825 4.33491C4.40836 3.8448 5.08545 3.54166 5.83333 3.54166H49.1667C49.9146 3.54166 50.5916 3.8448 51.0817 4.33491M3.91825 4.33491C3.42814 4.82502 3.125 5.50211 3.125 6.24999V38.75C3.125 40.2458 4.33756 41.4583 5.83333 41.4583H49.1667C50.6624 41.4583 51.875 40.2458 51.875 38.75V6.24999C51.875 5.5021 51.5719 4.82502 51.0817 4.33491M3.91825 4.33491L23.6698 24.0864C25.7852 26.2017 29.2148 26.2017 31.3302 24.0864L51.0817 4.33491" stroke="#C0B7E8" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"></path>
-          </svg>
-          <div className={colors.textPrimary}>
-            <h2 className="text-2xl font-bold">Email Us</h2>
-            <p className="text-sm mt-3">info@hr2fit.com</p>
-          </div>
-        </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

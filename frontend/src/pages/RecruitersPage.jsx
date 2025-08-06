@@ -38,7 +38,7 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.05,
     },
   },
 };
@@ -150,12 +150,7 @@ export default function RecruitersPage() {
   return (
     <div className="bg-hr-primary">
       <Navbar />
-      <PageHero
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: 'Recruiting', href: '/recruiting' },
-        ]}
-      />
+
 
       {/* Hero Section */}
       <motion.section
@@ -192,7 +187,7 @@ export default function RecruitersPage() {
           />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               variants={fadeInUp}

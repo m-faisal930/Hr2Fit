@@ -17,8 +17,8 @@ export default function AboutSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
       },
     },
   };
@@ -48,7 +48,7 @@ export default function AboutSection() {
       {/* Decorative background elements - updated to match theme */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-20 left-10 w-40 h-40 bg-hr-gradient-to rounded-full filter blur-3xl opacity-10" // Updated color
+          className="absolute top-20 left-10 w-40 h-40 bg-blue-500 rounded-full filter blur-3xl opacity-10"
           animate={{
             x: [0, 20, 0],
             y: [0, 15, 0],
@@ -59,25 +59,37 @@ export default function AboutSection() {
             ease: 'easeInOut',
           }}
         />
+        <motion.div
+          className="absolute bottom-20 right-10 w-60 h-60 bg-purple-500 rounded-full filter blur-3xl opacity-10"
+          animate={{
+            x: [0, -20, 0],
+            y: [0, -15, 0],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
       </div>
 
       <div className=" mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center gap-12 relative z-10">
         {/* Text Content */}
         <motion.div className="md:w-1/2" variants={container}> {/* Adjusted width to match hero section ratio */}
           <motion.span
-            className="inline-block text-xs uppercase font-bold text-hr-gradient-to border-b-2 border-hr-gradient-to pb-1" // Updated to theme colors
+            className="inline-block text-xs uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-1"
             variants={item}
           >
             About us
           </motion.span>
 
           <motion.h2
-            className={`text-3xl sm:text-4xl md:text-5xl font-bold ${colors.textPrimary} mt-4 mb-6`} // Updated to theme colors
+            className={`text-3xl sm:text-4xl md:text-5xl font-bold ${colors.textPrimary} mt-4 mb-6`}
             variants={item}
           >
             About{' '}
             <motion.span
-              className="text-hr-gradient-to inline-block" // Updated to theme gradient
+              className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent inline-block"
               whileHover={{
                 scale: 1.05,
                 transition: {
@@ -112,11 +124,9 @@ export default function AboutSection() {
           >
             <Link
               to="/about"
-              className="relative inline-block px-8 py-3 font-bold text-sm uppercase rounded-[40px] group" // Updated to match hero button style
+              className="relative inline-block px-8 py-4 font-bold text-sm uppercase rounded-2xl group bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 text-white hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25"
             >
-              <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-hr-gradient-to group-hover:-translate-x-0 group-hover:-translate-y-0 rounded-[40px]"></span>
-              <span className="absolute inset-0 w-full h-full border-2 border-hr-gradient-to group-hover:bg-hr-gradient-to rounded-[40px]"></span>
-              <span className="relative text-hr-light group-hover:text-hr-primary">
+              <span className="relative">
                 Want To Know More?
               </span>
             </Link>
@@ -128,15 +138,15 @@ export default function AboutSection() {
           className="md:w-1/3 md:ml-35"
           initial={{ opacity: 0, x: 50 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.1 }}
         >
           <motion.img
             src={aboutImage}
             alt="About HR2Fit"
-            className="w-full rounded-[100px] md:rounded-bl-[200px] lg:rounded-bl-[250px] border-2 border-hr-gradient-to/20" // Matched hero image styling
+            className="w-full rounded-3xl border-2 border-blue-500/20 shadow-2xl"
             whileHover={{
               scale: 1.02,
-              boxShadow: '0 10px 25px rgba(192, 183, 232, 0.2)', // Updated to theme color
+              boxShadow: '0 20px 40px rgba(59, 130, 246, 0.3)',
             }}
             transition={{
               scale: { type: 'spring', stiffness: 300 },

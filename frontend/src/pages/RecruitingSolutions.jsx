@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+
+
 import {
   FaShieldAlt,
   FaDollarSign,
@@ -25,6 +28,7 @@ import {
   FaWrench,
   FaBalanceScale ,
 } from 'react-icons/fa';
+import { Sparkles, ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
@@ -45,7 +49,7 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.05,
     },
   },
 };
@@ -62,67 +66,78 @@ const services = [
     icon: FaShieldAlt,
     title: 'Compliance & Risk Management',
     question: 'Would you know what to do if an employee claimed harassment?',
-    features: ['Legal Compliance', 'Risk Assessment', 'Policy Development', 'Audit Support']
+    features: ['Legal Compliance', 'Risk Assessment', 'Policy Development', 'Audit Support'],
+    color: '#3B82F6' // blue
   },
   {
     icon: FaDollarSign,
     title: 'Compensation & Benefits',
     question: 'Are you at risk of losing valued employees?',
-    features: ['Salary Structure', 'Benefits Design', 'Performance Pay', 'Total Rewards']
+    features: ['Salary Structure', 'Benefits Design', 'Performance Pay', 'Total Rewards'],
+    color: '#2563EB' // blue-600
   },
   {
     icon: FaUsers,
     title: 'Employee Relations',
     question: 'Sensible solutions that increase workplace productivity.',
-    features: ['Conflict Resolution', 'Performance Management', 'Employee Engagement', 'Workplace Culture']
+    features: ['Conflict Resolution', 'Performance Management', 'Employee Engagement', 'Workplace Culture'],
+    color: '#1D4ED8' // blue-700
   },
   {
     icon: FaChartLine,
     title: 'Management Coaching',
     question: 'What type of management style are you?',
-    features: ['Leadership Development', 'Communication Skills', 'Team Building', 'Performance Coaching']
+    features: ['Leadership Development', 'Communication Skills', 'Team Building', 'Performance Coaching'],
+    color: '#1E40AF' // blue-800
   },
   {
     icon: FaHandshake,
     title: 'Recruiting & Staffing',
     question: 'Do you have an extra 40 to 60 hours to spare?',
-    features: ['Talent Acquisition', 'Candidate Screening', 'Interview Process', 'Onboarding']
+    features: ['Talent Acquisition', 'Candidate Screening', 'Interview Process', 'Onboarding'],
+    color: '#1E3A8A' // blue-900
   },
   {
     icon: FaGraduationCap,
     title: 'Employee Training & Development',
     question: 'A single source for all your training needs.',
-    features: ['Training Programs', 'Skill Development', 'Compliance Training', 'Assessment Tools']
+    features: ['Training Programs', 'Skill Development', 'Compliance Training', 'Assessment Tools'],
+    color: '#60A5FA' // blue-400
   },
   {
     icon: FaFileInvoiceDollar,
     title: 'Payroll Administration',
     question: 'Is it time to outsource your payroll administration?',
-    features: ['Payroll Processing', 'Tax Compliance', 'Benefits Administration', 'Reporting']
+    features: ['Payroll Processing', 'Tax Compliance', 'Benefits Administration', 'Reporting'],
+    color: '#3B82F6' // blue
   },
   {
     icon: FaCog,
     title: 'Employee Benefit Strategies & Administration',
     question: 'A complete integrated approach to employee benefit choices.',
-    features: ['Health Plans', 'Welfare Benefits', 'Enrollment Management', 'Custom Strategies']
+    features: ['Health Plans', 'Welfare Benefits', 'Enrollment Management', 'Custom Strategies'],
+    color: '#2563EB' // blue-600
   },
   {
     icon: FaRocket,
     title: 'Special Human Resources Projects',
     question: 'Because large or small human resource projects can need special attention.',
-    features: ['Project Management', 'Process Optimization', 'System Implementation', 'Change Management']
+    features: ['Project Management', 'Process Optimization', 'System Implementation', 'Change Management'],
+    color: '#1D4ED8' // blue-700
   },
   {
     icon: FaUsers,
     title: 'Staff Designs & Reorganizations',
     question: 'Managing change effectively.',
-    features: ['Organizational Design', 'Change Management', 'Process Optimization', 'Team Restructuring']
+    features: ['Organizational Design', 'Change Management', 'Process Optimization', 'Team Restructuring'],
+    color: '#1E40AF' // blue-800
   },
   {
     icon: FaFileAlt,
     title: 'Employee Handbooks',
     question: 'A well-defined employee Handbook is a roadmap to promote a productive work environment.',
-    features: ['Handbook Creation', 'Policy Development', 'Legal Compliance', 'Regular Updates']
+    features: ['Handbook Creation', 'Policy Development', 'Legal Compliance', 'Regular Updates'],
+    color: '#1E3A8A' // blue-900
   },
 ];
 
@@ -144,9 +159,205 @@ const benefits = [
   },
 ];
 
+const ServiceCard = ({ title, question, features, icon: Icon, color, index }) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: false,
+  });
+  const { colors } = useTheme();
+
+  React.useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    } else {
+      controls.start('hidden');
+    }
+  }, [controls, inView]);
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        delay: index * 0.05,
+        duration: 0.6,
+        type: 'spring',
+        stiffness: 100,
+        damping: 10,
+      },
+    },
+  };
+
+  const hoverVariants = {
+    rest: { scale: 1 },
+    hover: { scale: 1.05, y: -8 },
+  };
+
+  const iconVariants = {
+    rest: { rotate: 0 },
+    hover: { rotate: 15 },
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      className={`group relative ${colors.cardBg} rounded-3xl ${colors.cardBorder} p-10 flex flex-col items-center text-center overflow-hidden backdrop-blur-xl border-2 border-blue-500/20`}
+      initial="hidden"
+      animate={controls}
+      variants={cardVariants}
+      whileHover="hover"
+    >
+      {/* Enhanced gradient background effect */}
+      <motion.div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{
+          background: `radial-gradient(circle at center, ${color}20, transparent 70%)`,
+        }}
+      />
+
+      {/* Enhanced floating particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              backgroundColor: color,
+              width: `${Math.random() * 6 + 3}px`,
+              height: `${Math.random() * 6 + 3}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              opacity: 0,
+            }}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: [0, 0.6, 0],
+              y: [0, -30],
+              x: [0, (Math.random() - 0.5) * 30],
+            }}
+            transition={{
+              duration: Math.random() * 4 + 3,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+              ease: 'linear',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Enhanced animated border */}
+      <motion.div
+        className="absolute inset-0 border-2 border-transparent rounded-3xl pointer-events-none"
+        variants={{
+          hover: { borderColor: color },
+        }}
+        transition={{ duration: 0.3 }}
+      />
+
+      {/* Enhanced icon container */}
+      <motion.div className="relative mb-10" variants={iconVariants}>
+        <div
+          className="relative rounded-3xl p-10 transition-all duration-300 group-hover:shadow-2xl group-hover:scale-110"
+          style={{ 
+            backgroundColor: `${color}20`,
+            background: `linear-gradient(135deg, ${color}30, ${color}15)`
+          }}
+        >
+          <Icon className="w-16 h-16" style={{ color }} />
+          
+          {/* Enhanced 3D Effect */}
+          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          
+          {/* Enhanced animated border */}
+          <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-current group-hover:border-opacity-40 transition-all duration-300" />
+          
+          {/* Enhanced sparkle effect */}
+          <motion.div
+            className="absolute -top-3 -right-3"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+          >
+            <Sparkles className="w-6 h-6" style={{ color }} />
+          </motion.div>
+        </div>
+        
+        {/* Enhanced glow effect */}
+        <motion.div
+          className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100"
+          style={{
+            boxShadow: `0 0 60px 20px ${color}50`,
+            filter: 'blur(20px)',
+          }}
+          transition={{ duration: 0.3 }}
+        />
+        
+        {/* Enhanced floating particles around icon */}
+        <div className="absolute inset-0 overflow-hidden rounded-3xl">
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full"
+              style={{
+                backgroundColor: color,
+                width: `${Math.random() * 6 + 3}px`,
+                height: `${Math.random() * 6 + 3}px`,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                opacity: 0,
+              }}
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: [0, 1, 0],
+                y: [0, -30],
+                x: [0, (Math.random() - 0.5) * 25],
+              }}
+              transition={{
+                duration: Math.random() * 4 + 3,
+                repeat: Infinity,
+                delay: Math.random() * 3,
+                ease: 'linear',
+              }}
+            />
+          ))}
+        </div>
+      </motion.div>
+
+      <h3 className={`font-palo text-2xl font-bold ${colors.textPrimary} mb-4`}>
+        {title}
+      </h3>
+      <p className={`${colors.textSecondary} text-base flex-grow font-vastago leading-relaxed mb-6`}>{question}</p>
+      
+      <div className="space-y-3 w-full">
+        {features.map((feature, featureIndex) => (
+          <div key={featureIndex} className={`flex items-center gap-3 ${colors.textSecondary} text-base font-vastago`}>
+            <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+            <span>{feature}</span>
+          </div>
+        ))}
+      </div>
+
+      <motion.button
+        className="mt-8 inline-flex items-center justify-center w-12 h-12 rounded-full shadow-lg"
+        style={{ backgroundColor: color }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        whileHover={{ scale: 1.2 }}
+                      transition={{ delay: 0.05, type: 'spring' }}
+      >
+        <ArrowRight className="w-5 h-5 text-white" />
+      </motion.button>
+    </motion.div>
+  );
+};
+
 const RecruitingSolutions = () => {
   const [isVisible, setIsVisible] = useState(false);
+
   const { colors } = useTheme();
+
 
   useEffect(() => {
     setIsVisible(true);
@@ -156,27 +367,21 @@ const RecruitingSolutions = () => {
     <div className="">
       <Navbar />
 
-      <PageHero
-          breadcrumbs={[
-            { label: 'Home', href: '/' },
-            { label: 'Recruiting', href: '/recruiting' },
-          ]}
-        />
 
-      {/* Hero Section */}
+      {/* Enhanced Hero Section */}
       <motion.section
-        className={`py-20 relative overflow-hidden ${colors.bgPrimary}`}
+        className={`py-24 relative overflow-hidden ${colors.bgPrimary}`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        {/* Decorative background elements */}
+        {/* Enhanced decorative background elements */}
         <div className={`absolute inset-0 overflow-hidden pointer-events-none`}>
           <motion.div
-            className="absolute top-20 left-10 w-40 h-40 bg-hr-gradient-to rounded-full filter blur-3xl opacity-10"
+            className="absolute top-20 left-10 w-60 h-60 bg-blue-500 rounded-full filter blur-3xl opacity-15"
             animate={{
-              x: [0, 20, 0],
-              y: [0, 15, 0],
+              x: [0, 30, 0],
+              y: [0, 20, 0],
             }}
             transition={{
               duration: 15,
@@ -185,13 +390,25 @@ const RecruitingSolutions = () => {
             }}
           />
           <motion.div
-            className="absolute bottom-20 right-10 w-60 h-60 bg-hr-gradient-from rounded-full filter blur-3xl opacity-5"
+            className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500 rounded-full filter blur-3xl opacity-10"
             animate={{
-              x: [0, -20, 0],
-              y: [0, -15, 0],
+              x: [0, -30, 0],
+              y: [0, -20, 0],
             }}
             transition={{
               duration: 20,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          />
+          <motion.div
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-cyan-500 rounded-full filter blur-3xl opacity-20"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.2, 0.6, 0.2],
+            }}
+            transition={{
+              duration: 12,
               repeat: Infinity,
               ease: 'easeInOut',
             }}
@@ -200,51 +417,63 @@ const RecruitingSolutions = () => {
 
         <div className=" mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-20"
             variants={fadeInUp}
             custom={0}
           >
             <motion.span
-              className="inline-block text-xs uppercase font-bold text-hr-gradient-to border-b-2 border-hr-gradient-to pb-1 mb-4"
+              className="inline-block text-sm uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-2 mb-6 font-palo"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.05 }}
             >
               Recruiting Solutions
             </motion.span>
-            <h1 className={`text-4xl md:text-6xl font-bold ${colors.textPrimary} mb-6`}>
-              Unlock Growth with Our <span className="text-hr-gradient-to">Affordable Staff</span> Recruiting Solutions
+            <h1 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
+              Unlock Growth with Our <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">Affordable Staff</span> Recruiting Solutions
             </h1>
-            <p className={`text-xl ${colors.textSecondary} max-w-4xl mx-auto mb-8 leading-relaxed`}>
+            <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto mb-10 leading-relaxed font-vastago`}>
               Schedule Your Call Today!
             </p>
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className="uppercase font-bold text-sm rounded-[40px] py-4 px-8 text-hr-primary bg-gradient-to-r from-hr-gradient-from to-hr-gradient-to hover:from-hr-gradient-to hover:to-hr-gradient-from transition-all duration-300 cursor-pointer shadow-lg hover:shadow-hr-gradient-to/50 inline-flex items-center gap-3"
+              className="uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl hover:shadow-blue-500/25 inline-flex items-center gap-4 font-palo"
             >
-              <FaCalendar className="text-lg" />
+              <FaCalendar className="text-xl" />
               Schedule a Call
-              <FaArrowRight className="text-lg" />
+              <FaArrowRight className="text-xl" />
             </motion.button>
           </motion.div>
         </div>
       </motion.section>
 
-      {/* Problem Statement */}
+      {/* Enhanced Problem Statement */}
       <motion.section
-        className={`py-20 relative overflow-hidden ${colors.bgSecondary}`}
+        className={`py-24 relative overflow-hidden ${colors.bgSecondary}`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        {/* Decorative elements */}
+        {/* Enhanced decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
-            className="absolute top-1/2 left-0 w-32 h-32 bg-hr-gradient-to rounded-full filter blur-2xl opacity-20"
+            className="absolute top-1/2 left-0 w-48 h-48 bg-blue-500 rounded-full filter blur-3xl opacity-25"
             animate={{
-              x: [0, 30, 0],
-              y: [0, -30, 0],
+              x: [0, 40, 0],
+              y: [0, -40, 0],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          />
+          <motion.div
+            className="absolute bottom-1/2 right-0 w-32 h-32 bg-purple-500 rounded-full filter blur-3xl opacity-20"
+            animate={{
+              x: [0, -30, 0],
+              y: [0, 30, 0],
             }}
             transition={{
               duration: 12,
@@ -256,59 +485,59 @@ const RecruitingSolutions = () => {
 
         <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-20"
             variants={fadeInUp}
             custom={0}
           >
             <motion.span
-              className="inline-block text-xs uppercase font-bold text-hr-gradient-to border-b-2 border-hr-gradient-to pb-1 mb-4"
+              className="inline-block text-sm uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-2 mb-6 font-palo"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
               The Challenge
             </motion.span>
-            <h2 className={`text-4xl md:text-5xl font-bold ${colors.textPrimary} mb-6`}>
-              Do you have an extra <span className="text-hr-gradient-to">40 to 60 hours</span> to spare on recruiting?
+            <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
+              Do you have an extra <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">40 to 60 hours</span> to spare on recruiting?
             </h2>
-            <p className={`text-xl ${colors.textSecondary} max-w-4xl mx-auto mb-12 leading-relaxed`}>
+            <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto mb-16 leading-relaxed font-vastago`}>
               An average hire can take between 40 to 60 hours of your time for the full hiring cycle. The result is often not the perfect candidate to enhance your business. In addition, a bad hire can cost you tens of thousands of dollars once factoring in the loss of customers, staff disruption, and potentially irreversible damage to your reputation.
             </p>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-3 gap-8 mb-12"
+            className="grid md:grid-cols-3 gap-10 mb-16"
             variants={staggerContainer}
           >
             {benefits.map((benefit, index) => {
               const cardColors = [
                 {
-                  bgColor: 'bg-blue-50 dark:bg-blue-900/20',
-                  borderColor: 'border-blue-200 dark:border-blue-700',
-                  iconBg: 'bg-blue-500 dark:bg-blue-400',
+                  bgColor: 'bg-blue-600/20',
+                  borderColor: 'border-blue-500/30',
+                  iconBg: 'bg-blue-500',
                   iconColor: 'text-white',
-                  textColor: 'text-blue-900 dark:text-blue-100',
-                  descColor: 'text-blue-700 dark:text-blue-300'
+                  textColor: colors.textPrimary,
+                  descColor: colors.textSecondary
                 },
                 {
-                  bgColor: 'bg-emerald-50 dark:bg-emerald-900/20',
-                  borderColor: 'border-emerald-200 dark:border-emerald-700',
-                  iconBg: 'bg-emerald-500 dark:bg-emerald-400',
+                  bgColor: 'bg-emerald-600/20',
+                  borderColor: 'border-emerald-500/30',
+                  iconBg: 'bg-emerald-500',
                   iconColor: 'text-white',
-                  textColor: 'text-emerald-900 dark:text-emerald-100',
-                  descColor: 'text-emerald-700 dark:text-emerald-300'
+                  textColor: colors.textPrimary,
+                  descColor: colors.textSecondary
                 },
                 {
-                  bgColor: 'bg-purple-50 dark:bg-purple-900/20',
-                  borderColor: 'border-purple-200 dark:border-purple-700',
-                  iconBg: 'bg-purple-500 dark:bg-purple-400',
+                  bgColor: 'bg-purple-600/20',
+                  borderColor: 'border-purple-500/30',
+                  iconBg: 'bg-purple-500',
                   iconColor: 'text-white',
-                  textColor: 'text-purple-900 dark:text-purple-100',
-                  descColor: 'text-purple-700 dark:text-purple-300'
+                  textColor: colors.textPrimary,
+                  descColor: colors.textSecondary
                 }
               ];
               
-              const colors = cardColors[index];
+              const cardColor = cardColors[index];
               
               return (
                 <motion.div
@@ -316,17 +545,17 @@ const RecruitingSolutions = () => {
                   variants={fadeInUp}
                   custom={index + 1}
                   className="group relative"
-                  whileHover={{ y: -10 }}
+                  whileHover={{ y: -12 }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  <div className={`relative p-8 ${colors.bgColor} ${colors.borderColor} border rounded-[25px] overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300`}>
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent dark:from-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className={`relative p-10 ${cardColor.bgColor} ${cardColor.borderColor} border-2 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 backdrop-blur-xl`}>
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="relative z-10 text-center">
-                      <div className={`w-16 h-16 ${colors.iconBg} ${colors.iconColor} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md`}>
-                        <benefit.icon className="text-2xl" />
+                      <div className={`w-20 h-20 ${cardColor.iconBg} ${cardColor.iconColor} rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                        <benefit.icon className="text-3xl" />
                       </div>
-                      <h3 className={`text-xl font-bold ${colors.textPrimary} mb-4`}>{benefit.title}</h3>
-                      <p className={`${colors.textSecondary} leading-relaxed`}>{benefit.description}</p>
+                      <h3 className={`text-2xl font-bold ${cardColor.textColor} mb-6 font-palo`}>{benefit.title}</h3>
+                      <p className={`${cardColor.descColor} leading-relaxed text-lg font-vastago`}>{benefit.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -335,14 +564,14 @@ const RecruitingSolutions = () => {
           </motion.div>
 
           <motion.div
-            className="relative p-8 bg-gradient-to-br from-hr-primary to-hr-mid rounded-[30px] border border-hr-gradient-to/20"
+            className="relative p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl rounded-3xl border-2 border-blue-500/30 shadow-2xl"
             variants={fadeInUp}
             custom={4}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-hr-gradient-from/10 to-hr-gradient-to/10 rounded-[30px]"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl"></div>
             <div className="relative z-10">
-              <p className="text-lg text-hr-light text-center leading-relaxed">
-                <strong className="text-hr-gradient-to">
+              <p className={`text-xl ${colors.textSecondary} text-center leading-relaxed font-vastago`}>
+                <strong className={`${colors.textPrimary} font-palo`}>
                   We provide full-service recruiting that is guaranteed to be the right fit for your business.
                 </strong>{' '}
                 We will work with you to develop an outstanding job description and advertise on your behalf. We will partner with you through the complete hiring cycle from screening candidates to setting up interviews. Once we find the ideal candidate, we foster the process all the way through onboarding your new employee. Our commitment to you is to find that ideal candidate who will enrich your business.
@@ -352,37 +581,37 @@ const RecruitingSolutions = () => {
         </div>
       </motion.section>
 
-      {/* Industries Section */}
+      {/* Enhanced Industries Section */}
       <motion.section
-        className={`py-20 relative overflow-hidden ${colors.bgSecondary}`}
+        className={`py-24 relative overflow-hidden ${colors.bgSecondary}`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
         <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-20"
             variants={fadeInUp}
             custom={0}
           >
             <motion.span
-              className="inline-block text-xs uppercase font-bold text-hr-gradient-to border-b-2 border-hr-gradient-to pb-1 mb-4"
+              className="inline-block text-sm uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-2 mb-6 font-palo"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
               Industries We Serve
             </motion.span>
-            <h2 className={`text-4xl md:text-5xl font-bold ${colors.textPrimary} mb-6`}>
-              Catering to a <span className="text-hr-gradient-to">Variety of Industries</span>
+            <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
+              Catering to a <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">Variety of Industries</span>
             </h2>
-            <p className={`text-xl ${colors.textSecondary} max-w-3xl mx-auto`}>
+            <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto font-vastago`}>
               From legal to HVAC, we serve diverse industries with specialized recruiting solutions
             </p>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-4 gap-8"
+            className="grid md:grid-cols-4 gap-10"
             variants={staggerContainer}
           >
             {industries.map((industry, index) => (
@@ -391,16 +620,16 @@ const RecruitingSolutions = () => {
                 variants={fadeInUp}
                 custom={index + 1}
                 className="group relative"
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -12 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <div className="relative p-8 bg-gradient-to-br from-hr-dark to-hr-mid rounded-[25px] border border-hr-gradient-to/20 overflow-hidden text-center">
-                  <div className="absolute inset-0 bg-gradient-to-br from-hr-gradient-from/5 to-hr-gradient-to/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl rounded-3xl border-2 border-blue-500/30 overflow-hidden text-center shadow-2xl hover:shadow-3xl">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative z-10">
-                    <div className="w-16 h-16 bg-gradient-to-br from-hr-gradient-from to-hr-gradient-to rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <industry.icon className="text-2xl text-hr-primary" />
+                    <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <industry.icon className="text-3xl text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-hr-light group-hover:text-hr-gradient-to transition-colors">
+                    <h3 className={`text-2xl font-bold ${colors.textPrimary} group-hover:text-blue-500 transition-colors font-palo`}>
                       {industry.name}
                     </h3>
                   </div>
@@ -411,71 +640,41 @@ const RecruitingSolutions = () => {
         </div>
       </motion.section>
 
-      {/* Services Section */}
+      {/* Enhanced Services Section with Landing Page Card Design */}
       <motion.section
-        className={`py-20 relative overflow-hidden ${colors.bgSecondary}`}
+        className={`py-24 relative overflow-hidden ${colors.bgSecondary}`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
         <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-20"
             variants={fadeInUp}
             custom={0}
           >
             <motion.span
-              className="inline-block text-xs uppercase font-bold text-hr-gradient-to border-b-2 border-hr-gradient-to pb-1 mb-4"
+              className="inline-block text-sm uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-2 mb-6 font-palo"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
               Our Services
             </motion.span>
-            <h2 className={`text-4xl md:text-5xl font-bold ${colors.textPrimary} mb-6`}>
-              One Place for All Your <span className="text-hr-gradient-to">HR Needs</span>
+            <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
+              One Place for All Your <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">HR Needs</span>
             </h2>
-            <p className={`text-xl ${colors.textSecondary} max-w-3xl mx-auto`}>
+            <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto font-vastago`}>
               Comprehensive HR solutions designed to help your business thrive
             </p>
           </motion.div>
 
           <motion.div
-            className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8"
+            className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3"
             variants={staggerContainer}
           >
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                custom={index + 1}
-                className="group relative"
-                whileHover={{ y: -10 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <div className="relative p-8 bg-gradient-to-br from-hr-primary to-hr-mid rounded-[25px] border border-hr-gradient-to/20 overflow-hidden h-full">
-                  <div className="absolute inset-0 bg-gradient-to-br from-hr-gradient-from/5 to-hr-gradient-to/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative z-10 h-full flex flex-col">
-                    <div className="w-16 h-16 bg-gradient-to-br from-hr-gradient-from to-hr-gradient-to rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <service.icon className="text-2xl text-hr-primary" />
-                    </div>
-                    <h3 className="text-xl font-bold text-hr-light mb-4 group-hover:text-hr-gradient-to transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-hr-light/70 leading-relaxed mb-6 flex-grow">
-                      {service.question}
-                    </p>
-                    <div className="space-y-2">
-                      {service.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-center gap-2 text-hr-light/80 text-sm">
-                          <div className="w-2 h-2 bg-hr-gradient-to rounded-full"></div>
-                          <span>{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+            {services.map((service, idx) => (
+              <ServiceCard key={service.title} index={idx} {...service} />
             ))}
           </motion.div>
         </div>
@@ -484,24 +683,24 @@ const RecruitingSolutions = () => {
 
       <Testimonial />
 
-      {/* Call to Action */}
+      {/* Enhanced Call to Action */}
       <motion.section
-        className={`py-20 relative overflow-hidden ${colors.bgSecondary}`}
+        className={`py-24 relative overflow-hidden ${colors.bgSecondary}`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-hr-gradient-from/10 to-hr-gradient-to/10"></div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10"></div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             variants={fadeInUp}
             custom={0}
-            className="mb-8"
+            className="mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-hr-light mb-6">
-              Ready to Find Your <span className="text-hr-gradient-to">Perfect Candidate</span>?
+            <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
+              Ready to Find Your <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">Perfect Candidate</span>?
             </h2>
-            <p className="text-xl text-hr-light/80 mb-8">
+            <p className={`text-2xl ${colors.textSecondary} mb-10 font-vastago`}>
               Let us handle the time-consuming hiring process while you focus on growing your business. Schedule your consultation today!
             </p>
           </motion.div>
@@ -509,19 +708,19 @@ const RecruitingSolutions = () => {
           <motion.div
             variants={fadeInUp}
             custom={1}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-6 justify-center"
           >
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className="uppercase font-bold text-sm rounded-[40px] py-4 px-8 text-hr-primary bg-gradient-to-r from-hr-gradient-from to-hr-gradient-to hover:from-hr-gradient-to hover:to-hr-gradient-from transition-all duration-300 cursor-pointer shadow-lg hover:shadow-hr-gradient-to/50"
+              className="uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl hover:shadow-blue-500/25 font-palo"
             >
               Schedule Your Call Today
             </motion.button>
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className="uppercase font-bold text-sm rounded-[40px] py-4 px-8 text-hr-light border-2 border-hr-light hover:bg-hr-light hover:text-hr-primary transition-all duration-300 cursor-pointer"
+              className="uppercase font-bold text-base rounded-3xl py-6 px-10 text-white border-2 border-blue-500/40 hover:border-blue-400 hover:bg-blue-500/20 transition-all duration-300 cursor-pointer backdrop-blur-xl font-palo"
             >
               Learn More
             </motion.button>

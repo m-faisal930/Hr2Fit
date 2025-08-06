@@ -186,7 +186,7 @@ const Testimonial = () => {
                   className="flex justify-center mb-6"
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 0.4 }}
+                  transition={{ delay: 0.1 }}
                 >
                   <FaQuoteLeft className={`h-8 ${colors.textMuted}`} />
                 </motion.div>
@@ -195,7 +195,7 @@ const Testimonial = () => {
                     className={`text-xl md:text-2xl font-medium ${colors.textPrimary} text-center`}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
+                    transition={{ delay: 0.15 }}
                   >
                     "{testimonials[currentIndex].quote}"
                   </motion.p>
@@ -204,7 +204,7 @@ const Testimonial = () => {
                   className="flex items-center justify-center mt-6 space-x-3"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8 }}
+                  transition={{ delay: 0.2 }}
                 >
                   <motion.img
                     className="w-10 h-10 rounded-full object-cover border-2 border-white"
@@ -216,7 +216,7 @@ const Testimonial = () => {
                       type: 'spring',
                       stiffness: 260,
                       damping: 20,
-                      delay: 1,
+                      delay: 0.25,
                     }}
                   />
                   <div className={`flex items-center divide-x-2 ${colors.borderSecondary}`}>
@@ -237,7 +237,7 @@ const Testimonial = () => {
           className="flex justify-center mt-8 space-x-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
+          transition={{ delay: 0.3 }}
         >
           {testimonials.map((_, index) => (
             <button

@@ -270,7 +270,7 @@ const TechStacks = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.05,
         delayChildren: 0.3,
       },
     },
@@ -337,7 +337,7 @@ const TechStacks = () => {
               className="absolute bottom-0 left-0 w-full h-2 bg-blue-200 opacity-50 -z-0"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
             />
           </span>
         </motion.h2>
@@ -354,7 +354,7 @@ const TechStacks = () => {
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.7 }}
+              transition={{ duration: 0.3, delay: 0.15 }}
             />
           </motion.h3>
           <div
@@ -397,7 +397,7 @@ const TechStacks = () => {
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.9 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
             />
           </motion.h3>
           <div

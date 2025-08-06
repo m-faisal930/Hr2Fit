@@ -34,7 +34,7 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.05,
     },
   },
 };
@@ -107,27 +107,22 @@ const BlogPage = () => {
     <div className={`min-h-screen ${colors.bgPrimary} relative overflow-hidden`}>
       <Navbar />
 
-      <PageHero
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: 'HR Insights', href: '/blog' },
-        ]}
-      />
+
       
-      {/* Hero Section */}
+      {/* Enhanced Hero Section */}
       <motion.section
-        className={`py-20 relative overflow-hidden ${colors.bgSecondary}`}
+        className={`py-24 relative overflow-hidden ${colors.bgSecondary}`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        {/* Animated Background Elements */}
+        {/* Enhanced Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
-            className="absolute top-20 left-10 w-40 h-40 bg-gradient-to-r from-[#8176AF] to-[#C0B7E8] rounded-full filter blur-3xl opacity-20"
+            className="absolute top-20 left-10 w-60 h-60 bg-blue-500 rounded-full filter blur-3xl opacity-15"
             animate={{
-              x: [0, 20, 0],
-              y: [0, 15, 0],
+              x: [0, 30, 0],
+              y: [0, 20, 0],
             }}
             transition={{
               duration: 15,
@@ -136,10 +131,10 @@ const BlogPage = () => {
             }}
           />
           <motion.div
-            className="absolute bottom-20 right-10 w-60 h-60 bg-gradient-to-r from-[#C0B7E8] to-[#8176AF] rounded-full filter blur-3xl opacity-15"
+            className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500 rounded-full filter blur-3xl opacity-10"
             animate={{
-              x: [0, -20, 0],
-              y: [0, -15, 0],
+              x: [0, -30, 0],
+              y: [0, -20, 0],
             }}
             transition={{
               duration: 20,
@@ -148,68 +143,118 @@ const BlogPage = () => {
             }}
           />
           <motion.div
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-[#8176AF] to-[#C0B7E8] rounded-full filter blur-3xl opacity-10"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-cyan-500 rounded-full filter blur-3xl opacity-20"
             animate={{
               scale: [1, 1.2, 1],
-              rotate: [0, 180, 360],
+              opacity: [0.2, 0.6, 0.2],
             }}
             transition={{
-              duration: 25,
+              duration: 12,
               repeat: Infinity,
               ease: 'easeInOut',
             }}
           />
+          {/* Floating Geometric Shapes */}
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-8 h-8 border-2 border-blue-500/30 rounded-lg bg-blue-500/10"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                rotate: [0, 360],
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.8, 0.3],
+              }}
+              transition={{
+                duration: Math.random() * 10 + 10,
+                repeat: Infinity,
+                ease: 'linear',
+              }}
+            />
+          ))}
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-20"
             variants={fadeInUp}
             custom={0}
           >
             <motion.div
-              className="flex justify-center items-center gap-4 mb-6"
+              className="flex justify-center items-center gap-6 mb-8"
               variants={floatingAnimation}
             >
-              <FaLightbulb className="text-4xl text-[#C0B7E8]" />
-              <FaRocket className="text-4xl text-[#8176AF]" />
-              <FaBrain className="text-4xl text-[#C0B7E8]" />
-              <FaChartLine className="text-4xl text-[#8176AF]" />
+              <motion.div
+                className="p-4 rounded-2xl bg-blue-500/20 backdrop-blur-xl border border-blue-500/30"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+              >
+                <FaLightbulb className="text-5xl text-blue-500" />
+              </motion.div>
+              <motion.div
+                className="p-4 rounded-2xl bg-purple-500/20 backdrop-blur-xl border border-purple-500/30"
+                whileHover={{ scale: 1.1, rotate: -5 }}
+              >
+                <FaRocket className="text-5xl text-purple-500" />
+              </motion.div>
+              <motion.div
+                className="p-4 rounded-2xl bg-blue-500/20 backdrop-blur-xl border border-blue-500/30"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+              >
+                <FaBrain className="text-5xl text-blue-500" />
+              </motion.div>
+              <motion.div
+                className="p-4 rounded-2xl bg-purple-500/20 backdrop-blur-xl border border-purple-500/30"
+                whileHover={{ scale: 1.1, rotate: -5 }}
+              >
+                <FaChartLine className="text-5xl text-purple-500" />
+              </motion.div>
             </motion.div>
             
             <motion.span
-              className="inline-block text-xs uppercase font-bold bg-gradient-to-r from-[#8176AF] to-[#C0B7E8] bg-clip-text text-transparent border-b-2 border-[#8176AF] pb-1 mb-4"
+              className="inline-block text-sm uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-2 mb-6 font-palo"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.05 }}
             >
               HR Insights & Expertise
             </motion.span>
             
-            <h1 className={`text-4xl md:text-6xl font-bold ${colors.textPrimary} mb-6 leading-tight`}>
-              Discover <span className="bg-gradient-to-r from-[#8176AF] to-[#C0B7E8] bg-clip-text text-transparent">Future-Ready</span> HR Solutions
+            <h1 className={`text-5xl md:text-6xl lg:text-7xl font-bold ${colors.textPrimary} mb-8 leading-tight font-palo`}>
+              Discover <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">Future-Ready</span> HR Solutions
             </h1>
             
-            <p className={`text-xl ${colors.textSecondary} max-w-4xl mx-auto mb-8 leading-relaxed`}>
+            <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto mb-10 leading-relaxed font-vastago`}>
               Explore cutting-edge insights, innovative strategies, and transformative stories from our team of HR visionaries. 
               Stay ahead with the latest trends and breakthrough practices in human resources.
             </p>
             
             <motion.div
-              className="flex flex-wrap justify-center gap-4 mt-8"
+              className="flex flex-wrap justify-center gap-6 mt-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.1 }}
             >
-              <div className={`px-6 py-3 rounded-full ${colors.cardBg} ${colors.borderPrimary} border backdrop-blur-sm`}>
-                <span className={`text-sm font-medium ${colors.textSecondary}`}>📈 Growth Strategies</span>
-              </div>
-              <div className={`px-6 py-3 rounded-full ${colors.cardBg} ${colors.borderPrimary} border backdrop-blur-sm`}>
-                <span className={`text-sm font-medium ${colors.textSecondary}`}>🚀 Innovation</span>
-              </div>
-              <div className={`px-6 py-3 rounded-full ${colors.cardBg} ${colors.borderPrimary} border backdrop-blur-sm`}>
-                <span className={`text-sm font-medium ${colors.textSecondary}`}>💡 Best Practices</span>
-              </div>
+              <motion.div 
+                className={`px-8 py-4 rounded-2xl ${colors.cardBg} ${colors.borderPrimary} border-2 backdrop-blur-xl shadow-lg`}
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
+                <span className={`text-base font-medium ${colors.textSecondary} font-vastago`}>📈 Growth Strategies</span>
+              </motion.div>
+              <motion.div 
+                className={`px-8 py-4 rounded-2xl ${colors.cardBg} ${colors.borderPrimary} border-2 backdrop-blur-xl shadow-lg`}
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
+                <span className={`text-base font-medium ${colors.textSecondary} font-vastago`}>🚀 Innovation</span>
+              </motion.div>
+              <motion.div 
+                className={`px-8 py-4 rounded-2xl ${colors.cardBg} ${colors.borderPrimary} border-2 backdrop-blur-xl shadow-lg`}
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
+                <span className={`text-base font-medium ${colors.textSecondary} font-vastago`}>💡 Best Practices</span>
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
@@ -221,21 +266,21 @@ const BlogPage = () => {
           <div className="lg:w-2/3">
             {/* Enhanced Search and Filters */}
             <motion.div
-              className="mb-8"
+              className="mb-12"
               variants={fadeInUp}
               custom={1}
             >
-              <div className="flex flex-col sm:flex-row gap-4 mb-6">
+              <div className="flex flex-col sm:flex-row gap-6 mb-8">
                 <div className="flex-1">
                   <motion.div 
                     className={`relative ${searchFocused ? 'scale-105' : 'scale-100'} transition-transform duration-300`}
                     whileHover={{ scale: 1.02 }}
                   >
-                    <FaSearch className={`absolute left-4 top-1/2 transform -translate-y-1/2 ${colors.textMuted} transition-colors duration-300`} />
+                    <FaSearch className={`absolute left-6 top-1/2 transform -translate-y-1/2 ${colors.textMuted} transition-colors duration-300 text-xl`} />
                     <input
                       type="text"
                       placeholder="Search for insights, strategies, trends..."
-                      className={`w-full pl-12 pr-4 py-4 ${colors.inputBg} ${colors.inputBorder} border rounded-2xl focus:ring-2 focus:ring-[#8176AF] focus:border-transparent ${colors.inputText} placeholder-gray-400 backdrop-blur-sm transition-all duration-300 shadow-lg`}
+                      className={`w-full pl-16 pr-6 py-6 ${colors.inputBg} ${colors.inputBorder} border-2 rounded-3xl focus:ring-2 focus:ring-blue-500 focus:border-transparent ${colors.inputText} placeholder-gray-400 backdrop-blur-xl transition-all duration-300 shadow-2xl text-lg font-vastago`}
                       value={filters.search}
                       onChange={(e) => handleSearch(e.target.value)}
                       onFocus={() => setSearchFocused(true)}
@@ -244,13 +289,13 @@ const BlogPage = () => {
                   </motion.div>
                 </div>
                 <motion.button
-                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setShowFilters(!showFilters)}
-                  className={`flex items-center gap-3 px-6 py-4 ${colors.cardBg} ${colors.borderPrimary} border rounded-2xl hover:shadow-lg transition-all duration-300 ${colors.textPrimary} backdrop-blur-sm shadow-md`}
+                  className={`flex items-center gap-4 px-8 py-6 ${colors.cardBg} ${colors.borderPrimary} border-2 rounded-3xl hover:shadow-2xl transition-all duration-300 ${colors.textPrimary} backdrop-blur-xl shadow-lg font-palo text-lg`}
                 >
-                  <FaFilter className="text-[#8176AF]" />
-                  <span className="font-medium">Filters</span>
+                  <FaFilter className="text-blue-500 text-xl" />
+                  <span className="font-bold">Filters</span>
                 </motion.button>
               </div>
 
@@ -261,7 +306,7 @@ const BlogPage = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -20, scale: 0.95 }}
                     transition={{ duration: 0.3 }}
-                    className={`${colors.cardBg} ${colors.borderPrimary} border rounded-2xl p-6 shadow-xl backdrop-blur-sm`}
+                    className={`${colors.cardBg} ${colors.borderPrimary} border-2 rounded-3xl p-8 shadow-2xl backdrop-blur-xl`}
                   >
                     <BlogSearchFilters
                       filters={filters}
@@ -276,35 +321,35 @@ const BlogPage = () => {
             {/* Enhanced Posts Grid */}
             {error && (
               <motion.div
-                className="bg-red-500/10 border border-red-500/30 text-red-400 px-6 py-4 rounded-2xl mb-6 backdrop-blur-sm"
+                className="bg-red-500/10 border-2 border-red-500/30 text-red-400 px-8 py-6 rounded-3xl mb-8 backdrop-blur-xl"
                 variants={fadeInUp}
                 custom={2}
               >
-                {error}
+                <div className="text-lg font-vastago">{error}</div>
               </motion.div>
             )}
 
             {posts.length === 0 && !loading ? (
               <motion.div
-                className="text-center py-16"
+                className="text-center py-20"
                 variants={fadeInUp}
                 custom={2}
               >
-                <div className={`${colors.textSecondary} text-xl mb-6`}>
+                <div className={`${colors.textSecondary} text-2xl mb-8 font-vastago`}>
                   No insights found matching your criteria
                 </div>
                 <motion.button
-                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => updateFilters({ search: '', category: '', sort: 'latest', page: 1 })}
-                  className="text-[#8176AF] hover:text-[#C0B7E8] underline font-medium transition-colors duration-300"
+                  className="text-blue-500 hover:text-blue-400 underline font-bold transition-colors duration-300 font-palo text-lg"
                 >
                   Clear filters and explore all insights
                 </motion.button>
               </motion.div>
             ) : (
               <motion.div
-                className="grid gap-8 md:grid-cols-2"
+                className="grid gap-10 md:grid-cols-2"
                 variants={staggerContainer}
               >
                 {posts.map((post, index) => (
@@ -312,7 +357,7 @@ const BlogPage = () => {
                     key={post._id}
                     variants={fadeInUp}
                     custom={index + 3}
-                    whileHover={{ y: -8, scale: 1.02 }}
+                    whileHover={{ y: -12, scale: 1.03 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                     className="group"
                   >
@@ -325,17 +370,17 @@ const BlogPage = () => {
             {/* Enhanced Pagination */}
             {pagination.total > 1 && (
               <motion.div
-                className="flex justify-center mt-16"
+                className="flex justify-center mt-20"
                 variants={fadeInUp}
                 custom={posts.length + 3}
               >
-                <div className="flex gap-3">
+                <div className="flex gap-4">
                   {pagination.hasPrev && (
                     <motion.button
-                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileHover={{ scale: 1.05, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => handlePageChange(pagination.current - 1)}
-                      className={`px-6 py-3 ${colors.borderPrimary} border rounded-2xl hover:shadow-lg transition-all duration-300 ${colors.textPrimary} backdrop-blur-sm shadow-md`}
+                      className={`px-8 py-4 ${colors.borderPrimary} border-2 rounded-3xl hover:shadow-2xl transition-all duration-300 ${colors.textPrimary} backdrop-blur-xl shadow-lg font-palo text-lg`}
                     >
                       Previous
                     </motion.button>
@@ -344,13 +389,13 @@ const BlogPage = () => {
                   {Array.from({ length: pagination.total }, (_, i) => i + 1).map((page) => (
                     <motion.button
                       key={page}
-                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileHover={{ scale: 1.05, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => handlePageChange(page)}
-                      className={`px-6 py-3 border rounded-2xl transition-all duration-300 shadow-md ${
+                      className={`px-8 py-4 border-2 rounded-3xl transition-all duration-300 shadow-lg font-palo text-lg ${
                         page === pagination.current
-                          ? 'bg-gradient-to-r from-[#8176AF] to-[#C0B7E8] text-white border-transparent shadow-lg'
-                          : `${colors.borderPrimary} border hover:shadow-lg ${colors.textPrimary} backdrop-blur-sm`
+                          ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white border-transparent shadow-2xl'
+                          : `${colors.borderPrimary} border hover:shadow-2xl ${colors.textPrimary} backdrop-blur-xl`
                       }`}
                     >
                       {page}
@@ -359,10 +404,10 @@ const BlogPage = () => {
                   
                   {pagination.hasNext && (
                     <motion.button
-                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileHover={{ scale: 1.05, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => handlePageChange(pagination.current + 1)}
-                      className={`px-6 py-3 ${colors.borderPrimary} border rounded-2xl hover:shadow-lg transition-all duration-300 ${colors.textPrimary} backdrop-blur-sm shadow-md`}
+                      className={`px-8 py-4 ${colors.borderPrimary} border-2 rounded-3xl hover:shadow-2xl transition-all duration-300 ${colors.textPrimary} backdrop-blur-xl shadow-lg font-palo text-lg`}
                     >
                       Next
                     </motion.button>
@@ -379,7 +424,9 @@ const BlogPage = () => {
               custom={2}
               className="sticky top-8"
             >
-              <BlogSidebar />
+              <div className={`${colors.cardBg} ${colors.borderPrimary} border-2 rounded-3xl p-8 shadow-2xl backdrop-blur-xl`}>
+                <BlogSidebar />
+              </div>
             </motion.div>
           </div>
         </div>

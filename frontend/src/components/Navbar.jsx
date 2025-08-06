@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 import ThemeToggle from './ThemeToggle';
 
@@ -32,38 +33,56 @@ const Navbar = () => {
   return (
     <>
       {/* Spacer to prevent content from being hidden behind fixed navbar */}
-      <div className="h-20"></div>
+      <div className="h-24"></div>
       <section className={`${colors.bgPrimary} overflow-hidden pb-9 px-4 md:px-8`}>
-        <header className={`flex flex-wrap mx-auto justify-between items-center py-4 transition-all duration-300 fixed top-0 left-0 right-0 z-50 ${colors.navBg} shadow-lg px-4 md:px-8`}>
-        <a href="/" className="flex items-center gap-3" onClick={closeMenu}>
-
-          <span className={`${colors.textPrimary} text-xl md:text-2xl lg:text-3xl font-bold`}>HR2Fit</span>
+        <header className={`flex flex-wrap mx-auto justify-between items-center py-6 transition-all duration-300 fixed top-0 left-0 right-0 z-50 ${colors.navBg} backdrop-blur-2xl border-b-2 border-blue-500/30 shadow-2xl px-4 md:px-8`}>
+        <a href="/" className="flex items-center gap-4" onClick={closeMenu}>
+          <motion.div
+            className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg"
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <span className="text-white font-bold text-lg font-palo">H</span>
+          </motion.div>
+          <span className={`${colors.textPrimary} text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-palo`}>HR2Fit</span>
         </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden sm:inline-block">
-          <ul className="flex gap-3 md:gap-5 lg:gap-10">
+          <ul className="flex gap-4 md:gap-6 lg:gap-10">
             {navItems.map((item) => (
               <li key={item.name} className="group">
-                <a
+                <motion.a
                   href={item.path}
-                  className={`uppercase font-bold text-xs ${colors.navText} ${colors.hoverText} transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r from-[#8176AF] to-[#C0B7E8] hover:after:w-full after:transition-all after:duration-300`}
+                  className={`uppercase font-bold text-sm ${colors.navText} ${colors.hoverText} transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-8px] after:left-0 after:w-0 after:h-[3px] after:bg-gradient-to-r from-blue-500 to-purple-500 hover:after:w-full after:transition-all after:duration-300 font-vastago`}
+                  whileHover={{ y: -3 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   {item.name}
-                </a>
+                </motion.a>
               </li>
             ))}
           </ul>
         </nav>
 
         {/* Desktop Buttons */}
-        <div className="hidden sm:flex gap-3 sm:mt-3 sm:items-center md:gap-5 lg:gap-9">
-          <a href="tel:7814365399" className={`uppercase font-bold text-xs ${colors.navText} border-2 ${colors.borderPrimary} rounded-[40px] py-1 px-3 md:py-2 lg:py-4 md:px-4 lg:px-9 hover:bg-white hover:text-[#302c42] transition-colors duration-300 cursor-pointer`}>
+        <div className="hidden sm:flex gap-4 sm:mt-3 sm:items-center md:gap-6 lg:gap-10">
+          <motion.a 
+            href="tel:7814365399" 
+            className={`uppercase font-bold text-sm ${colors.navText} border-2 border-blue-500/40 rounded-2xl py-3 px-6 hover:border-blue-400 hover:bg-blue-500/20 transition-all duration-300 cursor-pointer backdrop-blur-xl font-vastago`}
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
             (781) 436-5399
-          </a>
-          <a href="/get-started" className="uppercase font-bold text-xs rounded-[40px] py-1 px-3 md:py-2 lg:py-4 md:px-4 lg:px-9 text-[#302c42] bg-gradient-to-r from-[#8176AF] to-[#C0B7E8] hover:from-[#C0B7E8] hover:to-[#8176AF] transition-all duration-300 cursor-pointer shadow-lg hover:shadow-[#8176AF]/50">
+          </motion.a>
+          <motion.a 
+            href="/get-started" 
+            className="uppercase font-bold text-sm rounded-2xl py-3 px-6 text-white bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 font-palo"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
             GET STARTED
-          </a>
+          </motion.a>
           <ThemeToggle />
         </div>
 
@@ -74,7 +93,7 @@ const Navbar = () => {
           aria-label="Toggle menu"
         >
           <svg
-            className={`w-6 h-6 ${colors.navText}`}
+            className={`w-7 h-7 ${colors.navText}`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -91,53 +110,72 @@ const Navbar = () => {
       </header>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className={`sm:hidden fixed inset-0 z-40 ${colors.navBg} bg-opacity-95 pt-20 px-4`}>
-           
-          <nav className="flex flex-col items-center">
-          <ThemeToggle />
-            <ul className="flex flex-col gap-8 text-center">
-              {navItems.map((item) => (
-                <li key={item.name}>
-                  <a
-                    href={item.path}
-                    className={`uppercase font-bold text-lg ${colors.navText} ${colors.hoverText} transition-colors duration-300`}
-                    onClick={closeMenu}
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            
-            <div className="flex flex-col gap-6 mt-12 w-full max-w-[300px]">
-              <a 
-                href="tel:7814365399"
-                className="uppercase font-bold text-sm text-white border-2 border-white rounded-[40px] py-4 px-6 hover:bg-white hover:text-[#302c42] transition-colors duration-300 cursor-pointer w-full text-center"
-                onClick={closeMenu}
-              >
-                (781) 436-5399
-              </a>
-              <a
-                href="/contact"
-                className="uppercase font-bold text-sm rounded-[40px] py-4 px-6 text-[#302c42] bg-gradient-to-r from-[#8176AF] to-[#C0B7E8] hover:from-[#C0B7E8] hover:to-[#8176AF] transition-all duration-300 cursor-pointer w-full text-center"
-                onClick={closeMenu}
-              >
-                GET STARTED
-              </a>
-             
-            </div>
-          </nav>
-          
-          <button 
-            className="absolute top-6 right-6 text-white text-3xl"
-            onClick={closeMenu}
-            aria-label="Close menu"
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div 
+            className={`sm:hidden fixed inset-0 z-40 ${colors.navBg} backdrop-blur-2xl border-b-2 border-blue-500/30 pt-24 px-4`}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
           >
-            &times;
-          </button>
-        </div>
-      )}
+            <nav className="flex flex-col items-center">
+              <ThemeToggle />
+              <ul className="flex flex-col gap-10 text-center">
+                {navItems.map((item, index) => (
+                  <motion.li 
+                    key={item.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <motion.a
+                      href={item.path}
+                      className={`uppercase font-bold text-xl ${colors.navText} ${colors.hoverText} transition-colors duration-300 font-vastago`}
+                      onClick={closeMenu}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {item.name}
+                    </motion.a>
+                  </motion.li>
+                ))}
+              </ul>
+              
+              <div className="flex flex-col gap-8 mt-16 w-full max-w-[350px]">
+                <motion.a 
+                  href="tel:7814365399"
+                  className="uppercase font-bold text-base text-white border-2 border-blue-500/40 rounded-2xl py-5 px-8 hover:border-blue-400 hover:bg-blue-500/20 transition-all duration-300 cursor-pointer w-full text-center backdrop-blur-xl font-vastago"
+                  onClick={closeMenu}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  (781) 436-5399
+                </motion.a>
+                <motion.a
+                  href="/contact"
+                  className="uppercase font-bold text-base rounded-2xl py-5 px-8 text-white bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 transition-all duration-300 cursor-pointer w-full text-center shadow-lg hover:shadow-2xl hover:shadow-blue-500/25 font-palo"
+                  onClick={closeMenu}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  GET STARTED
+                </motion.a>
+              </div>
+            </nav>
+            
+            <motion.button 
+              className="absolute top-8 right-8 text-white text-4xl hover:text-blue-400 transition-colors"
+              onClick={closeMenu}
+              aria-label="Close menu"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              &times;
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Rest of your content remains the same */}
         </section>

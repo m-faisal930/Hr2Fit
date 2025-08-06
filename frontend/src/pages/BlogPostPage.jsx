@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FaHeart, 
-  FaShare, 
-  FaFacebook, 
-  FaTwitter, 
-  FaLinkedin, 
+import {
+  FaHeart,
+  FaShare,
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
   FaLink,
   FaEye,
   FaCalendar,
@@ -40,7 +40,7 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.05,
     },
   },
 };
@@ -153,7 +153,7 @@ const BlogPostPage = () => {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            className="w-12 h-12 border-4 border-[#8176AF] border-t-transparent rounded-full mx-auto mb-4"
+            className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full mx-auto mb-4"
           />
           <p className={`${colors.textSecondary}`}>Loading insight...</p>
         </div>
@@ -175,105 +175,69 @@ const BlogPostPage = () => {
   return (
     <>
       <Navbar />
-      
+
       {/* Reading Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-[#8176AF] to-[#C0B7E8] z-50"
+        className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 z-50"
         style={{ width: `${readingProgress}%` }}
         initial={{ width: 0 }}
         animate={{ width: `${readingProgress}%` }}
         transition={{ duration: 0.3 }}
       />
 
-      <PageHero
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: 'HR Insights', href: '/blog' },
-          { label: currentPost.title, href: `/blog/${slug}` },
-        ]}
-      />
+
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className={`min-h-screen ${colors.bgPrimary}`}
       >
-        {/* Hero Section */}
+        {/* Enhanced Hero Section */}
         <div className={`${colors.bgSecondary} relative overflow-hidden`}>
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <motion.div
-              className="absolute top-20 left-10 w-40 h-40 bg-gradient-to-r from-[#8176AF] to-[#C0B7E8] rounded-full filter blur-3xl opacity-20"
-              animate={{
-                x: [0, 20, 0],
-                y: [0, 15, 0],
-              }}
-              transition={{
-                duration: 15,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            />
-            <motion.div
-              className="absolute bottom-20 right-10 w-60 h-60 bg-gradient-to-r from-[#C0B7E8] to-[#8176AF] rounded-full filter blur-3xl opacity-15"
-              animate={{
-                x: [0, -20, 0],
-                y: [0, -15, 0],
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            />
-          </div>
-
-          <div className="max-w-6xl mx-auto px-4 py-16 relative z-10">
+          <div className="mx-auto py-20 max-w-7xl relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-
-
               {/* Category Badge */}
               {currentPost.category && (
                 <motion.span
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.3 }}
-                  className="inline-block px-4 py-2 bg-gradient-to-r from-[#8176AF] to-[#C0B7E8] text-white text-sm font-medium rounded-full mb-6"
+                  className="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-base font-bold rounded-full mb-8 font-palo"
                 >
                   {currentPost.category.name}
                 </motion.span>
               )}
 
               {/* Title */}
-              <h1 className={`text-4xl md:text-6xl font-bold ${colors.textPrimary} mb-8 leading-tight`}>
+              <h1 className={`text-5xl md:text-6xl lg:text-7xl font-bold ${colors.textPrimary} mb-10 leading-tight font-palo`}>
                 {currentPost.title}
               </h1>
 
               {/* Meta Information */}
-              <div className={`flex flex-wrap items-center gap-6 ${colors.textSecondary} mb-8`}>
-                <div className="flex items-center gap-2">
-                  <FaCalendar className="w-4 h-4 text-[#8176AF]" />
-                  <span>{formatDate(currentPost.publishedAt || currentPost.createdAt)}</span>
+              <div className={`flex flex-wrap items-center gap-8 ${colors.textSecondary} mb-10`}>
+                <div className="flex items-center gap-3">
+                  <FaCalendar className="w-5 h-5 text-blue-500" />
+                  <span className="text-lg font-vastago">{formatDate(currentPost.publishedAt || currentPost.createdAt)}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <FaEye className="w-4 h-4 text-[#8176AF]" />
-                  <span>{currentPost.views || 0} views</span>
+                <div className="flex items-center gap-3">
+                  <FaEye className="w-5 h-5 text-blue-500" />
+                  <span className="text-lg font-vastago">{currentPost.views || 0} views</span>
                 </div>
                 {currentPost.tags && currentPost.tags.length > 0 && (
-                  <div className="flex items-center gap-2">
-                    <FaTag className="w-4 h-4 text-[#8176AF]" />
-                    <span>{currentPost.tags.join(', ')}</span>
+                  <div className="flex items-center gap-3">
+                    <FaTag className="w-5 h-5 text-blue-500" />
+                    <span className="text-lg font-vastago">{currentPost.tags.join(', ')}</span>
                   </div>
                 )}
               </div>
 
               {/* Excerpt */}
               {currentPost.excerpt && (
-                <p className={`text-xl ${colors.textSecondary} leading-relaxed mb-8 max-w-4xl`}>
+                <p className={`text-2xl ${colors.textSecondary} leading-relaxed mb-10 max-w-4xl font-vastago`}>
                   {currentPost.excerpt}
                 </p>
               )}
@@ -284,13 +248,13 @@ const BlogPostPage = () => {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="mb-8"
+                  className="mb-10"
                 >
-                  <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                  <div className="relative overflow-hidden rounded-3xl shadow-lg">
                     <img
                       src={currentPost.featuredImage}
                       alt={currentPost.title}
-                      className="w-full h-64 md:h-96 object-cover"
+                      className="w-full h-80 md:h-96 object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   </div>
@@ -300,24 +264,24 @@ const BlogPostPage = () => {
           </div>
         </div>
 
-        {/* Content Section */}
-        <div className="max-w-6xl mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        {/* Enhanced Content Section */}
+        <div className="max-w-7xl mx-auto py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
             {/* Main Content */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.1 }}
               className="lg:col-span-3"
             >
-              {/* Content */}
-              <div className={`${colors.cardBg} ${colors.borderPrimary} border rounded-2xl shadow-xl p-8 mb-8 backdrop-blur-sm`}>
-                <div 
-                  className={`prose prose-lg max-w-none ${colors.textPrimary}`}
+              {/* Enhanced Content */}
+              <div className={`${colors.cardBg} ${colors.borderPrimary} border-2 rounded-3xl shadow-lg p-10 mb-10 backdrop-blur-xl`}>
+                <div
+                  className={`prose prose-lg max-w-none ${colors.textPrimary} font-vastago`}
                   style={{
                     '--tw-prose-body': colors.textPrimary,
                     '--tw-prose-headings': colors.textPrimary,
-                    '--tw-prose-links': '#8176AF',
+                    '--tw-prose-links': '#3B82F6',
                     '--tw-prose-bold': colors.textPrimary,
                     '--tw-prose-counters': colors.textSecondary,
                     '--tw-prose-bullets': colors.textSecondary,
@@ -333,92 +297,87 @@ const BlogPostPage = () => {
                   }}
                   dangerouslySetInnerHTML={{ __html: currentPost.content }}
                 />
-              </div>
-
-              {/* Action Buttons */}
-              <div className={`${colors.cardBg} ${colors.borderPrimary} border rounded-2xl shadow-xl p-6 mb-8 backdrop-blur-sm`}>
-                <div className="flex items-center justify-between flex-wrap gap-4">
-                  <div className="flex items-center gap-4">
+                <div className="flex items-center justify-between flex-wrap gap-6 mt-10">
+                  <div className="flex items-center gap-6">
                     <motion.button
-                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileHover={{ scale: 1.05, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={handleLike}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 ${
-                        isLiked 
-                          ? 'bg-red-100 text-red-600 hover:bg-red-200 dark:bg-red-900/20 dark:text-red-400' 
+                      className={`flex items-center gap-3 px-6 py-4 rounded-2xl transition-all duration-300 font-palo text-lg ${isLiked
+                          ? 'bg-red-100 text-red-600 hover:bg-red-200 dark:bg-red-900/20 dark:text-red-400'
                           : `${colors.bgSecondary} ${colors.textPrimary} hover:${colors.hoverBg}`
-                      }`}
+                        }`}
                     >
-                      <FaHeart className={`w-4 h-4 ${isLiked ? 'text-red-500' : ''}`} />
+                      <FaHeart className={`w-5 h-5 ${isLiked ? 'text-red-500' : ''}`} />
                       <span>{likesCount} likes</span>
                     </motion.button>
 
                     <motion.button
-                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileHover={{ scale: 1.05, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={handleBookmark}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 ${colors.bgSecondary} ${colors.textPrimary} hover:${colors.hoverBg}`}
+                      className={`flex items-center gap-3 px-6 py-4 rounded-2xl transition-all duration-300 ${colors.bgSecondary} ${colors.textPrimary} hover:${colors.hoverBg} font-palo text-lg`}
                     >
-                      <FaBookmark className={`w-4 h-4 ${isBookmarked ? 'text-[#8176AF]' : ''}`} />
+                      <FaBookmark className={`w-5 h-5 ${isBookmarked ? 'text-blue-500' : ''}`} />
                       <span>{isBookmarked ? 'Bookmarked' : 'Bookmark'}</span>
                     </motion.button>
 
                     <div className="relative">
                       <motion.button
-                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileHover={{ scale: 1.05, y: -3 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setShowShareMenu(!showShareMenu)}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 ${colors.bgSecondary} ${colors.textPrimary} hover:${colors.hoverBg}`}
+                        className={`flex items-center gap-3 px-6 py-4 rounded-2xl transition-all duration-300 ${colors.bgSecondary} ${colors.textPrimary} hover:${colors.hoverBg} font-palo text-lg`}
                       >
-                        <FaShare className="w-4 h-4" />
+                        <FaShare className="w-5 h-5" />
                         <span>Share</span>
                       </motion.button>
 
-                      {/* Share Menu */}
+                      {/* Enhanced Share Menu */}
                       <AnimatePresence>
                         {showShareMenu && (
                           <motion.div
                             initial={{ opacity: 0, scale: 0.95, y: 10 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                            className={`absolute top-full left-0 mt-2 ${colors.cardBg} rounded-xl shadow-xl border ${colors.borderPrimary} p-3 z-10 backdrop-blur-sm`}
+                            className={`absolute top-full left-0 mt-3 ${colors.cardBg} rounded-2xl shadow-lg border-2 ${colors.borderPrimary} p-4 z-10 backdrop-blur-xl`}
                           >
-                            <div className="flex gap-2">
+                            <div className="flex gap-3">
                               <motion.button
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
                                 onClick={() => handleShare('facebook')}
-                                className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                                className="p-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors"
                                 title="Share on Facebook"
                               >
-                                <FaFacebook className="w-4 h-4" />
+                                <FaFacebook className="w-5 h-5" />
                               </motion.button>
                               <motion.button
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
                                 onClick={() => handleShare('twitter')}
-                                className="p-3 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition-colors"
+                                className="p-4 bg-blue-400 text-white rounded-xl hover:bg-blue-500 transition-colors"
                                 title="Share on Twitter"
                               >
-                                <FaTwitter className="w-4 h-4" />
+                                <FaTwitter className="w-5 h-5" />
                               </motion.button>
                               <motion.button
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
                                 onClick={() => handleShare('linkedin')}
-                                className="p-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors"
+                                className="p-4 bg-blue-700 text-white rounded-xl hover:bg-blue-800 transition-colors"
                                 title="Share on LinkedIn"
                               >
-                                <FaLinkedin className="w-4 h-4" />
+                                <FaLinkedin className="w-5 h-5" />
                               </motion.button>
                               <motion.button
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
                                 onClick={() => handleShare('copy')}
-                                className={`p-3 ${colors.bgSecondary} ${colors.textPrimary} rounded-lg hover:${colors.hoverBg} transition-colors`}
+                                className={`p-4 ${colors.bgSecondary} ${colors.textPrimary} rounded-xl hover:${colors.hoverBg} transition-colors`}
                                 title="Copy Link"
                               >
-                                <FaLink className="w-4 h-4" />
+                                <FaLink className="w-5 h-5" />
                               </motion.button>
                             </div>
                           </motion.div>
@@ -427,58 +386,64 @@ const BlogPostPage = () => {
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Comments Section */}
-              <CommentSection 
-                postId={currentPost._id} 
+                              {/* Comments Section */}
+              <CommentSection
+                postId={currentPost._id}
                 comments={comments}
                 onCommentAdded={() => fetchPost(slug)}
               />
+
+                
+              </div>
+
+
+
+
             </motion.div>
 
             {/* Enhanced Sidebar */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6 }}
+              transition={{ delay: 0.15 }}
               className="lg:col-span-1"
             >
-              <div className="sticky top-8 space-y-6">
-                {/* Post Details Card */}
-                <div className={`${colors.cardBg} ${colors.borderPrimary} border rounded-2xl shadow-xl p-6 backdrop-blur-sm`}>
-                  <h3 className={`text-lg font-semibold ${colors.textPrimary} mb-4 flex items-center gap-2`}>
-                    <FaLightbulb className="text-[#8176AF]" />
+              <div className="sticky top-8 space-y-8">
+                {/* Enhanced Post Details Card */}
+                <div className={`${colors.cardBg} ${colors.borderPrimary} border-2 rounded-3xl shadow-md p-8 backdrop-blur-xl`}>
+                  <h3 className={`text-xl font-bold ${colors.textPrimary} mb-6 flex items-center gap-3 font-palo`}>
+                    <FaLightbulb className="text-blue-500 text-2xl" />
                     Insight Details
                   </h3>
-                  <div className={`space-y-3 text-sm ${colors.textSecondary}`}>
-                    <div className="flex items-center gap-2">
-                      <FaEye className="w-4 h-4 text-[#8176AF]" />
+                  <div className={`space-y-4 text-base ${colors.textSecondary} font-vastago`}>
+                    <div className="flex items-center gap-3">
+                      <FaEye className="w-5 h-5 text-blue-500" />
                       <span>{currentPost.views || 0} views</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <FaHeart className="w-4 h-4 text-[#8176AF]" />
+                    <div className="flex items-center gap-3">
+                      <FaHeart className="w-5 h-5 text-blue-500" />
                       <span>{likesCount} likes</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <FaCalendar className="w-4 h-4 text-[#8176AF]" />
+                    <div className="flex items-center gap-3">
+                      <FaCalendar className="w-5 h-5 text-blue-500" />
                       <span>{formatDate(currentPost.publishedAt || currentPost.createdAt)}</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Related Topics Card */}
-                <div className={`${colors.cardBg} ${colors.borderPrimary} border rounded-2xl shadow-xl p-6 backdrop-blur-sm`}>
-                  <h3 className={`text-lg font-semibold ${colors.textPrimary} mb-4 flex items-center gap-2`}>
-                    <FaRocket className="text-[#8176AF]" />
+                {/* Enhanced Related Topics Card */}
+                <div className={`${colors.cardBg} ${colors.borderPrimary} border-2 rounded-3xl shadow-md p-8 backdrop-blur-xl`}>
+                  <h3 className={`text-xl font-bold ${colors.textPrimary} mb-6 flex items-center gap-3 font-palo`}>
+                    <FaRocket className="text-blue-500 text-2xl" />
                     Related Topics
                   </h3>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     {['HR Strategy', 'Employee Engagement', 'Leadership', 'Innovation'].map((topic, index) => (
                       <motion.div
                         key={topic}
                         whileHover={{ scale: 1.02, x: 5 }}
-                        className={`px-3 py-2 rounded-lg ${colors.bgSecondary} ${colors.textSecondary} text-sm cursor-pointer transition-colors duration-300`}
+                        className={`px-4 py-3 rounded-2xl ${colors.bgSecondary} ${colors.textSecondary} text-base cursor-pointer transition-colors duration-300 font-vastago`}
                       >
                         {topic}
                       </motion.div>
@@ -486,31 +451,31 @@ const BlogPostPage = () => {
                   </div>
                 </div>
 
-                {/* Quick Actions Card */}
-                <div className={`${colors.cardBg} ${colors.borderPrimary} border rounded-2xl shadow-xl p-6 backdrop-blur-sm`}>
-                  <h3 className={`text-lg font-semibold ${colors.textPrimary} mb-4 flex items-center gap-2`}>
-                    <FaBrain className="text-[#8176AF]" />
+                {/* Enhanced Quick Actions Card */}
+                <div className={`${colors.cardBg} ${colors.borderPrimary} border-2 rounded-3xl shadow-md p-8 backdrop-blur-xl`}>
+                  <h3 className={`text-xl font-bold ${colors.textPrimary} mb-6 flex items-center gap-3 font-palo`}>
+                    <FaBrain className="text-blue-500 text-2xl" />
                     Quick Actions
                   </h3>
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <motion.button
-                      whileHover={{ scale: 1.02, y: -2 }}
+                      whileHover={{ scale: 1.02, y: -3 }}
                       whileTap={{ scale: 0.98 }}
-                      className={`w-full px-4 py-2 rounded-xl ${colors.bgSecondary} ${colors.textPrimary} hover:${colors.hoverBg} transition-all duration-300 text-sm`}
+                      className={`w-full px-6 py-4 rounded-2xl ${colors.bgSecondary} ${colors.textPrimary} hover:${colors.hoverBg} transition-all duration-300 text-base font-palo`}
                     >
                       Download PDF
                     </motion.button>
                     <motion.button
-                      whileHover={{ scale: 1.02, y: -2 }}
+                      whileHover={{ scale: 1.02, y: -3 }}
                       whileTap={{ scale: 0.98 }}
-                      className={`w-full px-4 py-2 rounded-xl ${colors.bgSecondary} ${colors.textPrimary} hover:${colors.hoverBg} transition-all duration-300 text-sm`}
+                      className={`w-full px-6 py-4 rounded-2xl ${colors.bgSecondary} ${colors.textPrimary} hover:${colors.hoverBg} transition-all duration-300 text-base font-palo`}
                     >
                       Print Article
                     </motion.button>
                     <motion.button
-                      whileHover={{ scale: 1.02, y: -2 }}
+                      whileHover={{ scale: 1.02, y: -3 }}
                       whileTap={{ scale: 0.98 }}
-                      className={`w-full px-4 py-2 rounded-xl ${colors.bgSecondary} ${colors.textPrimary} hover:${colors.hoverBg} transition-all duration-300 text-sm`}
+                      className={`w-full px-6 py-4 rounded-2xl ${colors.bgSecondary} ${colors.textPrimary} hover:${colors.hoverBg} transition-all duration-300 text-base font-palo`}
                     >
                       Send to Email
                     </motion.button>

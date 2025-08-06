@@ -5,12 +5,8 @@ import AboutUsPage from "./pages/AboutUsPage";
 import ContactPage from "./pages/ContactPage";
 import LandingPage from "./pages/LandingPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ServicesPage from "./pages/ServicesPage";
-import SpecializationPage from "./pages/SpecializationPage";
-import RecruitersPage from "./pages/RecruitersPage";
 import HRServices from "./pages/HRServices";
 import RecruitingSolutions from "./pages/RecruitingSolutions";
-import HrInsights from "./pages/HrInsights";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
 import AdminLogin from "./pages/Admin/AdminLogin"
@@ -33,9 +29,7 @@ function App() {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/services" element={<HRServices />} />
-                <Route path="/specialization" element={<SpecializationPage />} />
                 <Route path="/recruiting" element={<RecruitingSolutions />} />
-                <Route path="/insights" element={<HrInsights />} />
                 <Route path="/about" element={<AboutUsPage />} />
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/blog/:slug" element={<BlogPostPage />} />
