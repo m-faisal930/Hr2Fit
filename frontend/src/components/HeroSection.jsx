@@ -112,7 +112,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className={`${colors.bgPrimary} overflow-hidden relative h-screen flex flex-col`}>
+    <section className={`${colors.bgPrimary} overflow-hidden relative min-h-screen flex flex-col`}>
       {/* Enhanced Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Dynamic Gradient Orbs with Enhanced Effects */}
@@ -265,18 +265,18 @@ const HeroSection = () => {
       {/* Main Hero Content */}
       <motion.div
         ref={ref}
-        className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex items-center"
+        className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex items-center py-8"
         variants={containerVariants}
         initial="hidden"
         animate={controls}
       >
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 xl:gap-12 items-center w-full">
+        <div className="grid lg:grid-cols-2 gap-4 lg:gap-6 xl:gap-8 items-center w-full">
           
           {/* Left Content */}
-          <motion.div className="space-y-4 sm:space-y-6 md:space-y-8" variants={itemVariants}>
+          <motion.div className="space-y-3 sm:space-y-4 md:space-y-5" variants={itemVariants}>
             {/* Enhanced Animated Badge */}
             <motion.div
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border-2 border-blue-500/30 rounded-full px-4 py-2 sm:px-6 sm:py-3 text-blue-600 dark:text-blue-400 font-bold text-xs backdrop-blur-xl shadow-2xl"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border-2 border-blue-500/30 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-blue-600 dark:text-blue-400 font-bold text-xs backdrop-blur-xl shadow-2xl"
               variants={itemVariants}
               whileHover={{ scale: 1.05, y: -2 }}
               animate={{ y: [0, -5, 0] }}
@@ -293,7 +293,7 @@ const HeroSection = () => {
 
             {/* Enhanced Main Heading with Typewriter Effect */}
             <motion.h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight font-palo"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight font-palo"
               variants={itemVariants}
             >
               <span className={`${colors.textPrimary}`}>Human Resource</span>
@@ -311,7 +311,7 @@ const HeroSection = () => {
 
             {/* Enhanced Description */}
             <motion.p
-              className={`text-base sm:text-lg md:text-xl ${colors.textSecondary} leading-relaxed max-w-xl font-vastago`}
+              className={`text-sm sm:text-base md:text-lg ${colors.textSecondary} leading-relaxed max-w-xl font-vastago`}
               variants={itemVariants}
             >
               Streamline your HR operations with our comprehensive outsourcing solutions. 
@@ -321,11 +321,11 @@ const HeroSection = () => {
 
             {/* Enhanced Interactive CTA Buttons */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 sm:gap-6"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4"
               variants={itemVariants}
             >
               <motion.button 
-                className="group relative inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 text-white font-bold text-sm sm:text-base md:text-lg rounded-3xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 font-palo"
+                className="group relative inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 text-white font-bold text-sm sm:text-base md:text-lg rounded-3xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 font-palo"
                 whileHover={{ y: -3 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -335,7 +335,7 @@ const HeroSection = () => {
               </motion.button>
               
               <motion.button 
-                className="group inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 border-3 border-blue-500/40 hover:border-blue-400 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold text-sm sm:text-base md:text-lg rounded-3xl transition-all duration-300 backdrop-blur-xl font-palo"
+                className="group inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 border-3 border-blue-500/40 hover:border-blue-400 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold text-sm sm:text-base md:text-lg rounded-3xl transition-all duration-300 backdrop-blur-xl font-palo"
                 whileHover={{ y: -3 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -346,7 +346,7 @@ const HeroSection = () => {
 
             {/* Enhanced Interactive Stats */}
             <motion.div
-              className="flex flex-wrap gap-6 pt-6"
+              className="flex flex-wrap gap-4 pt-4"
               variants={itemVariants}
             >
               {[
@@ -361,8 +361,8 @@ const HeroSection = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <div className="flex items-center justify-center mb-1">
-                    <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-blue-500 mr-2" />
-                    <div className={`text-xl sm:text-2xl md:text-3xl font-bold ${colors.textPrimary} font-palo`}>{stat.number}</div>
+                    <stat.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-blue-500 mr-2" />
+                    <div className={`text-lg sm:text-xl md:text-2xl font-bold ${colors.textPrimary} font-palo`}>{stat.number}</div>
                   </div>
                   <div className={`text-xs sm:text-sm ${colors.textSecondary} font-vastago`}>{stat.label}</div>
                 </motion.div>
@@ -381,25 +381,25 @@ const HeroSection = () => {
               variants={floatingVariants}
             >
               {/* Enhanced Main Interactive Card */}
-              <div className={`relative bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl border-2 border-blue-500/30 rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl ${
+              <div className={`relative bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl border-2 border-blue-500/30 rounded-3xl p-3 sm:p-4 md:p-6 shadow-2xl ${
                 isDarkMode ? 'bg-opacity-30' : 'bg-opacity-15'
               }`}>
                 
                 {/* Enhanced Card Header with Live Status */}
-                <div className="flex items-center justify-between mb-6 sm:mb-8 md:mb-10">
-                  <div className="flex items-center gap-3 sm:gap-4">
+                <div className="flex items-center justify-between mb-4 sm:mb-5 md:mb-6">
+                  <div className="flex items-center gap-2 sm:gap-3">
                     <motion.div 
-                      className="w-4 h-4 sm:w-5 sm:h-5 bg-green-400 rounded-full"
+                      className="w-3 h-3 sm:w-4 sm:h-4 bg-green-400 rounded-full"
                       animate={{ scale: [1, 1.3, 1] }}
                       transition={{ duration: 1, repeat: Infinity }}
                     />
-                    <span className={`font-bold text-lg sm:text-xl ${colors.textPrimary} font-palo`}>HR Services Dashboard</span>
+                    <span className={`font-bold text-base sm:text-lg ${colors.textPrimary} font-palo`}>HR Services Dashboard</span>
                   </div>
-                  <div className="flex gap-2 sm:gap-3">
+                  <div className="flex gap-1.5 sm:gap-2">
                     {['bg-blue-400', 'bg-purple-400', 'bg-cyan-400'].map((color, i) => (
                       <motion.div
                         key={i}
-                        className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full ${color}`}
+                        className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${color}`}
                         animate={{ opacity: [0.5, 1, 0.5] }}
                         transition={{ duration: 1, delay: i * 0.2, repeat: Infinity }}
                       />
@@ -408,13 +408,13 @@ const HeroSection = () => {
                 </div>
 
                 {/* Enhanced Interactive Feature Showcase */}
-                <div className="space-y-4 sm:space-y-6">
+                <div className="space-y-3 sm:space-y-4">
                   {/* Enhanced Feature Cards */}
-                  <div className="grid grid-cols-1 gap-3 sm:gap-4">
+                  <div className="grid grid-cols-1 gap-2 sm:gap-3">
                     {features.map((feature, index) => (
                       <motion.div
                         key={index}
-                        className={`relative p-3 sm:p-4 md:p-6 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
+                        className={`relative p-2.5 sm:p-3 md:p-4 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
                           activeFeature === index 
                             ? 'border-blue-500 bg-blue-500/30 shadow-xl' 
                             : 'border-blue-500/30 bg-blue-500/10'
@@ -425,19 +425,19 @@ const HeroSection = () => {
                           scale: activeFeature === index ? 1.03 : 1,
                         }}
                       >
-                        <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
-                          <div className={`p-2 sm:p-3 md:p-4 rounded-2xl bg-gradient-to-r ${feature.color} shadow-lg`}>
-                            <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white" />
+                        <div className="flex items-center gap-2.5 sm:gap-3 md:gap-4">
+                          <div className={`p-1.5 sm:p-2 md:p-3 rounded-2xl bg-gradient-to-r ${feature.color} shadow-lg`}>
+                            <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
                           </div>
                           <div>
-                            <h3 className={`font-bold text-sm sm:text-base md:text-lg ${colors.textPrimary} font-palo`}>{feature.title}</h3>
-                            <p className={`text-xs sm:text-sm md:text-base ${colors.textSecondary} font-vastago`}>{feature.description}</p>
+                            <h3 className={`font-bold text-xs sm:text-sm md:text-base ${colors.textPrimary} font-palo`}>{feature.title}</h3>
+                            <p className={`text-xs sm:text-sm ${colors.textSecondary} font-vastago`}>{feature.description}</p>
                           </div>
                         </div>
                         
                         {/* Enhanced Animated Progress Bar */}
                         <motion.div
-                          className="absolute bottom-0 left-0 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-b-2xl"
+                          className="absolute bottom-0 left-0 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-b-2xl"
                           initial={{ width: 0 }}
                           animate={{ width: activeFeature === index ? '100%' : '0%' }}
                           transition={{ duration: 0.5 }}
@@ -447,14 +447,14 @@ const HeroSection = () => {
                   </div>
 
                   {/* Enhanced Real-time Analytics */}
-                  <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl p-4 sm:p-6 md:p-8 border-2 border-blue-500/30">
-                    <div className="flex items-center justify-between mb-3 sm:mb-4 md:mb-6">
+                  <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl p-3 sm:p-4 md:p-5 border-2 border-blue-500/30">
+                    <div className="flex items-center justify-between mb-2 sm:mb-3 md:mb-4">
                       <span className={`text-xs sm:text-sm md:text-base font-medium ${colors.textSecondary} font-vastago`}>Service Performance</span>
-                      <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-blue-500" />
+                      <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-blue-500" />
                     </div>
                     
                     {/* Enhanced Animated Chart */}
-                    <div className="flex items-end gap-1 sm:gap-2 md:gap-3 h-12 sm:h-16 md:h-20">
+                    <div className="flex items-end gap-1 sm:gap-1.5 md:gap-2 h-8 sm:h-12 md:h-14">
                       {[60, 80, 45, 90, 75, 85, 95].map((height, index) => (
                         <motion.div
                           key={index}
@@ -466,28 +466,28 @@ const HeroSection = () => {
                       ))}
                     </div>
                     
-                    <div className="flex justify-between items-center mt-3 sm:mt-4 md:mt-6">
+                    <div className="flex justify-between items-center mt-2 sm:mt-3 md:mt-4">
                       <span className={`text-xs sm:text-sm ${colors.textSecondary} font-vastago`}>Response Time</span>
                       <span className="text-xs sm:text-sm md:text-base font-bold text-green-400 font-palo">24hrs</span>
                     </div>
                   </div>
 
                   {/* Enhanced Live Activity Feed */}
-                  <div className="space-y-2 sm:space-y-3 md:space-y-4">
+                  <div className="space-y-1.5 sm:space-y-2 md:space-y-2.5">
                     {[
                       { text: "New candidate profile reviewed", color: "bg-green-400", delay: 0 },
                       { text: "Compliance audit completed", color: "bg-blue-400", delay: 0.1 },
-                                              { text: "Performance review scheduled", color: "bg-purple-400", delay: 0.2 }
+                      { text: "Performance review scheduled", color: "bg-purple-400", delay: 0.2 }
                     ].map((activity, index) => (
                       <motion.div
                         key={index}
-                        className="flex items-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm md:text-base"
+                        className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: activity.delay }}
                       >
                         <motion.div 
-                          className={`w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-3 md:h-3 rounded-full ${activity.color}`}
+                          className={`w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 rounded-full ${activity.color}`}
                           animate={{ scale: [1, 1.3, 1] }}
                           transition={{ duration: 1, repeat: Infinity, delay: index * 0.3 }}
                         />
@@ -500,7 +500,7 @@ const HeroSection = () => {
 
               {/* Enhanced Floating 3D Elements */}
               <motion.div
-                className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-3xl shadow-2xl"
+                className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-blue-400 to-purple-500 rounded-3xl shadow-2xl"
                 animate={{
                   rotate: [0, 8, -8, 0],
                   y: [0, -15, 0],
@@ -511,18 +511,7 @@ const HeroSection = () => {
                   ease: 'easeInOut',
                 }}
               />
-              <motion.div
-                className="absolute -bottom-8 -left-8 w-28 h-28 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-2xl shadow-2xl"
-                animate={{
-                  rotate: [0, -8, 8, 0],
-                  y: [0, 15, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
+            
               
               {/* Enhanced Pulse Rings */}
               <motion.div
@@ -537,13 +526,13 @@ const HeroSection = () => {
 
       {/* Enhanced Contact Info Bar - Outside Viewport */}
       <motion.div
-        className="relative z-20 mx-4 sm:mx-8 lg:mx-auto max-w-7xl mb-8"
+        className="relative z-20 mx-4 sm:mx-8 lg:mx-auto max-w-7xl mb-6"
         variants={itemVariants}
         initial="hidden"
         animate={controls}
       >
-        <div className={`bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-2xl border-2 border-blue-500/30 rounded-3xl p-10 ${colors.bgSecondary} shadow-2xl`}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className={`bg-gradient-to-r from-blue-600/20 to-purple-600/20  border-2 border-blue-500/30 rounded-3xl px-6 pt-6 pb-3 sm:p-8 ${colors.bgSecondary} shadow-xl`}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
                 icon: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z",
@@ -563,18 +552,18 @@ const HeroSection = () => {
             ].map((contact, index) => (
               <motion.div 
                 key={index}
-                className="flex items-center gap-6 group cursor-pointer"
+                className="flex items-center gap-4 sm:gap-5 group cursor-pointer"
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-2xl flex items-center justify-center group-hover:from-blue-500/50 group-hover:to-purple-500/50 transition-all duration-300 shadow-lg">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="text-blue-500">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-2xl flex items-center justify-center group-hover:from-blue-500/50 group-hover:to-purple-500/50 transition-all duration-300 shadow-lg">
+                  <svg width="24" height="24" sm:width="28" sm:height="28" viewBox="0 0 24 24" fill="none" className="text-blue-500">
                     <path d={contact.icon} fill="currentColor"/>
                   </svg>
                 </div>
                 <div>
-                  <h3 className={`font-bold text-xl ${colors.textPrimary} font-palo`}>{contact.title}</h3>
-                  <p className={`text-base ${colors.textSecondary} font-vastago`}>{contact.subtitle}</p>
+                  <h3 className={`font-bold text-lg sm:text-xl ${colors.textPrimary} font-palo`}>{contact.title}</h3>
+                  <p className={`text-sm sm:text-base ${colors.textSecondary} font-vastago`}>{contact.subtitle}</p>
                 </div>
               </motion.div>
             ))}

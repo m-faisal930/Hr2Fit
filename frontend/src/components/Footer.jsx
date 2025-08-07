@@ -59,7 +59,7 @@ const Footer = () => {
                 <motion.a
                   key={index}
                   href={social.href}
-                  className="text-gray-400 hover:text-blue-500 transition-colors duration-300 p-3 rounded-xl hover:bg-blue-500/10 shadow-lg"
+                  className="text-gray-400 hover:text-blue-500 transition-colors duration-300 p-1 rounded-xl hover:bg-blue-500/10 shadow-lg"
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -178,7 +178,7 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.3 }}
           >
-            <h3 className="text-lg font-semibold sm:text-xl text-white font-palo">Newsletter</h3>
+            <h3 className="text-lg font-semibold sm:text-xl text-black font-palo">Newsletter</h3>
             <p className="mt-6 text-base text-gray-400 sm:mt-8 sm:text-lg leading-relaxed font-vastago">
               Subscribe to receive insights and updates from our AI-powered HR experts.
             </p>
