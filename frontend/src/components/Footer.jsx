@@ -3,12 +3,14 @@ import { HiOutlineArrowUp } from 'react-icons/hi';
 import { MdOutlineSend } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
+import logoLight from '../assets/logo-light.png';
+import logoDark from '../assets/logo-dark.png';
 
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  const { colors } = useTheme();
+  const { colors, isDarkMode } = useTheme();
 
   return (
     <footer className={`${colors.bgPrimary} ${colors.footerText} pt-20 pb-12 sm:pt-24 sm:pb-16 relative overflow-hidden`}>
@@ -29,10 +31,11 @@ const Footer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xl font-palo">H</span>
-              </div>
-              <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-palo">HR 4 Your business</span>
+              <img 
+                src={isDarkMode ? logoDark : logoLight} 
+                alt="HR 4 Your business" 
+                className="h-25 w-auto object-contain"
+              />
             </motion.div>
             <motion.p 
               className="mt-6 text-base text-gray-400 sm:mt-8 sm:text-lg leading-relaxed font-vastago"

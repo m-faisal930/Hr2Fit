@@ -4,15 +4,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import ThemeToggle from './ThemeToggle';
+import logoLight from '../assets/logo-light.png';
+import logoDark from '../assets/logo-dark.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const { colors } = useTheme();
+  const { colors, isDarkMode } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      // Handle scroll logic if needed in the future
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -39,13 +40,16 @@ const Navbar = () => {
         <header className={`flex flex-wrap mx-auto justify-between items-center py-6 transition-all duration-300 fixed top-0 left-0 right-0 z-50 ${colors.navBg} backdrop-blur-2xl border-b-2 border-blue-500/30 shadow-2xl px-4 md:px-8`}>
         <Link to="/" className="flex items-center gap-4" onClick={closeMenu}>
           <motion.div
-            className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg"
-            whileHover={{ scale: 1.1, rotate: 5 }}
+            className="flex items-center"
+            whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <span className="text-white font-bold text-lg font-palo">H</span>
+            <img 
+              src={isDarkMode ? logoDark : logoLight} 
+              alt="HR 4 Your business" 
+              className="h-19 w-auto object-contain"
+            />
           </motion.div>
-          <span className={`${colors.textPrimary} text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-palo`}>HR 4 Your business</span>
         </Link>
 
         {/* Desktop Navigation */}
