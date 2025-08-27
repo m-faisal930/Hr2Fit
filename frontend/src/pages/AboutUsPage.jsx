@@ -134,7 +134,7 @@ export default function AboutUsPage() {
               </h3>
               <div className={`space-y-6 ${colors.textSecondary} leading-relaxed font-vastago text-lg`}>
                 <p>
-                  HR2fit's extraordinary customer services model is an
+                  HR 4 Your business's extraordinary customer services model is an
                   alternative approach to Human Resources. Our technique is to
                   bring a rapid response to your HR needs.
                 </p>
@@ -226,7 +226,7 @@ export default function AboutUsPage() {
         </div>
       </motion.section>
 
-      {/* Why Choose HR2Fit */}
+      {/* Why Choose HR 4 Your business */}
       <motion.section
         className={`py-24 ${colors.bgSecondary} relative overflow-hidden`}
         initial="hidden"
@@ -276,7 +276,7 @@ export default function AboutUsPage() {
               Why Choose Us
             </motion.span>
             <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
-              Why Choose <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">HR2Fit</span>
+              Why Choose <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">HR 4 Your business</span>
             </h2>
             <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto font-vastago`}>
               We deliver comprehensive HR solutions that empower your business to thrive
@@ -365,7 +365,7 @@ export default function AboutUsPage() {
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">HR Operations</span>?
             </h2>
             <p className={`text-2xl ${colors.textSecondary} mb-10 font-vastago`}>
-              Join hundreds of businesses that trust HR2Fit for their HR needs
+              Join hundreds of businesses that trust HR 4 Your business for their HR needs
             </p>
           </motion.div>
 

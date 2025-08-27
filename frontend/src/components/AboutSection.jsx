@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import aboutImage from '../assets/WbQnbas1.png';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 
@@ -99,12 +98,12 @@ export default function AboutSection() {
                 },
               }}
             >
-              HR2Fit
+              HR 4 Your business
             </motion.span>
           </motion.h2>
 
           <motion.p className={`${colors.textSecondary} mb-4`} variants={item}> {/* Updated to theme colors with opacity */}
-            HR2Fit provides a cohesive approach to Human Resources services
+            HR 4 Your business provides a cohesive approach to Human Resources services
             designed for small to mid-sized businesses at Fortune 500 onsite
             quality.
           </motion.p>
@@ -141,9 +140,9 @@ export default function AboutSection() {
           transition={{ delay: 0.1 }}
         >
           <motion.img
-            src={aboutImage}
-            alt="About HR2Fit"
-            className="w-full rounded-3xl border-2 border-blue-500/20 shadow-2xl"
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+            alt="Professional HR Team - Real People"
+            className="w-full rounded-3xl border-2 border-blue-500/20 shadow-2xl object-cover aspect-[4/3]"
             whileHover={{
               scale: 1.02,
               boxShadow: '0 20px 40px rgba(59, 130, 246, 0.3)',

@@ -32,7 +32,7 @@ const Footer = () => {
               <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
                 <span className="text-white font-bold text-xl font-palo">H</span>
               </div>
-              <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-palo">HR2Fit</span>
+              <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-palo">HR 4 Your business</span>
             </motion.div>
             <motion.p 
               className="mt-6 text-base text-gray-400 sm:mt-8 sm:text-lg leading-relaxed font-vastago"
@@ -40,7 +40,7 @@ const Footer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.05 }}
             >
-              HR2Fit is a full-service Human Resources outsourcing service
+              HR 4 Your business is a full-service Human Resources outsourcing service
               provider. We build and deliver solutions tailored to your business
               needs with cutting-edge AI technology.
             </motion.p>
@@ -221,7 +221,7 @@ const Footer = () => {
           transition={{ duration: 0.3, delay: 0.35 }}
         >
           <p className="text-sm text-gray-500 sm:text-base font-vastago">
-            &copy; {new Date().getFullYear()} HR2Fit. All rights reserved.
+            &copy; {new Date().getFullYear()} HR 4 Your business. All rights reserved.
           </p>
           <div className="mt-6 sm:mt-8 md:mt-0">
             <motion.button

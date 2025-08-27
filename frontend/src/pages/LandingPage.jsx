@@ -6,6 +6,7 @@ import ContactSection from '../components/ContactSection'
 import Footer from '../components/Footer'
 import StatsSection from '../components/StatsSection'
 import ServicesSection from '../components/Services'
+import FeaturedHRServices from '../components/FeaturedHRServices'
 import Team from '../components/Team'
 import Testimonial from '../components/Testimonial'
 
@@ -16,43 +17,10 @@ export default function LandingPage() {
 
 
         <HeroSection />
-
-
-
-
-
-
-
-
-
-      {/* Hero Section Dummy */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <div className="">
         {/* Job listings grid */}
         <AboutSection />
+        <FeaturedHRServices />
         <StatsSection />
         <ServicesSection />
         <Team />

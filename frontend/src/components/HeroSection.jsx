@@ -2,13 +2,12 @@
 import { useState, useEffect } from 'react';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Play, Star, Users, TrendingUp, Shield, Zap, Sparkles, Target, Award, Globe, Rocket, Brain, Cpu, Database, Network, ChevronRight, CheckCircle, ArrowUpRight } from 'lucide-react';
 import Navbar from './Navbar';
 import { useTheme } from '../context/ThemeContext';
 
 const HeroSection = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
   const { colors, isDarkMode } = useTheme();
   const controls = useAnimation();
@@ -16,19 +15,6 @@ const HeroSection = () => {
     threshold: 0.1,
     triggerOnce: true,
   });
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     if (inView) {
@@ -39,7 +25,7 @@ const HeroSection = () => {
   // Auto-rotate features
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveFeature((prev) => (prev + 1) % 3);
+      setActiveFeature((prev) => (prev + 1) % 4);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -47,21 +33,27 @@ const HeroSection = () => {
   const features = [
     {
       icon: Users,
-      title: "Talent Acquisition",
-      description: "Comprehensive recruitment and hiring solutions",
+      title: "Full Cycle Recruiting",
+      description: "Complete end-to-end recruitment and hiring solutions",
       color: "from-blue-500 to-cyan-500"
     },
     {
       icon: Shield,
-      title: "Compliance Management",
-      description: "HR compliance and regulatory adherence services",
+      title: "Human Resource Management",
+      description: "Comprehensive HR operations and workforce management",
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: TrendingUp,
-      title: "Performance Management",
-      description: "Employee development and performance optimization",
+      title: "Trainings",
+      description: "Professional development and skills enhancement programs",
       color: "from-green-500 to-emerald-500"
+    },
+    {
+      icon: Database,
+      title: "Payroll Servicing",
+      description: "Complete payroll processing and management services",
+      color: "from-orange-500 to-red-500"
     }
   ];
 
@@ -324,24 +316,28 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-3 sm:gap-4"
               variants={itemVariants}
             >
-              <motion.button 
-                className="group relative inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 text-white font-bold text-sm sm:text-base md:text-lg rounded-3xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 font-palo"
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span>Get Started</span>
-                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform" />
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity" />
-              </motion.button>
+              <Link to="/contact">
+                <motion.div 
+                  className="group relative inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 text-white font-bold text-sm sm:text-base md:text-lg rounded-3xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 font-palo cursor-pointer"
+                  whileHover={{ y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span>Get Started</span>
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform" />
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity" />
+                </motion.div>
+              </Link>
               
-              <motion.button 
-                className="group inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 border-3 border-blue-500/40 hover:border-blue-400 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold text-sm sm:text-base md:text-lg rounded-3xl transition-all duration-300 backdrop-blur-xl font-palo"
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Play className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2" />
-                <span>Learn More</span>
-              </motion.button>
+              <Link to="/about">
+                <motion.div 
+                  className="group inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 border-3 border-blue-500/40 hover:border-blue-400 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold text-sm sm:text-base md:text-lg rounded-3xl transition-all duration-300 backdrop-blur-xl font-palo cursor-pointer"
+                  whileHover={{ y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Play className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2" />
+                  <span>Learn More</span>
+                </motion.div>
+              </Link>
             </motion.div>
 
             {/* Enhanced Interactive Stats */}
@@ -547,7 +543,7 @@ const HeroSection = () => {
               {
                 icon: "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z",
                 title: "Email Us",
-                subtitle: "info@hr2fit.com"
+                subtitle: "info@hr4yourbusiness.com"
               }
             ].map((contact, index) => (
               <motion.div 

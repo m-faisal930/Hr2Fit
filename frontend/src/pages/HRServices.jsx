@@ -468,7 +468,7 @@ const HRServices = () => {
               {
                 icon: FaUsers,
                 title: 'Dedicated Staff',
-                description: 'HR2fit\'s staff are dedicated to the successful performance of each client.',
+                description: 'HR 4 Your business\'s staff are dedicated to the successful performance of each client.',
                 bgColor: 'bg-blue-600/20',
                 borderColor: 'border-blue-500/30',
                 iconBg: 'bg-blue-500',
@@ -621,7 +621,7 @@ const HRServices = () => {
                       </div>
                       <div>
                         <h4 className={`${colors.textPrimary} font-bold mb-2 text-lg font-palo`}>Email</h4>
-                        <p className={`${colors.textSecondary} text-lg font-vastago`}>info@hr2fit.com</p>
+                        <p className={`${colors.textSecondary} text-lg font-vastago`}>info@hr4yourbusiness.com</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-6">
@@ -641,7 +641,7 @@ const HRServices = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl"></div>
                 <div className="relative z-10">
                   <h3 className={`text-3xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
-                    Why Choose HR2Fit?
+                    Why Choose HR 4 Your business?
                   </h3>
                   <div className="space-y-6">
                     <div className="flex items-start gap-6">

@@ -205,7 +205,7 @@ export default function RecruitersPage() {
                 Find Your <span className="text-hr-gradient-to">Perfect Match</span>
               </h1>
               <p className="text-xl text-hr-light/80 mb-8 leading-relaxed">
-                HR2Fit's comprehensive recruiting services help you find, attract, and retain the best talent for your organization. From entry-level positions to executive roles, we deliver results that drive your business forward.
+                HR 4 Your business's comprehensive recruiting services help you find, attract, and retain the best talent for your organization. From entry-level positions to executive roles, we deliver results that drive your business forward.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <motion.button
@@ -383,7 +383,7 @@ export default function RecruitersPage() {
               Why Choose Us
             </motion.span>
             <h2 className="text-4xl md:text-5xl font-bold text-hr-light mb-6">
-              The <span className="text-hr-gradient-to">HR2Fit Advantage</span>
+              The <span className="text-hr-gradient-to">HR 4 Your business Advantage</span>
             </h2>
             <p className="text-xl text-hr-light/80 max-w-3xl mx-auto">
               Experience the difference that professional recruiting services can make
@@ -469,7 +469,7 @@ export default function RecruitersPage() {
                       </div>
                       <div>
                         <h4 className="text-hr-light font-semibold mb-1">Email</h4>
-                        <p className="text-hr-light/70">info@hr2fit.com</p>
+                        <p className="text-hr-light/70">info@hr4yourbusiness.com</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -489,7 +489,7 @@ export default function RecruitersPage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-hr-gradient-from/10 to-hr-gradient-to/10 rounded-[30px]"></div>
                 <div className="relative z-10">
                   <h3 className="text-2xl font-bold text-hr-light mb-6">
-                    Why Choose HR2Fit?
+                    Why Choose HR 4 Your business?
                   </h3>
                   <div className="space-y-4">
                     <div className="flex items-start gap-4">

@@ -143,7 +143,7 @@ const {colors} = useTheme();
                 Let's Start a <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">Conversation</span>
               </h2>
               <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto font-vastago`}>
-                Ready to transform your HR operations? Reach out to us today and discover how HR2Fit can help your business thrive.
+                Ready to transform your HR operations? Reach out to us today and discover how HR 4 Your business can help your business thrive.
               </p>
             </motion.div>
 
@@ -194,7 +194,7 @@ const {colors} = useTheme();
                       Send us a message anytime
                     </p>
                     <div className={`space-y-3 ${colors.textPrimary}`}>
-                      <p className="font-bold text-xl">info@hr2fit.com</p>
+                      <p className="font-bold text-xl">info@hr4yourbusiness.com</p>
                       <p className={`text-base ${colors.textSecondary} font-vastago`}>Response within 24 hours</p>
                     </div>
                   </div>
@@ -381,7 +381,7 @@ const {colors} = useTheme();
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl"></div>
                   <div className="relative z-10">
                     <h3 className={`text-3xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
-                      Why Choose HR2Fit?
+                      Why Choose HR 4 Your business?
                     </h3>
                     <div className="space-y-6">
                       <div className="flex items-start gap-6">
