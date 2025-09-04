@@ -117,10 +117,10 @@ const Team = () => {
           >
             <div className="group relative flex justify-start rounded-full border-4 border-white transition-all duration-300 ease-in-out hover:-translate-x-20 md:-ml-12 md:justify-center md:hover:-translate-x-0 md:hover:-translate-y-6 xl:border-8">
               <div className="absolute left-6 top-7 w-full text-left opacity-0 transition-all duration-300 ease-linear group-hover:translate-x-24 group-hover:opacity-100 md:-top-12 md:left-0 md:text-center md:group-hover:-translate-y-6 md:group-hover:translate-x-0">
-                <h3 className="text-gray-600 font-semibold xl:text-xl">
+                <h3 className={`${colors.textPrimary} font-semibold xl:text-xl`}>
                   {member.name}
                 </h3>
-                <h4 className="text-nowrap text-sm text-gray-500">
+                <h4 className={`text-nowrap text-sm ${colors.textSecondary}`}>
                   {member.profession}
                 </h4>
               </div>

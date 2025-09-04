@@ -16,9 +16,9 @@ const Footer = () => {
     <footer className={`${colors.bgPrimary} ${colors.footerText} pt-20 pb-12 sm:pt-24 sm:pb-16 relative overflow-hidden`}>
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 overflow-hidden opacity-8">
-        <div className="absolute bottom-0 left-10 w-60 h-60 bg-blue-500 rounded-full filter blur-3xl"></div>
-        <div className="absolute top-0 right-10 w-80 h-80 bg-purple-500 rounded-full filter blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-cyan-500 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-10 w-60 h-60 bg-[#123456] rounded-full filter blur-3xl"></div>
+        <div className="absolute top-0 right-10 w-80 h-80 bg-[#DC203B] rounded-full filter blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-[#414042] rounded-full filter blur-3xl"></div>
       </div>
       
       <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

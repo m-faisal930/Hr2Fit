@@ -1,16 +1,56 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@theme {
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-palo : "Montserrat", sans-serif;
+  --font-vastago : "Montserrat", sans-serif;
+  --font-work : "Montserrat", sans-serif;
+  --font-heading : "Montserrat", sans-serif;
+}
 @import "tailwindcss";
+
 
 /* Base styles */
 body {
+  font-family: 'Montserrat', sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure all elements use Montserrat by default */
+* {
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Dark mode base styles */
 .dark {
   color-scheme: dark;
+}
+
+/* Custom CSS for new color scheme animations */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* Gradient backgrounds using new color scheme */
+.bg-hr-gradient-primary {
+  background: linear-gradient(45deg, #123456, #1e4d70, #123456);
+}
+
+.bg-hr-gradient-secondary {
+  background: linear-gradient(45deg, #DC203B, #e54560, #DC203B);
+}
+
+.bg-hr-gradient-combined {
+  background: linear-gradient(45deg, #123456, #DC203B, #414042);
 }
 
 /* e.g. in index.css */

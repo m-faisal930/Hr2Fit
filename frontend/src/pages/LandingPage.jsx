@@ -15,8 +15,7 @@ export default function LandingPage() {
     <div>
       {/* <Navbar /> */}
 
-
-        <HeroSection />
+      <HeroSection />
       <div className="">
         {/* Job listings grid */}
         <AboutSection />
@@ -28,7 +27,6 @@ export default function LandingPage() {
         {/* <TechStacks /> */}
         {/* <HowItWorksSection /> */}
         {/* <ContactSection /> */}
-
       </div>
       <Footer />
     </div>

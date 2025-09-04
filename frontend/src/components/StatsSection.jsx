@@ -23,7 +23,7 @@ export default function StatsSection() {
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden opacity-10">
         <motion.div
-          className="absolute top-10 left-10 w-32 h-32 bg-blue-500 rounded-full filter blur-3xl"
+          className="absolute top-10 left-10 w-32 h-32 bg-[#123456] rounded-full filter blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.6, 0.3],
@@ -35,7 +35,7 @@ export default function StatsSection() {
           }}
         />
         <motion.div
-          className="absolute bottom-10 right-10 w-48 h-48 bg-purple-500 rounded-full filter blur-3xl"
+          className="absolute bottom-10 right-10 w-48 h-48 bg-[#DC203B] rounded-full filter blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.4, 0.7, 0.4],
@@ -50,7 +50,7 @@ export default function StatsSection() {
 
       <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <h2 className={`font-heading text-3xl sm:text-4xl lg:text-5xl font-bold ${colors.textPrimary} text-center mb-16`}>
-          <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#123456] via-[#DC203B] to-[#414042] bg-clip-text text-transparent">
             Trusted by 500+ Companies
           </span>
           <br />
@@ -68,7 +68,7 @@ export default function StatsSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1 }}
             >
-              <span className={`text-5xl sm:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent`}>
+              <span className={`text-5xl sm:text-6xl font-bold bg-gradient-to-r from-[#123456] to-[#DC203B] bg-clip-text text-transparent`}>
                 {inView ? (
                   <CountUp end={value} duration={2} suffix={suffix} />
                 ) : (

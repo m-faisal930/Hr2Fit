@@ -52,7 +52,7 @@ const services = [
     description: 'Navigate employment laws with confidence. Avoid costly lawsuits through comprehensive risk assessments.',
     details: 'Do you know what to do if an employee claimed they were harassed by another employee? We conduct risk assessments to identify compliance exposure and ensure proper procedures minimize overall risk.',
     features: ['Legal Compliance', 'Risk Assessment', 'Policy Development', 'Audit Support'],
-    color: '#3B82F6' // blue
+    color: '#123456' // primary
   },
   {
     icon: FaDollarSign,
@@ -60,7 +60,7 @@ const services = [
     description: 'Attract and retain top talent with strategic compensation planning backed by 20+ years of experience.',
     details: 'Your employees are your most valuable assets. We assess current packages and conduct salary benchmarks to create practical compensation plans that work for your budget.',
     features: ['Salary Structure', 'Benefits Design', 'Performance Pay', 'Total Rewards'],
-    color: '#2563EB' // blue-600
+    color: '#DC203B' // secondary
   },
   {
     icon: FaUsers,
@@ -68,7 +68,7 @@ const services = [
     description: 'Increase workplace productivity through strategic employee engagement and satisfaction measures.',
     details: 'Just 32% of U.S. workers are engaged. We develop multidimensional strategies including communication improvements, engagement surveys, and satisfaction metrics.',
     features: ['Conflict Resolution', 'Performance Management', 'Employee Engagement', 'Workplace Culture'],
-    color: '#1D4ED8' // blue-700
+    color: '#414042' // tertiary
   },
   {
     icon: FaChartLine,
@@ -76,7 +76,7 @@ const services = [
     description: 'Enhance leadership skills and improve communication to boost workplace productivity.',
     details: 'Whatever management style you have, we help you engage staff through coaching on business goals, constructive feedback, and difficult employee situations.',
     features: ['Leadership Development', 'Communication Skills', 'Team Building', 'Performance Coaching'],
-    color: '#1E40AF' // blue-800
+    color: '#123456' // primary
   },
   {
     icon: FaHandshake,
@@ -84,7 +84,7 @@ const services = [
     description: 'Full-service recruiting guaranteed to find the right fit for your business in 40-60 hours.',
     details: 'We handle the complete hiring cycle from job descriptions to onboarding. Our commitment is finding ideal candidates who will enrich your business.',
     features: ['Talent Acquisition', 'Candidate Screening', 'Interview Process', 'Onboarding'],
-    color: '#1E3A8A' // blue-900
+    color: '#DC203B' // secondary
   },
   {
     icon: FaGraduationCap,
@@ -92,7 +92,7 @@ const services = [
     description: 'Comprehensive training programs to improve productivity and ensure policy compliance.',
     details: 'Standard programs include harassment prevention, diversity training, safety, customer care, and personality assessments like DISC and Myers-Briggs.',
     features: ['Training Programs', 'Skill Development', 'Compliance Training', 'Assessment Tools'],
-    color: '#60A5FA' // blue-400
+    color: '#414042' // tertiary
   },
   {
     icon: FaFileInvoiceDollar,
@@ -100,7 +100,7 @@ const services = [
     description: 'Expert payroll management with 20+ years of experience in federal and state compliance.',
     details: 'We handle employee classification, background checks, and record retention. Partnership with local HCM company ensures accurate processing.',
     features: ['Payroll Processing', 'Tax Compliance', 'Benefits Administration', 'Reporting'],
-    color: '#3B82F6' // blue
+    color: '#123456' // primary
   },
   {
     icon: FaCog,
@@ -108,7 +108,7 @@ const services = [
     description: 'Complete integrated approach to benefit choices with customized strategies.',
     details: 'We administer health and welfare plans, handle enrollment and terminations, and develop customized benefit strategies for your specific needs.',
     features: ['Health Plans', 'Welfare Benefits', 'Enrollment Management', 'Custom Strategies'],
-    color: '#2563EB' // blue-600
+    color: '#DC203B' // secondary
   },
   {
     icon: FaRocket,
@@ -116,7 +116,7 @@ const services = [
     description: 'Custom HR project implementation based on your time, budget, and staff requirements.',
     details: 'Experts in payroll conversions, flat organizations, reorganizations, review processes, and employee engagement surveys.',
     features: ['Project Management', 'Process Optimization', 'System Implementation', 'Change Management'],
-    color: '#1D4ED8' // blue-700
+    color: '#414042' // tertiary
   },
   {
     icon: FaFileAlt,
@@ -124,7 +124,7 @@ const services = [
     description: 'Well-defined handbooks that promote productive work environments and legal protection.',
     details: 'We handle every aspect from creation to updates, ensuring your handbook reflects current laws and business priorities.',
     features: ['Handbook Creation', 'Policy Development', 'Legal Compliance', 'Regular Updates'],
-    color: '#1E40AF' // blue-800
+    color: '#123456' // primary
   },
 ];
 
@@ -173,7 +173,7 @@ const ServiceCard = ({ title, description, icon: Icon, color, index }) => {
   return (
     <motion.div
       ref={ref}
-      className={`group relative ${colors.cardBg} rounded-3xl ${colors.cardBorder} p-10 flex flex-col items-center text-center overflow-hidden backdrop-blur-xl border-2 border-blue-500/20`}
+      className={`group relative ${colors.cardBg} rounded-3xl ${colors.cardBorder} p-10 flex flex-col items-center text-center overflow-hidden backdrop-blur-xl border-2 border-[${colors.primary}]/20`}
       initial="hidden"
       animate={controls}
       variants={cardVariants}
@@ -345,7 +345,7 @@ const HRServices = () => {
             }}
           />
           <motion.div
-            className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500 rounded-full filter blur-3xl opacity-10"
+            className="absolute bottom-20 right-10 w-80 h-80 bg-secondary-500 rounded-full filter blur-3xl opacity-10"
             animate={{
               x: [0, -30, 0],
               y: [0, -20, 0],
@@ -357,7 +357,7 @@ const HRServices = () => {
             }}
           />
           <motion.div
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-cyan-500 rounded-full filter blur-3xl opacity-20"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-tertiary-500 rounded-full filter blur-3xl opacity-20"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.2, 0.6, 0.2],
@@ -377,7 +377,7 @@ const HRServices = () => {
             custom={0}
           >
             <motion.span
-              className="inline-block text-sm uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-2 mb-6 font-palo"
+              className={`inline-block text-sm uppercase font-bold ${colors.iconPrimary} border-b-2 border-current pb-2 mb-6 font-palo`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 }}
@@ -385,7 +385,7 @@ const HRServices = () => {
               HR Services
             </motion.span>
             <h1 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
-              Delivering Tailored <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">HR Excellence</span>
+              Delivering Tailored <span className={`bg-gradient-to-r from-[${colors.primary}] via-[${colors.secondary}] to-[${colors.tertiary}] bg-clip-text text-transparent animate-gradient`}>HR Excellence</span>
             </h1>
             <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto mb-10 leading-relaxed font-vastago`}>
               Solutions that Propel Businesses of All Sizes Towards Sustainable Growth
@@ -393,7 +393,7 @@ const HRServices = () => {
             <motion.button
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className="uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl hover:shadow-blue-500/25 inline-flex items-center gap-4 font-palo"
+              className={`uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-[${colors.primary}] via-[${colors.secondary}] to-[${colors.tertiary}] hover:opacity-90 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl inline-flex items-center gap-4 font-palo`}
             >
               <FaCalendar className="text-xl" />
               Schedule a Call
@@ -453,7 +453,7 @@ const HRServices = () => {
               Services Overview
             </motion.span>
             <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
-              Everything You Need for <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">HR Management</span>
+              Everything You Need for <span className={`bg-gradient-to-r from-[${colors.primary}] via-[${colors.secondary}] to-[${colors.tertiary}] bg-clip-text text-transparent animate-gradient`}>HR Management</span>
             </h2>
             <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto mb-16 font-vastago`}>
               Discover how you can have fast, reliable and flexible HR support. Whether you want to hire top talent, update your employee handbook or address employee relations we have the answers.
@@ -469,9 +469,9 @@ const HRServices = () => {
                 icon: FaUsers,
                 title: 'Dedicated Staff',
                 description: 'HR 4 Your business\'s staff are dedicated to the successful performance of each client.',
-                bgColor: 'bg-blue-600/20',
-                borderColor: 'border-blue-500/30',
-                iconBg: 'bg-blue-500',
+                bgColor: `bg-[${colors.primary}]/20`,
+                borderColor: `border-[${colors.primary}]/30`,
+                iconBg: `bg-[${colors.primary}]`,
                 iconColor: 'text-white',
                 textColor: colors.textPrimary,
                 descColor: colors.textSecondary
@@ -480,9 +480,9 @@ const HRServices = () => {
                 icon: FaShieldAlt,
                 title: 'Integrated Services',
                 description: 'Our mission is to provide integrated HR services that improve productivity while minimizing risk.',
-                bgColor: 'bg-emerald-600/20',
-                borderColor: 'border-emerald-500/30',
-                iconBg: 'bg-emerald-500',
+                bgColor: `bg-[${colors.secondary}]/20`,
+                borderColor: `border-[${colors.secondary}]/30`,
+                iconBg: `bg-[${colors.secondary}]`,
                 iconColor: 'text-white',
                 textColor: colors.textPrimary,
                 descColor: colors.textSecondary
@@ -491,9 +491,9 @@ const HRServices = () => {
                 icon: FaChartLine,
                 title: 'Small to Mid-Size Focus',
                 description: 'Our services are exclusively designed for small to mid-size businesses.',
-                bgColor: 'bg-purple-600/20',
-                borderColor: 'border-purple-500/30',
-                iconBg: 'bg-purple-500',
+                bgColor: `bg-[${colors.tertiary}]/20`,
+                borderColor: `border-[${colors.tertiary}]/30`,
+                iconBg: `bg-[${colors.tertiary}]`,
                 iconColor: 'text-white',
                 textColor: colors.textPrimary,
                 descColor: colors.textSecondary
@@ -565,7 +565,7 @@ const HRServices = () => {
 
       {/* Enhanced Contact Section */}
       <motion.section
-        className="py-24 bg-gradient-to-br from-blue-600/10 to-purple-600/10 relative overflow-hidden"
+        className="py-24 bg-gradient-to-br from-primary-600/10 to-secondary-600/10 relative overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -577,7 +577,7 @@ const HRServices = () => {
             custom={0}
           >
             <motion.span
-              className="inline-block text-sm uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-2 mb-6 font-palo"
+              className={`inline-block text-sm uppercase font-bold ${colors.iconPrimary} border-b-2 border-current pb-2 mb-6 font-palo`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -585,7 +585,7 @@ const HRServices = () => {
               Get Started
             </motion.span>
             <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
-              Ready to Transform Your <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">HR Operations</span>?
+              Ready to Transform Your <span className={`bg-gradient-to-r from-[${colors.primary}] via-[${colors.secondary}] to-[${colors.tertiary}] bg-clip-text text-transparent animate-gradient`}>HR Operations</span>?
             </h2>
             <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto font-vastago`}>
               Book a Free Consultation to Explore How Our Distinctive HR Solutions Seamlessly Scale with Your Business's Growth
@@ -599,15 +599,15 @@ const HRServices = () => {
               custom={1}
               className="space-y-10"
             >
-              <div className="relative p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl rounded-3xl border-2 border-blue-500/30 shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl"></div>
+              <div className={`relative p-10 bg-gradient-to-br from-[${colors.primary}]/20 to-[${colors.secondary}]/20 backdrop-blur-2xl rounded-3xl border-2 border-[${colors.primary}]/30 shadow-2xl`}>
+                <div className={`absolute inset-0 bg-gradient-to-br from-[${colors.primary}]/10 to-[${colors.secondary}]/10 rounded-3xl`}></div>
                 <div className="relative z-10">
                   <h3 className={`text-3xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
                     Contact Information
                   </h3>
                   <div className="space-y-8">
                     <div className="flex items-start gap-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <div className={`w-16 h-16 bg-gradient-to-br from-[${colors.primary}] to-[${colors.secondary}] rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg`}>
                         <FaPhone className="text-white text-xl" />
                       </div>
                       <div>
@@ -616,7 +616,7 @@ const HRServices = () => {
                       </div>
                     </div>
                     <div className="flex items-start gap-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <div className={`w-16 h-16 bg-gradient-to-br from-[${colors.primary}] to-[${colors.secondary}] rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg`}>
                         <FaEnvelope className="text-white text-xl" />
                       </div>
                       <div>
@@ -625,7 +625,7 @@ const HRServices = () => {
                       </div>
                     </div>
                     <div className="flex items-start gap-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <div className={`w-16 h-16 bg-gradient-to-br from-[${colors.primary}] to-[${colors.secondary}] rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg`}>
                         <FaMapMarkerAlt className="text-white text-xl" />
                       </div>
                       <div>
@@ -637,15 +637,15 @@ const HRServices = () => {
                 </div>
               </div>
 
-              <div className="relative p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl rounded-3xl border-2 border-blue-500/30 shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl"></div>
+              <div className={`relative p-10 bg-gradient-to-br from-[${colors.primary}]/20 to-[${colors.secondary}]/20 backdrop-blur-2xl rounded-3xl border-2 border-[${colors.primary}]/30 shadow-2xl`}>
+                <div className={`absolute inset-0 bg-gradient-to-br from-[${colors.primary}]/10 to-[${colors.secondary}]/10 rounded-3xl`}></div>
                 <div className="relative z-10">
                   <h3 className={`text-3xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
                     Why Choose HR 4 Your business?
                   </h3>
                   <div className="space-y-6">
                     <div className="flex items-start gap-6">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
+                      <div className={`w-12 h-12 bg-gradient-to-br from-[${colors.primary}] to-[${colors.secondary}] rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg`}>
                         <FaCheckCircle className="text-lg text-white" />
                       </div>
                       <div>
@@ -654,7 +654,7 @@ const HRServices = () => {
                       </div>
                     </div>
                     <div className="flex items-start gap-6">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
+                      <div className={`w-12 h-12 bg-gradient-to-br from-[${colors.primary}] to-[${colors.secondary}] rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg`}>
                         <FaCheckCircle className="text-lg text-white" />
                       </div>
                       <div>
@@ -663,7 +663,7 @@ const HRServices = () => {
                       </div>
                     </div>
                     <div className="flex items-start gap-6">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
+                      <div className={`w-12 h-12 bg-gradient-to-br from-[${colors.primary}] to-[${colors.secondary}] rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg`}>
                         <FaCheckCircle className="text-lg text-white" />
                       </div>
                       <div>
@@ -682,8 +682,8 @@ const HRServices = () => {
               custom={2}
               className="relative"
             >
-              <div className="relative p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl rounded-3xl border-2 border-blue-500/30 shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl"></div>
+              <div className={`relative p-10 bg-gradient-to-br from-[${colors.primary}]/20 to-[${colors.secondary}]/20 backdrop-blur-2xl rounded-3xl border-2 border-[${colors.primary}]/30 shadow-2xl`}>
+                <div className={`absolute inset-0 bg-gradient-to-br from-[${colors.primary}]/10 to-[${colors.secondary}]/10 rounded-3xl`}></div>
                 <div className="relative z-10 text-center">
                   <h3 className={`text-4xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
                     Ready to Get Started?
@@ -694,7 +694,7 @@ const HRServices = () => {
                   <motion.button
                     whileHover={{ scale: 1.05, y: -3 }}
                     whileTap={{ scale: 0.95 }}
-                    className="uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl hover:shadow-blue-500/25 inline-flex items-center gap-4 font-palo"
+                    className={`uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-[${colors.primary}] via-[${colors.secondary}] to-[${colors.tertiary}] hover:opacity-90 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl inline-flex items-center gap-4 font-palo`}
                   >
                     <FaCalendar className="text-xl" />
                     Book Free Consultation
@@ -709,12 +709,12 @@ const HRServices = () => {
 
       {/* Enhanced Call to Action */}
       <motion.section
-        className="py-24 bg-gradient-to-br from-blue-600/15 to-purple-600/15 relative overflow-hidden"
+        className={`py-24 ${colors.bgSecondary} relative overflow-hidden`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10"></div>
+        <div className={`absolute inset-0 bg-gradient-to-br from-[${colors.primary}]/15 to-[${colors.secondary}]/15`}></div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             variants={fadeInUp}
@@ -723,7 +723,7 @@ const HRServices = () => {
           >
             <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
               Ready to Transform Your{' '}
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">HR Operations</span>?
+              <span className={`bg-gradient-to-r from-[${colors.primary}] via-[${colors.secondary}] to-[${colors.tertiary}] bg-clip-text text-transparent animate-gradient`}>HR Operations</span>?
             </h2>
             <p className={`text-2xl ${colors.textSecondary} mb-10 font-vastago`}>
               Let's discuss how our comprehensive HR services can benefit your business
@@ -738,14 +738,14 @@ const HRServices = () => {
             <motion.button
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className="uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl hover:shadow-blue-500/25 font-palo"
+              className={`uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-[${colors.primary}] via-[${colors.secondary}] to-[${colors.tertiary}] hover:opacity-90 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl font-palo`}
             >
               Get Started Today
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className="uppercase font-bold text-base rounded-3xl py-6 px-10 text-white border-2 border-blue-500/40 hover:border-blue-400 hover:bg-blue-500/20 transition-all duration-300 cursor-pointer backdrop-blur-xl font-palo"
+              className={`uppercase font-bold text-base rounded-3xl py-6 px-10 text-white border-2 border-[${colors.primary}]/40 hover:border-[${colors.primary}] hover:bg-[${colors.primary}]/20 transition-all duration-300 cursor-pointer backdrop-blur-xl font-palo`}
             >
               Learn More
             </motion.button>

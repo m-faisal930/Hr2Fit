@@ -11,37 +11,37 @@ const services = [
     title: 'AI-Powered Recruitment',
     desc: 'Smart candidate matching with 95% accuracy using advanced algorithms.',
     icon: Target,
-    color: '#3B82F6', // blue
+    color: '#123456', // Primary blue
   },
   {
     title: 'Performance Analytics',
     desc: 'Real-time insights and predictive analytics for better decision making.',
     icon: TrendingUp,
-    color: '#2563EB', // blue-600
+    color: '#DC203B', // Secondary red
   },
   {
     title: 'Compliance Automation',
     desc: 'Automated legal compliance and risk management with AI monitoring.',
     icon: Shield,
-    color: '#1D4ED8', // blue-700
+    color: '#414042', // Tertiary gray
   },
   {
     title: 'Employee Engagement',
     desc: 'Boost productivity through intelligent employee relations management.',
     icon: Users,
-    color: '#1E40AF', // blue-800
+    color: '#123456', // Primary blue
   },
   {
     title: 'Smart Payroll System',
     desc: 'AI-driven payroll processing with automated tax calculations.',
     icon: Zap,
-    color: '#1E3A8A', // blue-900
+    color: '#DC203B', // Secondary red
   },
   {
     title: 'Global HR Solutions',
     desc: 'Comprehensive HR management for international business operations.',
     icon: Globe,
-    color: '#60A5FA', // blue-400
+    color: '#414042', // Tertiary gray
   },
 ];
 

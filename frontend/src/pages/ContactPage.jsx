@@ -89,7 +89,7 @@ const {colors} = useTheme();
           {/* Enhanced decorative background elements */}
           <div className={`absolute inset-0 overflow-hidden pointer-events-none ${colors.bgPrimary}`}>
             <motion.div
-              className="absolute top-20 left-10 w-60 h-60 bg-blue-500 rounded-full filter blur-3xl opacity-15"
+              className="absolute top-20 left-10 w-60 h-60 bg-primary-500 rounded-full filter blur-3xl opacity-15"
               animate={{
                 x: [0, 30, 0],
                 y: [0, 20, 0],
@@ -101,7 +101,7 @@ const {colors} = useTheme();
               }}
             />
             <motion.div
-              className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500 rounded-full filter blur-3xl opacity-10"
+              className="absolute bottom-20 right-10 w-80 h-80 bg-secondary-500 rounded-full filter blur-3xl opacity-10"
               animate={{
                 x: [0, -30, 0],
                 y: [0, -20, 0],
@@ -113,7 +113,7 @@ const {colors} = useTheme();
               }}
             />
             <motion.div
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-cyan-500 rounded-full filter blur-3xl opacity-20"
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-tertiary-500 rounded-full filter blur-3xl opacity-20"
               animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0.2, 0.6, 0.2],
@@ -132,7 +132,7 @@ const {colors} = useTheme();
               variants={item}
             >
               <motion.span
-                className="inline-block text-sm uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-2 mb-6 font-palo"
+                className={`inline-block text-sm uppercase font-bold ${colors.iconPrimary} border-b-2 border-current pb-2 mb-6 font-palo`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.05 }}
@@ -140,7 +140,7 @@ const {colors} = useTheme();
                 Get In Touch
               </motion.span>
               <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
-                Let's Start a <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">Conversation</span>
+                Let's Start a <span className={`bg-gradient-to-r from-[${colors.primary}] via-[${colors.secondary}] to-[${colors.tertiary}] bg-clip-text text-transparent animate-gradient`}>Conversation</span>
               </h2>
               <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto font-vastago`}>
                 Ready to transform your HR operations? Reach out to us today and discover how HR 4 Your business can help your business thrive.
@@ -158,10 +158,10 @@ const {colors} = useTheme();
                 whileHover={{ y: -12 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <div className="relative p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl border-2 border-blue-500/30 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className={`relative p-10 bg-gradient-to-br from-[${colors.primary}]/20 to-[${colors.secondary}]/20 backdrop-blur-2xl border-2 border-[${colors.primary}]/30 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300`}>
+                  <div className={`absolute inset-0 bg-gradient-to-br from-[${colors.primary}]/10 to-[${colors.secondary}]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                   <div className="relative z-10">
-                    <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <div className={`w-20 h-20 bg-gradient-to-r from-[${colors.primary}] to-[${colors.secondary}] text-white rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                       <FaPhone className="text-3xl" />
                     </div>
                     <h3 className={`text-2xl font-bold ${colors.textPrimary} mb-6 font-palo`}>Phone Support</h3>
@@ -183,10 +183,10 @@ const {colors} = useTheme();
                 whileHover={{ y: -12 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <div className="relative p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl border-2 border-blue-500/30 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className={`relative p-10 bg-gradient-to-br from-[${colors.primary}]/20 to-[${colors.secondary}]/20 backdrop-blur-2xl border-2 border-[${colors.primary}]/30 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300`}>
+                  <div className={`absolute inset-0 bg-gradient-to-br from-[${colors.primary}]/10 to-[${colors.secondary}]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                   <div className="relative z-10">
-                    <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <div className={`w-20 h-20 bg-gradient-to-r from-[${colors.primary}] to-[${colors.secondary}] text-white rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                       <FaEnvelope className="text-3xl" />
                     </div>
                     <h3 className={`text-2xl font-bold ${colors.textPrimary} mb-6 font-palo`}>Email Us</h3>
@@ -208,10 +208,10 @@ const {colors} = useTheme();
                 whileHover={{ y: -12 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <div className="relative p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl border-2 border-blue-500/30 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className={`relative p-10 bg-gradient-to-br from-[${colors.primary}]/20 to-[${colors.secondary}]/20 backdrop-blur-2xl border-2 border-[${colors.primary}]/30 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300`}>
+                  <div className={`absolute inset-0 bg-gradient-to-br from-[${colors.primary}]/10 to-[${colors.secondary}]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                   <div className="relative z-10">
-                    <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <div className={`w-20 h-20 bg-gradient-to-r from-[${colors.primary}] to-[${colors.secondary}] text-white rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                       <FaMapMarkerAlt className="text-3xl" />
                     </div>
                     <h3 className={`text-2xl font-bold ${colors.textPrimary} mb-6 font-palo`}>Visit Our Office</h3>
@@ -239,7 +239,7 @@ const {colors} = useTheme();
           {/* Enhanced decorative elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <motion.div
-              className="absolute top-1/2 left-0 w-48 h-48 bg-blue-500 rounded-full filter blur-3xl opacity-25"
+              className="absolute top-1/2 left-0 w-48 h-48 bg-primary-500 rounded-full filter blur-3xl opacity-25"
               animate={{
                 x: [0, 40, 0],
                 y: [0, -40, 0],
@@ -251,7 +251,7 @@ const {colors} = useTheme();
               }}
             />
             <motion.div
-              className="absolute bottom-1/2 right-0 w-32 h-32 bg-purple-500 rounded-full filter blur-3xl opacity-20"
+              className="absolute bottom-1/2 right-0 w-32 h-32 bg-secondary-500 rounded-full filter blur-3xl opacity-20"
               animate={{
                 x: [0, -30, 0],
                 y: [0, 30, 0],
@@ -271,7 +271,7 @@ const {colors} = useTheme();
               custom={0}
             >
               <motion.span
-                className="inline-block text-sm uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-2 mb-6 font-palo"
+                className={`inline-block text-sm uppercase font-bold ${colors.iconPrimary} border-b-2 border-current pb-2 mb-6 font-palo`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.05 }}
@@ -279,7 +279,7 @@ const {colors} = useTheme();
                 Send Message
               </motion.span>
               <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
-                Ready to Get <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">Started</span>?
+                Ready to Get <span className={`bg-gradient-to-r from-[${colors.primary}] via-[${colors.secondary}] to-[${colors.tertiary}] bg-clip-text text-transparent animate-gradient`}>Started</span>?
               </h2>
               <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto font-vastago`}>
                 Fill out the form below and we'll get back to you within 24 hours
@@ -293,14 +293,14 @@ const {colors} = useTheme();
                 custom={1}
                 className="relative"
               >
-                <div className="relative p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl rounded-3xl border-2 border-blue-500/30 shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl"></div>
+                <div className={`relative p-10 bg-gradient-to-br from-[${colors.primary}]/20 to-[${colors.secondary}]/20 backdrop-blur-2xl rounded-3xl border-2 border-[${colors.primary}]/30 shadow-2xl`}>
+                  <div className={`absolute inset-0 bg-gradient-to-br from-[${colors.primary}]/10 to-[${colors.secondary}]/10 rounded-3xl`}></div>
                   <div className="relative z-10">
                     <form onSubmit={handleSubmit} className="space-y-8">
                       <div className="grid md:grid-cols-2 gap-8">
                         <div>
                           <label className={`block text-base font-medium ${colors.textPrimary} mb-3 font-vastago`}>
-                            <FaUser className="inline mr-3 text-blue-500" />
+                            <FaUser className={`inline mr-3 ${colors.iconPrimary}`} />
                             Full Name *
                           </label>
                           <input
@@ -308,13 +308,13 @@ const {colors} = useTheme();
                             required
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className={`w-full px-6 py-4 bg-blue-600/20 border-2 border-blue-500/30 rounded-2xl ${colors.textPrimary} placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 font-vastago text-lg`}
+                            className={`w-full px-6 py-4 bg-[${colors.primary}]/20 border-2 border-[${colors.primary}]/30 rounded-2xl ${colors.textPrimary} placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[${colors.primary}] focus:border-transparent transition-all duration-300 font-vastago text-lg`}
                             placeholder="Enter your full name"
                           />
                         </div>
                         <div>
                           <label className={`block text-base font-medium ${colors.textPrimary} mb-3 font-vastago`}>
-                            <FaEnvelope className="inline mr-3 text-blue-500" />
+                            <FaEnvelope className={`inline mr-3 ${colors.iconPrimary}`} />
                             Email Address *
                           </label>
                           <input
@@ -322,7 +322,7 @@ const {colors} = useTheme();
                             required
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className={`w-full px-6 py-4 bg-blue-600/20 border-2 border-blue-500/30 rounded-2xl ${colors.textPrimary} placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 font-vastago text-lg`}
+                            className={`w-full px-6 py-4 bg-[${colors.primary}]/20 border-2 border-[${colors.primary}]/30 rounded-2xl ${colors.textPrimary} placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[${colors.primary}] focus:border-transparent transition-all duration-300 font-vastago text-lg`}
                             placeholder="Enter your email"
                           />
                         </div>
@@ -330,7 +330,7 @@ const {colors} = useTheme();
                       
                       <div>
                         <label className={`block text-base font-medium ${colors.textPrimary} mb-3 font-vastago`}>
-                          <FaGlobe className="inline mr-3 text-blue-500" />
+                          <FaGlobe className={`inline mr-3 ${colors.iconPrimary}`} />
                           Subject *
                         </label>
                         <input
@@ -338,14 +338,14 @@ const {colors} = useTheme();
                           required
                           value={formData.subject}
                           onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                          className={`w-full px-6 py-4 bg-blue-600/20 border-2 border-blue-500/30 rounded-2xl ${colors.textPrimary} placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 font-vastago text-lg`}
+                          className={`w-full px-6 py-4 bg-[${colors.primary}]/20 border-2 border-[${colors.primary}]/30 rounded-2xl ${colors.textPrimary} placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[${colors.primary}] focus:border-transparent transition-all duration-300 font-vastago text-lg`}
                           placeholder="What can we help you with?"
                         />
                       </div>
                       
                       <div>
                         <label className={`block text-base font-medium ${colors.textPrimary} mb-3 font-vastago`}>
-                          <FaComments className="inline mr-3 text-blue-500" />
+                          <FaComments className={`inline mr-3 ${colors.iconPrimary}`} />
                           Message *
                         </label>
                         <textarea
@@ -353,7 +353,7 @@ const {colors} = useTheme();
                           rows={8}
                           value={formData.message}
                           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                          className={`w-full px-6 py-4 bg-blue-600/20 border-2 border-blue-500/30 rounded-2xl ${colors.textPrimary} placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none font-vastago text-lg`}
+                          className={`w-full px-6 py-4 bg-[${colors.primary}]/20 border-2 border-[${colors.primary}]/30 rounded-2xl ${colors.textPrimary} placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[${colors.primary}] focus:border-transparent transition-all duration-300 resize-none font-vastago text-lg`}
                           placeholder="Tell us about your HR needs..."
                         />
                       </div>
@@ -362,7 +362,7 @@ const {colors} = useTheme();
                         type="submit"
                         whileHover={{ scale: 1.05, y: -3 }}
                         whileTap={{ scale: 0.95 }}
-                        className="w-full uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl hover:shadow-blue-500/25 font-palo"
+                        className={`w-full uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-[${colors.primary}] via-[${colors.secondary}] to-[${colors.tertiary}] hover:opacity-90 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl font-palo`}
                       >
                         Send Message
                       </motion.button>
@@ -377,15 +377,15 @@ const {colors} = useTheme();
                 custom={2}
                 className="space-y-10"
               >
-                <div className="relative p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl rounded-3xl border-2 border-blue-500/30 shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl"></div>
+                <div className={`relative p-10 bg-gradient-to-br from-[${colors.primary}]/20 to-[${colors.secondary}]/20 backdrop-blur-2xl rounded-3xl border-2 border-[${colors.primary}]/30 shadow-2xl`}>
+                  <div className={`absolute inset-0 bg-gradient-to-br from-[${colors.primary}]/10 to-[${colors.secondary}]/10 rounded-3xl`}></div>
                   <div className="relative z-10">
                     <h3 className={`text-3xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
                       Why Choose HR 4 Your business?
                     </h3>
                     <div className="space-y-6">
                       <div className="flex items-start gap-6">
-                        <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
+                        <div className={`w-10 h-10 bg-gradient-to-br from-[${colors.primary}] to-[${colors.secondary}] rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg`}>
                           <FaCheckCircle className="text-lg text-white" />
                         </div>
                         <div>
@@ -394,7 +394,7 @@ const {colors} = useTheme();
                         </div>
                       </div>
                       <div className="flex items-start gap-6">
-                        <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
+                        <div className={`w-10 h-10 bg-gradient-to-br from-[${colors.primary}] to-[${colors.secondary}] rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg`}>
                           <FaCheckCircle className="text-lg text-white" />
                         </div>
                         <div>
@@ -403,7 +403,7 @@ const {colors} = useTheme();
                         </div>
                       </div>
                       <div className="flex items-start gap-6">
-                        <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
+                        <div className={`w-10 h-10 bg-gradient-to-br from-[${colors.primary}] to-[${colors.secondary}] rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg`}>
                           <FaCheckCircle className="text-lg text-white" />
                         </div>
                         <div>
@@ -415,8 +415,8 @@ const {colors} = useTheme();
                   </div>
                 </div>
 
-                <div className="relative p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl rounded-3xl border-2 border-blue-500/30 shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl"></div>
+                <div className="relative p-10 bg-gradient-to-br from-primary-600/20 to-secondary-600/20 backdrop-blur-2xl rounded-3xl border-2 border-primary-500/30 shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 rounded-3xl"></div>
                   <div className="relative z-10">
                     <h3 className={`text-3xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
                       Business Hours
@@ -424,7 +424,7 @@ const {colors} = useTheme();
                     <div className="space-y-4">
                       <div className="flex justify-between items-center">
                         <span className={`${colors.textPrimary} font-vastago text-lg`}>Monday - Friday</span>
-                        <span className="text-blue-400 font-bold text-lg font-palo">9:00 AM - 6:00 PM</span>
+                        <span className={`${colors.iconPrimary} font-bold text-lg font-palo`}>9:00 AM - 6:00 PM</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className={`${colors.textPrimary} font-vastago text-lg`}>Saturday</span>
@@ -435,7 +435,7 @@ const {colors} = useTheme();
                         <span className={`${colors.textSecondary} font-vastago text-lg`}>Closed</span>
                       </div>
                     </div>
-                    <div className="mt-8 pt-6 border-t-2 border-blue-500/30">
+                    <div className={`mt-8 pt-6 border-t-2 border-[${colors.primary}]/30`}>
                       <p className={`${colors.textSecondary} text-base font-vastago`}>
                         Emergency HR support available 24/7 for existing clients
                       </p>
@@ -454,7 +454,7 @@ const {colors} = useTheme();
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 to-purple-500/15"></div>
+          <div className={`absolute inset-0 bg-gradient-to-br from-[${colors.primary}]/15 to-[${colors.secondary}]/15`}></div>
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <motion.div
               variants={fadeInUp}
@@ -463,7 +463,7 @@ const {colors} = useTheme();
             >
               <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
                 Ready to Transform Your{' '}
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">HR Operations</span>?
+                <span className={`bg-gradient-to-r from-[${colors.primary}] via-[${colors.secondary}] to-[${colors.tertiary}] bg-clip-text text-transparent animate-gradient`}>HR Operations</span>?
               </h2>
               <p className={`text-2xl ${colors.textSecondary} mb-10 font-vastago`}>
                 Don't wait - start your HR transformation journey today
@@ -478,14 +478,14 @@ const {colors} = useTheme();
               <motion.button
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
-                className="uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl hover:shadow-blue-500/25 font-palo"
+                className={`uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-[${colors.primary}] via-[${colors.secondary}] to-[${colors.tertiary}] hover:opacity-90 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl font-palo`}
               >
                 Schedule a Call
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
-                className="uppercase font-bold text-base rounded-3xl py-6 px-10 text-white border-2 border-blue-500/40 hover:border-blue-400 hover:bg-blue-500/20 transition-all duration-300 cursor-pointer backdrop-blur-xl font-palo"
+                className={`uppercase font-bold text-base rounded-3xl py-6 px-10 ${colors.textPrimary} border-2 border-[${colors.primary}]/40 hover:border-[${colors.primary}] hover:bg-[${colors.primary}]/20 transition-all duration-300 cursor-pointer backdrop-blur-xl font-palo`}
               >
                 Download Brochure
               </motion.button>

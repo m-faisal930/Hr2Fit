@@ -108,7 +108,7 @@ const RichTextEditor = ({ value, onChange, placeholder = "Start writing your HR 
           ${!value && 'text-gray-400'}
         `}
         style={{ 
-          fontFamily: 'inherit',
+          fontFamily: 'Montserrat, sans-serif',
           lineHeight: '1.6',
           direction: 'ltr',
           textAlign: 'left',

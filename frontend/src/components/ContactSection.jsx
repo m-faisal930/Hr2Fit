@@ -22,7 +22,7 @@ export default function ContactSection() {
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className={`font-work text-3xl sm:text-4xl font-bold ${colors.textPrimary}`}>
+          <h2 className={`font-montserrat text-3xl sm:text-4xl font-bold ${colors.textPrimary}`}>
             Get In <span className="text-buttons">Touch</span>
           </h2>
           <p className={`mt-4 text-lg ${colors.textSecondary} max-w-2xl mx-auto`}>
@@ -61,7 +61,7 @@ export default function ContactSection() {
                   </div>
                 </div>
                 <div>
-                  <h3 className={`text-lg font-work font-semibold ${colors.textPrimary}`}>
+                  <h3 className={`text-lg font-montserrat font-semibold ${colors.textPrimary}`}>
                     {label}
                   </h3>
                   {lines.map((line) => (
@@ -145,7 +145,7 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="inline-flex items-center justify-center rounded-full bg-buttons px-6 py-3 text-base font-work font-medium text-gray-700  hover:text-white cursor-pointer shadow transition-transform duration-200 hover:scale-105 hover:bg-[#0041A8]"
+                className="inline-flex items-center justify-center rounded-full bg-buttons px-6 py-3 text-base font-montserrat font-medium text-gray-700  hover:text-white cursor-pointer shadow transition-transform duration-200 hover:scale-105 hover:bg-[#0041A8]"
               >
                 Send Message
                 <Send className="ml-2 h-5 w-5" />

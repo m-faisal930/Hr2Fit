@@ -35,25 +35,25 @@ const HeroSection = () => {
       icon: Users,
       title: "Full Cycle Recruiting",
       description: "Complete end-to-end recruitment and hiring solutions",
-      color: "from-blue-500 to-cyan-500"
+      color: "from-[#123456] to-[#1e4d70]" // Primary blue gradient
     },
     {
       icon: Shield,
       title: "Human Resource Management",
       description: "Comprehensive HR operations and workforce management",
-      color: "from-purple-500 to-pink-500"
+      color: "from-[#DC203B] to-[#e54560]" // Secondary red gradient
     },
     {
       icon: TrendingUp,
       title: "Trainings",
       description: "Professional development and skills enhancement programs",
-      color: "from-green-500 to-emerald-500"
+      color: "from-[#414042] to-[#5a575a]" // Tertiary gray gradient
     },
     {
       icon: Database,
       title: "Payroll Servicing",
       description: "Complete payroll processing and management services",
-      color: "from-orange-500 to-red-500"
+      color: "from-[#123456] via-[#DC203B] to-[#414042]" // Combined gradient
     }
   ];
 
@@ -110,7 +110,7 @@ const HeroSection = () => {
         {/* Dynamic Gradient Orbs with Enhanced Effects */}
         <motion.div
           className={`absolute top-20 left-10 w-[500px] h-[500px] rounded-full blur-3xl ${
-            isDarkMode ? 'bg-blue-500/30' : 'bg-blue-500/20'
+            isDarkMode ? 'bg-[#123456]/30' : 'bg-[#123456]/20'
           }`}
           animate={{
             scale: [1, 1.4, 1],
@@ -126,7 +126,7 @@ const HeroSection = () => {
         />
         <motion.div
           className={`absolute top-40 right-20 w-[600px] h-[600px] rounded-full blur-3xl ${
-            isDarkMode ? 'bg-purple-500/25' : 'bg-purple-500/15'
+            isDarkMode ? 'bg-[#DC203B]/25' : 'bg-[#DC203B]/15'
           }`}
           animate={{
             scale: [1.2, 1, 1.2],
@@ -142,7 +142,7 @@ const HeroSection = () => {
         />
         <motion.div
           className={`absolute bottom-20 left-1/4 w-[400px] h-[400px] rounded-full blur-3xl ${
-            isDarkMode ? 'bg-cyan-500/20' : 'bg-cyan-500/10'
+            isDarkMode ? 'bg-[#414042]/20' : 'bg-[#414042]/10'
           }`}
           animate={{
             scale: [1, 1.3, 1],
@@ -162,7 +162,7 @@ const HeroSection = () => {
           <motion.div 
             className="absolute inset-0" 
             style={{
-              backgroundImage: `radial-gradient(circle at 1px 1px, ${isDarkMode ? '#3B82F6' : '#1E40AF'} 1px, transparent 0)`,
+              backgroundImage: `radial-gradient(circle at 1px 1px, ${isDarkMode ? '#123456' : '#123456'} 1px, transparent 0)`,
               backgroundSize: '60px 60px'
             }}
             animate={{
@@ -181,8 +181,8 @@ const HeroSection = () => {
           <motion.div
             key={i}
             className={`absolute w-2 h-2 rounded-full ${
-              isDarkMode ? 'bg-blue-400' : 'bg-blue-600'
-            }`}
+              i % 3 === 0 ? 'bg-[#123456]' : i % 3 === 1 ? 'bg-[#DC203B]' : 'bg-[#414042]'
+            } ${isDarkMode ? 'opacity-70' : 'opacity-60'}`}
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -207,7 +207,13 @@ const HeroSection = () => {
           {[...Array(5)].map((_, i) => (
             <motion.div
               key={`line-${i}`}
-              className="absolute h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"
+              className={`absolute h-px ${
+                i % 3 === 0 
+                  ? 'bg-gradient-to-r from-transparent via-[#123456] to-transparent'
+                  : i % 3 === 1
+                  ? 'bg-gradient-to-r from-transparent via-[#DC203B] to-transparent'
+                  : 'bg-gradient-to-r from-transparent via-[#414042] to-transparent'
+              }`}
               style={{
                 top: `${15 + i * 20}%`,
                 left: '0%',
@@ -231,8 +237,24 @@ const HeroSection = () => {
         {[...Array(8)].map((_, i) => (
           <motion.div
             key={`shape-${i}`}
-            className={`absolute w-8 h-8 border-2 border-blue-500/30 rounded-lg ${
-              isDarkMode ? 'bg-blue-500/10' : 'bg-blue-500/5'
+            className={`absolute w-8 h-8 border-2 ${
+              i % 3 === 0 
+                ? 'border-[#123456]/30' 
+                : i % 3 === 1 
+                ? 'border-[#DC203B]/30' 
+                : 'border-[#414042]/30'
+            } rounded-lg ${
+              isDarkMode 
+                ? i % 3 === 0 
+                  ? 'bg-[#123456]/10' 
+                  : i % 3 === 1 
+                  ? 'bg-[#DC203B]/10' 
+                  : 'bg-[#414042]/10'
+                : i % 3 === 0 
+                ? 'bg-[#123456]/5' 
+                : i % 3 === 1 
+                ? 'bg-[#DC203B]/5' 
+                : 'bg-[#414042]/5'
             }`}
             style={{
               left: `${10 + i * 12}%`,
@@ -268,7 +290,7 @@ const HeroSection = () => {
           <motion.div className="space-y-3 sm:space-y-4 md:space-y-5" variants={itemVariants}>
             {/* Enhanced Animated Badge */}
             <motion.div
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border-2 border-blue-500/30 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-blue-600 dark:text-blue-400 font-bold text-xs backdrop-blur-xl shadow-2xl"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#123456]/20 to-[#DC203B]/20 border-2 border-[#123456]/30 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-[#123456] dark:text-[#1e4d70] font-bold text-xs backdrop-blur-xl shadow-2xl"
               variants={itemVariants}
               whileHover={{ scale: 1.05, y: -2 }}
               animate={{ y: [0, -5, 0] }}
@@ -277,7 +299,7 @@ const HeroSection = () => {
               <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse" />
               <span className="font-palo">Trusted by 500+ Companies</span>
               <motion.div
-                className="w-2 h-2 bg-green-400 rounded-full"
+                className="w-2 h-2 bg-[#DC203B] rounded-full"
                 animate={{ scale: [1, 1.3, 1] }}
                 transition={{ duration: 1, repeat: Infinity }}
               />
@@ -290,13 +312,13 @@ const HeroSection = () => {
             >
               <span className={`${colors.textPrimary}`}>Human Resource</span>
               <br />
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">
+              <span className="bg-gradient-to-r from-[#123456] via-[#DC203B] to-[#1e4d70] bg-clip-text text-transparent animate-gradient">
                 Outsourcing
               </span>
               <br />
               <span className={`${colors.textPrimary}`}>for small to</span>
               <br />
-              <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 bg-clip-text text-transparent animate-gradient">
+              <span className="bg-gradient-to-r from-[#414042] via-[#123456] to-[#DC203B] bg-clip-text text-transparent animate-gradient">
                 medium size businesses
               </span>
             </motion.h1>
@@ -318,19 +340,19 @@ const HeroSection = () => {
             >
               <Link to="/contact">
                 <motion.div 
-                  className="group relative inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 text-white font-bold text-sm sm:text-base md:text-lg rounded-3xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 font-palo cursor-pointer"
+                  className="group relative inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-gradient-to-r from-[#123456] via-[#1e4d70] to-[#DC203B] hover:from-[#0f2a45] hover:via-[#123456] hover:to-[#b11a2f] text-white font-bold text-sm sm:text-base md:text-lg rounded-3xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-[#123456]/25 font-palo cursor-pointer"
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <span>Get Started</span>
                   <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform" />
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity" />
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#1e4d70] to-[#DC203B] opacity-0 group-hover:opacity-20 transition-opacity" />
                 </motion.div>
               </Link>
               
               <Link to="/about">
                 <motion.div 
-                  className="group inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 border-3 border-blue-500/40 hover:border-blue-400 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold text-sm sm:text-base md:text-lg rounded-3xl transition-all duration-300 backdrop-blur-xl font-palo cursor-pointer"
+                  className="group inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 border-3 border-[#123456]/40 hover:border-[#123456] text-[#123456] dark:text-[#1e4d70] hover:text-[#DC203B] dark:hover:text-[#DC203B] font-bold text-sm sm:text-base md:text-lg rounded-3xl transition-all duration-300 backdrop-blur-xl font-palo cursor-pointer"
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >

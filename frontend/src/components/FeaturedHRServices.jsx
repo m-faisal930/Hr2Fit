@@ -9,19 +9,19 @@ const featuredServices = [
     title: 'Fractionalized HR Services',
     desc: 'Professional HR expertise on a part-time or project basis, perfect for growing businesses.',
     icon: UserCheck,
-    color: '#8B5CF6', // purple-500
+    color: '#123456', // Primary blue
   },
   {
     title: 'HR Strategy Partners',
     desc: 'Strategic HR consulting to align your people practices with business objectives.',
     icon: TrendingUp,
-    color: '#06B6D4', // cyan-500
+    color: '#DC203B', // Secondary red
   },
   {
     title: 'Mergers & Acquisitions',
     desc: 'Expert HR guidance through complex M&A processes, ensuring smooth transitions.',
     icon: Building,
-    color: '#10B981', // emerald-500
+    color: '#414042', // Tertiary gray
   },
 ];
 
@@ -65,7 +65,7 @@ const FeaturedServiceCard = ({ title, desc, icon: Icon, color, index }) => {
   return (
     <motion.div
       ref={ref}
-      className={`group relative ${colors.cardBg} rounded-3xl ${colors.cardBorder} p-10 flex flex-col items-center text-center overflow-hidden backdrop-blur-xl border-2 border-purple-500/20`}
+      className={`group relative ${colors.cardBg} rounded-3xl ${colors.cardBorder} p-10 flex flex-col items-center text-center overflow-hidden backdrop-blur-xl border-2 border-[#123456]/20`}
       initial="hidden"
       animate={controls}
       variants={cardVariants}

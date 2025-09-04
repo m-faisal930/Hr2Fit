@@ -55,10 +55,10 @@ const staggerContainer = {
 };
 
 const industries = [
-  { icon: FaBalanceScale , name: 'Legal', color: 'from-hr-gradient-from to-hr-gradient-to' },
-  { icon: FaHeart, name: 'Dental', color: 'from-hr-gradient-from to-hr-gradient-to' },
-  { icon: FaWrench, name: 'Plumbing', color: 'from-hr-gradient-from to-hr-gradient-to' },
-  { icon: FaBuilding, name: 'HVAC', color: 'from-hr-gradient-from to-hr-gradient-to' },
+  { icon: FaBalanceScale , name: 'Legal', color: 'from-[#123456] to-[#DC203B]' },
+  { icon: FaHeart, name: 'Dental', color: 'from-[#123456] to-[#DC203B]' },
+  { icon: FaWrench, name: 'Plumbing', color: 'from-[#123456] to-[#DC203B]' },
+  { icon: FaBuilding, name: 'HVAC', color: 'from-[#123456] to-[#DC203B]' },
 ];
 
 const services = [
@@ -67,77 +67,77 @@ const services = [
     title: 'Compliance & Risk Management',
     question: 'Would you know what to do if an employee claimed harassment?',
     features: ['Legal Compliance', 'Risk Assessment', 'Policy Development', 'Audit Support'],
-    color: '#3B82F6' // blue
+    color: '#123456' // primary blue
   },
   {
     icon: FaDollarSign,
     title: 'Compensation & Benefits',
     question: 'Are you at risk of losing valued employees?',
     features: ['Salary Structure', 'Benefits Design', 'Performance Pay', 'Total Rewards'],
-    color: '#2563EB' // blue-600
+    color: '#DC203B' // secondary red
   },
   {
     icon: FaUsers,
     title: 'Employee Relations',
     question: 'Sensible solutions that increase workplace productivity.',
     features: ['Conflict Resolution', 'Performance Management', 'Employee Engagement', 'Workplace Culture'],
-    color: '#1D4ED8' // blue-700
+    color: '#414042' // tertiary gray
   },
   {
     icon: FaChartLine,
     title: 'Management Coaching',
     question: 'What type of management style are you?',
     features: ['Leadership Development', 'Communication Skills', 'Team Building', 'Performance Coaching'],
-    color: '#1E40AF' // blue-800
+    color: '#123456' // primary blue
   },
   {
     icon: FaHandshake,
     title: 'Recruiting & Staffing',
     question: 'Do you have an extra 40 to 60 hours to spare?',
     features: ['Talent Acquisition', 'Candidate Screening', 'Interview Process', 'Onboarding'],
-    color: '#1E3A8A' // blue-900
+    color: '#DC203B' // secondary red
   },
   {
     icon: FaGraduationCap,
     title: 'Employee Training & Development',
     question: 'A single source for all your training needs.',
     features: ['Training Programs', 'Skill Development', 'Compliance Training', 'Assessment Tools'],
-    color: '#60A5FA' // blue-400
+    color: '#414042' // tertiary gray
   },
   {
     icon: FaFileInvoiceDollar,
     title: 'Payroll Administration',
     question: 'Is it time to outsource your payroll administration?',
     features: ['Payroll Processing', 'Tax Compliance', 'Benefits Administration', 'Reporting'],
-    color: '#3B82F6' // blue
+    color: '#123456' // primary blue
   },
   {
     icon: FaCog,
     title: 'Employee Benefit Strategies & Administration',
     question: 'A complete integrated approach to employee benefit choices.',
     features: ['Health Plans', 'Welfare Benefits', 'Enrollment Management', 'Custom Strategies'],
-    color: '#2563EB' // blue-600
+    color: '#DC203B' // secondary red
   },
   {
     icon: FaRocket,
     title: 'Special Human Resources Projects',
     question: 'Because large or small human resource projects can need special attention.',
     features: ['Project Management', 'Process Optimization', 'System Implementation', 'Change Management'],
-    color: '#1D4ED8' // blue-700
+    color: '#414042' // tertiary gray
   },
   {
     icon: FaUsers,
     title: 'Staff Designs & Reorganizations',
     question: 'Managing change effectively.',
     features: ['Organizational Design', 'Change Management', 'Process Optimization', 'Team Restructuring'],
-    color: '#1E40AF' // blue-800
+    color: '#123456' // primary blue
   },
   {
     icon: FaFileAlt,
     title: 'Employee Handbooks',
     question: 'A well-defined employee Handbook is a roadmap to promote a productive work environment.',
     features: ['Handbook Creation', 'Policy Development', 'Legal Compliance', 'Regular Updates'],
-    color: '#1E3A8A' // blue-900
+    color: '#DC203B' // secondary red
   },
 ];
 
@@ -204,7 +204,7 @@ const ServiceCard = ({ title, question, features, icon: Icon, color, index }) =>
   return (
     <motion.div
       ref={ref}
-      className={`group relative ${colors.cardBg} rounded-3xl ${colors.cardBorder} p-10 flex flex-col items-center text-center overflow-hidden backdrop-blur-xl border-2 border-blue-500/20`}
+      className={`group relative ${colors.cardBg} rounded-3xl ${colors.cardBorder} p-10 flex flex-col items-center text-center overflow-hidden backdrop-blur-xl border-2 border-[#123456]/20`}
       initial="hidden"
       animate={controls}
       variants={cardVariants}
@@ -333,7 +333,7 @@ const ServiceCard = ({ title, question, features, icon: Icon, color, index }) =>
       <div className="space-y-3 w-full">
         {features.map((feature, featureIndex) => (
           <div key={featureIndex} className={`flex items-center gap-3 ${colors.textSecondary} text-base font-vastago`}>
-            <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+            <div className="w-3 h-3 bg-[#123456] rounded-full"></div>
             <span>{feature}</span>
           </div>
         ))}
@@ -422,7 +422,7 @@ const RecruitingSolutions = () => {
             custom={0}
           >
             <motion.span
-              className="inline-block text-sm uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-2 mb-6 font-palo"
+              className={`inline-block text-sm uppercase font-bold ${colors.iconPrimary} border-b-2 border-[#123456] pb-2 mb-6 font-palo`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 }}
@@ -430,7 +430,7 @@ const RecruitingSolutions = () => {
               Recruiting Solutions
             </motion.span>
             <h1 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
-              Unlock Growth with Our <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">Affordable Staff</span> Recruiting Solutions
+              Unlock Growth with Our <span className={`bg-gradient-to-r from-[#123456] via-[#DC203B] to-[#414042] bg-clip-text text-transparent animate-gradient`}>Affordable Staff</span> Recruiting Solutions
             </h1>
             <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto mb-10 leading-relaxed font-vastago`}>
               Schedule Your Call Today!
@@ -438,7 +438,7 @@ const RecruitingSolutions = () => {
             <motion.button
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className="uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl hover:shadow-blue-500/25 inline-flex items-center gap-4 font-palo"
+              className={`uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-[#123456] via-[#DC203B] to-[#414042] hover:opacity-90 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl inline-flex items-center gap-4 font-palo`}
             >
               <FaCalendar className="text-xl" />
               Schedule a Call
@@ -490,7 +490,7 @@ const RecruitingSolutions = () => {
             custom={0}
           >
             <motion.span
-              className="inline-block text-sm uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-2 mb-6 font-palo"
+              className={`inline-block text-sm uppercase font-bold ${colors.iconPrimary} border-b-2 border-[#123456] pb-2 mb-6 font-palo`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -564,11 +564,11 @@ const RecruitingSolutions = () => {
           </motion.div>
 
           <motion.div
-            className="relative p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl rounded-3xl border-2 border-blue-500/30 shadow-2xl"
+            className={`relative p-10 bg-gradient-to-br from-[#123456]/20 to-[#DC203B]/20 backdrop-blur-2xl rounded-3xl border-2 border-[#123456]/30 shadow-2xl`}
             variants={fadeInUp}
             custom={4}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl"></div>
+            <div className={`absolute inset-0 bg-gradient-to-br from-[#123456]/10 to-[#DC203B]/10 rounded-3xl`}></div>
             <div className="relative z-10">
               <p className={`text-xl ${colors.textSecondary} text-center leading-relaxed font-vastago`}>
                 <strong className={`${colors.textPrimary} font-palo`}>
@@ -595,7 +595,7 @@ const RecruitingSolutions = () => {
             custom={0}
           >
             <motion.span
-              className="inline-block text-sm uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-2 mb-6 font-palo"
+              className={`inline-block text-sm uppercase font-bold ${colors.iconPrimary} border-b-2 border-[#123456] pb-2 mb-6 font-palo`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -603,7 +603,7 @@ const RecruitingSolutions = () => {
               Industries We Serve
             </motion.span>
             <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
-              Catering to a <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">Variety of Industries</span>
+              Catering to a <span className={`bg-gradient-to-r from-[#123456] via-[#DC203B] to-[#414042] bg-clip-text text-transparent animate-gradient`}>Variety of Industries</span>
             </h2>
             <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto font-vastago`}>
               From legal to HVAC, we serve diverse industries with specialized recruiting solutions
@@ -623,13 +623,13 @@ const RecruitingSolutions = () => {
                 whileHover={{ y: -12 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <div className="relative p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-2xl rounded-3xl border-2 border-blue-500/30 overflow-hidden text-center shadow-2xl hover:shadow-3xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className={`relative p-10 bg-gradient-to-br from-[#123456]/20 to-[#DC203B]/20 backdrop-blur-2xl rounded-3xl border-2 border-[#123456]/30 overflow-hidden text-center shadow-2xl hover:shadow-3xl`}>
+                  <div className={`absolute inset-0 bg-gradient-to-br from-[#123456]/10 to-[#DC203B]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                   <div className="relative z-10">
-                    <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <div className={`w-20 h-20 bg-gradient-to-br ${industry.color} rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                       <industry.icon className="text-3xl text-white" />
                     </div>
-                    <h3 className={`text-2xl font-bold ${colors.textPrimary} group-hover:text-blue-500 transition-colors font-palo`}>
+                    <h3 className={`text-2xl font-bold ${colors.textPrimary} group-hover:text-[#123456] transition-colors font-palo`}>
                       {industry.name}
                     </h3>
                   </div>
@@ -654,7 +654,7 @@ const RecruitingSolutions = () => {
             custom={0}
           >
             <motion.span
-              className="inline-block text-sm uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-2 mb-6 font-palo"
+              className={`inline-block text-sm uppercase font-bold ${colors.iconPrimary} border-b-2 border-[#123456] pb-2 mb-6 font-palo`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -662,7 +662,7 @@ const RecruitingSolutions = () => {
               Our Services
             </motion.span>
             <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
-              One Place for All Your <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">HR Needs</span>
+              One Place for All Your <span className={`bg-gradient-to-r from-[#123456] via-[#DC203B] to-[#414042] bg-clip-text text-transparent animate-gradient`}>HR Needs</span>
             </h2>
             <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto font-vastago`}>
               Comprehensive HR solutions designed to help your business thrive
@@ -698,7 +698,7 @@ const RecruitingSolutions = () => {
             className="mb-12"
           >
             <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
-              Ready to Find Your <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">Perfect Candidate</span>?
+              Ready to Find Your <span className={`bg-gradient-to-r from-[#123456] via-[#DC203B] to-[#414042] bg-clip-text text-transparent animate-gradient`}>Perfect Candidate</span>?
             </h2>
             <p className={`text-2xl ${colors.textSecondary} mb-10 font-vastago`}>
               Let us handle the time-consuming hiring process while you focus on growing your business. Schedule your consultation today!
@@ -713,14 +713,14 @@ const RecruitingSolutions = () => {
             <motion.button
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className="uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl hover:shadow-blue-500/25 font-palo"
+              className={`uppercase font-bold text-base rounded-3xl py-6 px-10 text-white bg-gradient-to-r from-[#123456] via-[#DC203B] to-[#414042] hover:opacity-90 transition-all duration-300 cursor-pointer shadow-2xl hover:shadow-3xl font-palo`}
             >
               Schedule Your Call Today
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className="uppercase font-bold text-base rounded-3xl py-6 px-10 text-white border-2 border-blue-500/40 hover:border-blue-400 hover:bg-blue-500/20 transition-all duration-300 cursor-pointer backdrop-blur-xl font-palo"
+              className={`uppercase font-bold text-base rounded-3xl py-6 px-10 ${colors.textPrimary} border-2 border-[#123456]/40 hover:border-[#123456] hover:bg-[#123456]/20 transition-all duration-300 cursor-pointer backdrop-blur-xl font-palo`}
             >
               Learn More
             </motion.button>

@@ -94,7 +94,7 @@ const BlogPage = () => {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-              className="w-12 h-12 border-4 border-[#8176AF] border-t-transparent rounded-full"
+              className="w-12 h-12 border-4 border-[#123456] border-t-transparent rounded-full"
             />
           </div>
         </div>
@@ -119,7 +119,7 @@ const BlogPage = () => {
         {/* Enhanced Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
-            className="absolute top-20 left-10 w-60 h-60 bg-blue-500 rounded-full filter blur-3xl opacity-15"
+            className="absolute top-20 left-10 w-60 h-60 bg-[#123456] rounded-full filter blur-3xl opacity-15"
             animate={{
               x: [0, 30, 0],
               y: [0, 20, 0],
@@ -131,7 +131,7 @@ const BlogPage = () => {
             }}
           />
           <motion.div
-            className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500 rounded-full filter blur-3xl opacity-10"
+            className="absolute bottom-20 right-10 w-80 h-80 bg-[#DC203B] rounded-full filter blur-3xl opacity-10"
             animate={{
               x: [0, -30, 0],
               y: [0, -20, 0],
@@ -143,7 +143,7 @@ const BlogPage = () => {
             }}
           />
           <motion.div
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-cyan-500 rounded-full filter blur-3xl opacity-20"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-[#414042] rounded-full filter blur-3xl opacity-20"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.2, 0.6, 0.2],
@@ -158,7 +158,7 @@ const BlogPage = () => {
           {[...Array(8)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-8 h-8 border-2 border-blue-500/30 rounded-lg bg-blue-500/10"
+              className="absolute w-8 h-8 border-2 border-[#123456]/30 rounded-lg bg-[#123456]/10"
               style={{
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
@@ -188,33 +188,33 @@ const BlogPage = () => {
               variants={floatingAnimation}
             >
               <motion.div
-                className="p-4 rounded-2xl bg-blue-500/20 backdrop-blur-xl border border-blue-500/30"
+                className="p-4 rounded-2xl bg-[#123456]/20 backdrop-blur-xl border border-[#123456]/30"
                 whileHover={{ scale: 1.1, rotate: 5 }}
               >
-                <FaLightbulb className="text-5xl text-blue-500" />
+                <FaLightbulb className="text-5xl text-[#123456]" />
               </motion.div>
               <motion.div
-                className="p-4 rounded-2xl bg-purple-500/20 backdrop-blur-xl border border-purple-500/30"
+                className="p-4 rounded-2xl bg-[#DC203B]/20 backdrop-blur-xl border border-[#DC203B]/30"
                 whileHover={{ scale: 1.1, rotate: -5 }}
               >
-                <FaRocket className="text-5xl text-purple-500" />
+                <FaRocket className="text-5xl text-[#DC203B]" />
               </motion.div>
               <motion.div
-                className="p-4 rounded-2xl bg-blue-500/20 backdrop-blur-xl border border-blue-500/30"
+                className="p-4 rounded-2xl bg-[#123456]/20 backdrop-blur-xl border border-[#123456]/30"
                 whileHover={{ scale: 1.1, rotate: 5 }}
               >
-                <FaBrain className="text-5xl text-blue-500" />
+                <FaBrain className="text-5xl text-[#123456]" />
               </motion.div>
               <motion.div
-                className="p-4 rounded-2xl bg-purple-500/20 backdrop-blur-xl border border-purple-500/30"
+                className="p-4 rounded-2xl bg-[#DC203B]/20 backdrop-blur-xl border border-[#DC203B]/30"
                 whileHover={{ scale: 1.1, rotate: -5 }}
               >
-                <FaChartLine className="text-5xl text-purple-500" />
+                <FaChartLine className="text-5xl text-[#DC203B]" />
               </motion.div>
             </motion.div>
             
             <motion.span
-              className="inline-block text-sm uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-2 mb-6 font-palo"
+              className={`inline-block text-sm uppercase font-bold ${colors.iconPrimary} border-b-2 border-[#123456] pb-2 mb-6 font-palo`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 }}
@@ -223,7 +223,7 @@ const BlogPage = () => {
             </motion.span>
             
             <h1 className={`text-5xl md:text-6xl lg:text-7xl font-bold ${colors.textPrimary} mb-8 leading-tight font-palo`}>
-              Discover <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">Future-Ready</span> HR Solutions
+              Discover <span className={`bg-gradient-to-r from-[#123456] via-[#DC203B] to-[#414042] bg-clip-text text-transparent animate-gradient`}>Future-Ready</span> HR Solutions
             </h1>
             
             <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto mb-10 leading-relaxed font-vastago`}>
@@ -280,7 +280,7 @@ const BlogPage = () => {
                     <input
                       type="text"
                       placeholder="Search for insights, strategies, trends..."
-                      className={`w-full pl-16 pr-6 py-6 ${colors.inputBg} ${colors.inputBorder} border-2 rounded-3xl focus:ring-2 focus:ring-blue-500 focus:border-transparent ${colors.inputText} placeholder-gray-400 backdrop-blur-xl transition-all duration-300 shadow-2xl text-lg font-vastago`}
+                      className={`w-full pl-16 pr-6 py-6 ${colors.inputBg} ${colors.inputBorder} border-2 rounded-3xl focus:ring-2 focus:ring-[#123456] focus:border-transparent ${colors.inputText} placeholder-gray-400 backdrop-blur-xl transition-all duration-300 shadow-2xl text-lg font-vastago`}
                       value={filters.search}
                       onChange={(e) => handleSearch(e.target.value)}
                       onFocus={() => setSearchFocused(true)}
@@ -294,7 +294,7 @@ const BlogPage = () => {
                   onClick={() => setShowFilters(!showFilters)}
                   className={`flex items-center gap-4 px-8 py-6 ${colors.cardBg} ${colors.borderPrimary} border-2 rounded-3xl hover:shadow-2xl transition-all duration-300 ${colors.textPrimary} backdrop-blur-xl shadow-lg font-palo text-lg`}
                 >
-                  <FaFilter className="text-blue-500 text-xl" />
+                  <FaFilter className="text-[#123456] text-xl" />
                   <span className="font-bold">Filters</span>
                 </motion.button>
               </div>
@@ -342,7 +342,7 @@ const BlogPage = () => {
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => updateFilters({ search: '', category: '', sort: 'latest', page: 1 })}
-                  className="text-blue-500 hover:text-blue-400 underline font-bold transition-colors duration-300 font-palo text-lg"
+                  className={`${colors.iconPrimary} hover:text-[#DC203B] underline font-bold transition-colors duration-300 font-palo text-lg`}
                 >
                   Clear filters and explore all insights
                 </motion.button>
@@ -394,7 +394,7 @@ const BlogPage = () => {
                       onClick={() => handlePageChange(page)}
                       className={`px-8 py-4 border-2 rounded-3xl transition-all duration-300 shadow-lg font-palo text-lg ${
                         page === pagination.current
-                          ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white border-transparent shadow-2xl'
+                          ? `bg-gradient-to-r from-[#123456] to-[#DC203B] text-white border-transparent shadow-2xl`
                           : `${colors.borderPrimary} border hover:shadow-2xl ${colors.textPrimary} backdrop-blur-xl`
                       }`}
                     >

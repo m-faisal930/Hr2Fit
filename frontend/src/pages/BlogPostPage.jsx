@@ -153,7 +153,7 @@ const BlogPostPage = () => {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full mx-auto mb-4"
+            className="w-12 h-12 border-4 border-[#123456] border-t-transparent rounded-full mx-auto mb-4"
           />
           <p className={`${colors.textSecondary}`}>Loading insight...</p>
         </div>
@@ -178,7 +178,7 @@ const BlogPostPage = () => {
 
       {/* Reading Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 z-50"
+        className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-[#123456] to-[#DC203B] z-50"
         style={{ width: `${readingProgress}%` }}
         initial={{ width: 0 }}
         animate={{ width: `${readingProgress}%` }}
@@ -206,7 +206,7 @@ const BlogPostPage = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.3 }}
-                  className="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-base font-bold rounded-full mb-8 font-palo"
+                  className="inline-block px-6 py-3 bg-gradient-to-r from-[#123456] to-[#DC203B] text-white text-base font-bold rounded-full mb-8 font-palo"
                 >
                   {currentPost.category.name}
                 </motion.span>
@@ -220,16 +220,16 @@ const BlogPostPage = () => {
               {/* Meta Information */}
               <div className={`flex flex-wrap items-center gap-8 ${colors.textSecondary} mb-10`}>
                 <div className="flex items-center gap-3">
-                  <FaCalendar className="w-5 h-5 text-blue-500" />
+                  <FaCalendar className="w-5 h-5 text-[#123456]" />
                   <span className="text-lg font-vastago">{formatDate(currentPost.publishedAt || currentPost.createdAt)}</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <FaEye className="w-5 h-5 text-blue-500" />
+                  <FaEye className="w-5 h-5 text-[#123456]" />
                   <span className="text-lg font-vastago">{currentPost.views || 0} views</span>
                 </div>
                 {currentPost.tags && currentPost.tags.length > 0 && (
                   <div className="flex items-center gap-3">
-                    <FaTag className="w-5 h-5 text-blue-500" />
+                    <FaTag className="w-5 h-5 text-[#123456]" />
                     <span className="text-lg font-vastago">{currentPost.tags.join(', ')}</span>
                   </div>
                 )}
@@ -318,7 +318,7 @@ const BlogPostPage = () => {
                       onClick={handleBookmark}
                       className={`flex items-center gap-3 px-6 py-4 rounded-2xl transition-all duration-300 ${colors.bgSecondary} ${colors.textPrimary} hover:${colors.hoverBg} font-palo text-lg`}
                     >
-                      <FaBookmark className={`w-5 h-5 ${isBookmarked ? 'text-blue-500' : ''}`} />
+                      <FaBookmark className={`w-5 h-5 ${isBookmarked ? 'text-[#123456]' : ''}`} />
                       <span>{isBookmarked ? 'Bookmarked' : 'Bookmark'}</span>
                     </motion.button>
 
@@ -413,20 +413,20 @@ const BlogPostPage = () => {
                 {/* Enhanced Post Details Card */}
                 <div className={`${colors.cardBg} ${colors.borderPrimary} border-2 rounded-3xl shadow-md p-8 backdrop-blur-xl`}>
                   <h3 className={`text-xl font-bold ${colors.textPrimary} mb-6 flex items-center gap-3 font-palo`}>
-                    <FaLightbulb className="text-blue-500 text-2xl" />
+                    <FaLightbulb className="text-[#123456] text-2xl" />
                     Insight Details
                   </h3>
                   <div className={`space-y-4 text-base ${colors.textSecondary} font-vastago`}>
                     <div className="flex items-center gap-3">
-                      <FaEye className="w-5 h-5 text-blue-500" />
+                      <FaEye className="w-5 h-5 text-[#123456]" />
                       <span>{currentPost.views || 0} views</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <FaHeart className="w-5 h-5 text-blue-500" />
+                      <FaHeart className="w-5 h-5 text-[#123456]" />
                       <span>{likesCount} likes</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <FaCalendar className="w-5 h-5 text-blue-500" />
+                      <FaCalendar className="w-5 h-5 text-[#123456]" />
                       <span>{formatDate(currentPost.publishedAt || currentPost.createdAt)}</span>
                     </div>
                   </div>
@@ -435,7 +435,7 @@ const BlogPostPage = () => {
                 {/* Enhanced Related Topics Card */}
                 <div className={`${colors.cardBg} ${colors.borderPrimary} border-2 rounded-3xl shadow-md p-8 backdrop-blur-xl`}>
                   <h3 className={`text-xl font-bold ${colors.textPrimary} mb-6 flex items-center gap-3 font-palo`}>
-                    <FaRocket className="text-blue-500 text-2xl" />
+                    <FaRocket className="text-[#DC203B] text-2xl" />
                     Related Topics
                   </h3>
                   <div className="space-y-3">
@@ -454,7 +454,7 @@ const BlogPostPage = () => {
                 {/* Enhanced Quick Actions Card */}
                 <div className={`${colors.cardBg} ${colors.borderPrimary} border-2 rounded-3xl shadow-md p-8 backdrop-blur-xl`}>
                   <h3 className={`text-xl font-bold ${colors.textPrimary} mb-6 flex items-center gap-3 font-palo`}>
-                    <FaBrain className="text-blue-500 text-2xl" />
+                    <FaBrain className="text-[#414042] text-2xl" />
                     Quick Actions
                   </h3>
                   <div className="space-y-4">

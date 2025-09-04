@@ -47,7 +47,7 @@ export default function AboutSection() {
       {/* Decorative background elements - updated to match theme */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-20 left-10 w-40 h-40 bg-blue-500 rounded-full filter blur-3xl opacity-10"
+          className="absolute top-20 left-10 w-40 h-40 bg-[#123456] rounded-full filter blur-3xl opacity-10"
           animate={{
             x: [0, 20, 0],
             y: [0, 15, 0],
@@ -59,7 +59,7 @@ export default function AboutSection() {
           }}
         />
         <motion.div
-          className="absolute bottom-20 right-10 w-60 h-60 bg-purple-500 rounded-full filter blur-3xl opacity-10"
+          className="absolute bottom-20 right-10 w-60 h-60 bg-[#DC203B] rounded-full filter blur-3xl opacity-10"
           animate={{
             x: [0, -20, 0],
             y: [0, -15, 0],
@@ -76,7 +76,7 @@ export default function AboutSection() {
         {/* Text Content */}
         <motion.div className="md:w-1/2" variants={container}> {/* Adjusted width to match hero section ratio */}
           <motion.span
-            className="inline-block text-xs uppercase font-bold text-blue-600 dark:text-blue-400 border-b-2 border-blue-500 pb-1"
+            className="inline-block text-xs uppercase font-bold text-[#123456] dark:text-[#1e4d70] border-b-2 border-[#123456] pb-1"
             variants={item}
           >
             About us
@@ -88,7 +88,7 @@ export default function AboutSection() {
           >
             About{' '}
             <motion.span
-              className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent inline-block"
+              className="bg-gradient-to-r from-[#123456] via-[#DC203B] to-[#414042] bg-clip-text text-transparent inline-block"
               whileHover={{
                 scale: 1.05,
                 transition: {
@@ -123,7 +123,7 @@ export default function AboutSection() {
           >
             <Link
               to="/about"
-              className="relative inline-block px-8 py-4 font-bold text-sm uppercase rounded-2xl group bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 text-white hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25"
+              className="relative inline-block px-8 py-4 font-bold text-sm uppercase rounded-2xl group bg-gradient-to-r from-[#123456] via-[#DC203B] to-[#414042] text-white hover:from-[#0f2a45] hover:via-[#b11a2f] hover:to-[#2e2d2f] transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-[#123456]/25"
             >
               <span className="relative">
                 Want To Know More?
@@ -142,10 +142,10 @@ export default function AboutSection() {
           <motion.img
             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
             alt="Professional HR Team - Real People"
-            className="w-full rounded-3xl border-2 border-blue-500/20 shadow-2xl object-cover aspect-[4/3]"
+            className="w-full rounded-3xl border-2 border-[#123456]/20 shadow-2xl object-cover aspect-[4/3]"
             whileHover={{
               scale: 1.02,
-              boxShadow: '0 20px 40px rgba(59, 130, 246, 0.3)',
+              boxShadow: '0 20px 40px rgba(18, 52, 86, 0.3)',
             }}
             transition={{
               scale: { type: 'spring', stiffness: 300 },
