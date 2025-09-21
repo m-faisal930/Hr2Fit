@@ -11,7 +11,7 @@ export default function StatsSection() {
   const { colors } = useTheme();
 
   const stats = [
-    { label: 'Recruiters Globally', value: 200, suffix: '+' },
+    { label: 'Recruiters Globally', value: 20, suffix: '+' },
     { label: 'Job Seekers Onboarded', value: 12000, suffix: '+' },
     { label: 'Vacancies Onboarded', value: 5000, suffix: '+' },
     { label: 'Placements Done', value: 500, suffix: '+' },

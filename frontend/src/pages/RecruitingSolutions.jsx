@@ -54,13 +54,6 @@ const staggerContainer = {
   },
 };
 
-const industries = [
-  { icon: FaBalanceScale , name: 'Legal', color: 'from-[#123456] to-[#DC203B]' },
-  { icon: FaHeart, name: 'Dental', color: 'from-[#123456] to-[#DC203B]' },
-  { icon: FaWrench, name: 'Plumbing', color: 'from-[#123456] to-[#DC203B]' },
-  { icon: FaBuilding, name: 'HVAC', color: 'from-[#123456] to-[#DC203B]' },
-];
-
 const services = [
   {
     icon: FaShieldAlt,
@@ -577,65 +570,6 @@ const RecruitingSolutions = () => {
                 We will work with you to develop an outstanding job description and advertise on your behalf. We will partner with you through the complete hiring cycle from screening candidates to setting up interviews. Once we find the ideal candidate, we foster the process all the way through onboarding your new employee. Our commitment to you is to find that ideal candidate who will enrich your business.
               </p>
             </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Enhanced Industries Section */}
-      <motion.section
-        className={`py-24 relative overflow-hidden ${colors.bgSecondary}`}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            className="text-center mb-20"
-            variants={fadeInUp}
-            custom={0}
-          >
-            <motion.span
-              className={`inline-block text-sm uppercase font-bold ${colors.iconPrimary} border-b-2 border-[#123456] pb-2 mb-6 font-palo`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              Industries We Serve
-            </motion.span>
-            <h2 className={`text-5xl md:text-6xl font-bold ${colors.textPrimary} mb-8 font-palo`}>
-              Catering to a <span className={`bg-gradient-to-r from-[#123456] via-[#DC203B] to-[#414042] bg-clip-text text-transparent animate-gradient`}>Variety of Industries</span>
-            </h2>
-            <p className={`text-2xl ${colors.textSecondary} max-w-4xl mx-auto font-vastago`}>
-              From legal to HVAC, we serve diverse industries with specialized recruiting solutions
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid md:grid-cols-4 gap-10"
-            variants={staggerContainer}
-          >
-            {industries.map((industry, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                custom={index + 1}
-                className="group relative"
-                whileHover={{ y: -12 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <div className={`relative p-10 bg-gradient-to-br from-[#123456]/20 to-[#DC203B]/20 backdrop-blur-2xl rounded-3xl border-2 border-[#123456]/30 overflow-hidden text-center shadow-2xl hover:shadow-3xl`}>
-                  <div className={`absolute inset-0 bg-gradient-to-br from-[#123456]/10 to-[#DC203B]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-                  <div className="relative z-10">
-                    <div className={`w-20 h-20 bg-gradient-to-br ${industry.color} rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                      <industry.icon className="text-3xl text-white" />
-                    </div>
-                    <h3 className={`text-2xl font-bold ${colors.textPrimary} group-hover:text-[#123456] transition-colors font-palo`}>
-                      {industry.name}
-                    </h3>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
           </motion.div>
         </div>
       </motion.section>

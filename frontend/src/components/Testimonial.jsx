@@ -12,7 +12,7 @@ const Testimonial = () => {
     {
       id: 1,
       quote:
-        "The team's dedication and expertise accelerated our project timeline significantly. Their work ethic is truly inspiring.",
+        "Cindy was invaluable in navigating health insurance complexities and HR policies. Her compassion, knowledge, and willingness to embrace innovation make her an asset to any organization.",
       name: 'Sarah Johnson',
       role: 'Human Resources Director',
       avatar:
@@ -21,7 +21,7 @@ const Testimonial = () => {
     {
       id: 2,
       quote:
-        'Working with this team transformed our sales strategy. Their innovative approach delivered results beyond our expectations.',
+        'Cindy is both knowledgeable about HR regulations and cutting-edge practices. She helped us create an effective staffing structure and develop job descriptions that aligned with our strategic direction.',
       name: 'Johnny Smith',
       role: 'Sales Manager',
       avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600',
@@ -29,7 +29,7 @@ const Testimonial = () => {
     {
       id: 3,
       quote:
-        'The technical architecture provided was robust and scalable. It became the foundation for our entire digital transformation.',
+        'Cindy stays current on labor laws and industry trends while understanding each company\'s unique needs. She crafts HR solutions that work for both employers and employees.',
       name: 'Rehman Ali',
       role: 'CTO',
       avatar:
@@ -38,7 +38,7 @@ const Testimonial = () => {
     {
       id: 4,
       quote:
-        'Their creative solutions to our content challenges were both elegant and effective. A true partnership in every sense.',
+        'Cindy has been our HR specialist for years and is an invaluable resource. She\'s professional, knowledgeable, and truly cares about her clients\' success. She always exceeds expectations.',
       name: 'Mona Lee',
       role: 'Editor in Chief',
       avatar:

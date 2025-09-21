@@ -560,17 +560,20 @@ const HeroSection = () => {
               {
                 icon: "M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z",
                 title: "Call Us Today",
-                subtitle: "(781) 436-5399"
+                subtitle: "(781) 436-5399",
+                href: "tel:+17814365399"
               },
               {
                 icon: "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z",
                 title: "Email Us",
-                subtitle: "info@hr4yourbusiness.com"
+                subtitle: "info@hr4yourbusiness.com",
+                href: "mailto:info@hr4yourbusiness.com"
               }
             ].map((contact, index) => (
-              <motion.div 
+              <motion.a 
                 key={index}
-                className="flex items-center gap-4 sm:gap-5 group cursor-pointer"
+                href={contact.href || '#'}
+                className="flex items-center gap-4 sm:gap-5 group cursor-pointer no-underline"
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -583,7 +586,7 @@ const HeroSection = () => {
                   <h3 className={`font-bold text-lg sm:text-xl ${colors.textPrimary} font-palo`}>{contact.title}</h3>
                   <p className={`text-sm sm:text-base ${colors.textSecondary} font-vastago`}>{contact.subtitle}</p>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </div>

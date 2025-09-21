@@ -169,7 +169,9 @@ const {colors} = useTheme();
                       Call us directly for immediate assistance
                     </p>
                     <div className={`space-y-3 ${colors.textPrimary}`}>
-                      <p className="font-bold text-xl">(781) 436-5399</p>
+                      <a href="tel:+17814365399" className="font-bold text-xl hover:opacity-80 transition-opacity">
+                        (781) 436-5399
+                      </a>
                       <p className={`text-base ${colors.textSecondary} font-vastago`}>Mon-Fri: 9AM-6PM EST</p>
                     </div>
                   </div>
@@ -194,7 +196,9 @@ const {colors} = useTheme();
                       Send us a message anytime
                     </p>
                     <div className={`space-y-3 ${colors.textPrimary}`}>
-                      <p className="font-bold text-xl">info@hr4yourbusiness.com</p>
+                      <a href="mailto:info@hr4yourbusiness.com" className="font-bold text-xl hover:opacity-80 transition-opacity">
+                        info@hr4yourbusiness.com
+                      </a>
                       <p className={`text-base ${colors.textSecondary} font-vastago`}>Response within 24 hours</p>
                     </div>
                   </div>
@@ -219,7 +223,7 @@ const {colors} = useTheme();
                       Come see us in person
                     </p>
                     <div className={`space-y-3 ${colors.textPrimary}`}>
-                      <p className="font-bold text-xl">896 Main Street</p>
+                      <p className="font-bold text-xl">869 Main Street</p>
                       <p className={`text-base ${colors.textSecondary} font-vastago`}>Walpole MA 02081</p>
                     </div>
                   </div>
